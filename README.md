@@ -55,11 +55,14 @@ npm run dev
 
 В проекте были использованы следующие технологии:
 - React
-- Redux
+- Redux toolkit
 - TypeScript
 - Vite
 - React-router-dom
 - RTK Query
-- 
+- React hook form
+- Yup
+- Material-UI
+  
 ## Ссылки на сторонние фреймворки, библиотеки
 
