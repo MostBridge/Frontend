@@ -2,6 +2,9 @@ module.exports = {
   root: true,
   env: { browser: true, es2020: true },
   extends: [
+    'airbnb',
+    'airbnb/hooks',
+    'airbnb-typescript',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended-type-checked',
     'plugin:react/recommended',
@@ -23,6 +26,8 @@ module.exports = {
   },
   plugins: ['react-refresh'],
   rules: {
+    'react/react-in-jsx-scope': 0,
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
