@@ -1,20 +1,33 @@
-/* @font-face {
-  font-family: "Futura PT";
+@font-face {
+  font-family: 'YS Display';
   font-style: normal;
   font-weight: 400;
-  src: url("./fonts/FuturaCyrillicBook.ttf") format("truetype");
+  src: url('./fonts/YandexSansDisplay-Regular.woff2') format('woff2'),
+    url('./fonts/YandexSansDisplay-Regular.woff') format('woff'),
+    url('./fonts/YS.Display-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "Futura PT";
-  font-style: normal;
-  font-weight: 450;
-  src: url("./fonts/FuturaCyrillicMedium.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Futura PT";
+  font-family: 'YS Display';
   font-style: normal;
   font-weight: 500;
-  src: url("./fonts/FuturaCyrillicDemi.ttf") format("truetype");
-} */
+  src: url('./fonts/YS.Display-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'YS Text';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/YandexSansText-Regular.woff2') format('woff2'),
+    url('./fonts/YandexSansText-Regular.woff') format('woff'), 
+    url('./fonts/YS.Text-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'YS Text';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/YandexSansText-Medium.woff2') format('woff2'),
+    url('./fonts/YandexSansText-Medium.woff') format('woff'), 
+    url('./fonts/YandexSansText-Medium.ttf') format('truetype');
+}
