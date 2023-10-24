@@ -33,7 +33,7 @@ const Button = styled(MuiButton)<ButtonProps>(({ theme }) => ({
       style: {
         borderColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
-        fontWeght: 500,
+        fontWeight: 500,
 
         '&:hover': {
           backgroundColor: theme.palette.primary.main,

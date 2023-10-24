@@ -1,6 +1,5 @@
+import Button from '@components/Button/Button';
 import { FC } from 'react';
-
-import Button from '@components/Button';
 
 const SignIn: FC = () => {
   return (

@@ -2,6 +2,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Shadows, ThemeProvider, createTheme } from '@mui/material';
 
 import SignIn from '@pages/SignIn/SignIn';
+import Vacancies from '@pages/Vacancies/Vacancies';
 
 const theme = createTheme({
   shadows: Array(25).fill('none') as Shadows,
@@ -16,7 +17,9 @@ const theme = createTheme({
       main: '#FF0200',
     },
   },
+
   typography: {
+    fontFamily: "'YS Display', sans-serif",
     h1: {
       fontSize: 34,
       lineHeight: 40,
@@ -29,7 +32,7 @@ const theme = createTheme({
     },
     h3: {
       fontSize: 20,
-      lineHeight: 24,
+      lineHeight: 1,
       color: '#1A1B22',
     },
     subtitle1: {
@@ -39,7 +42,7 @@ const theme = createTheme({
     },
     body1: {
       fontSize: 16,
-      lineHeight: 20,
+      lineHeight: 1.42,
       color: '#1A1B22',
     },
     body2: {
@@ -53,6 +56,7 @@ const theme = createTheme({
       color: '#1A1B22',
     },
   },
+  
 });
 
 function App() {
@@ -60,7 +64,7 @@ function App() {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <Routes>
-          <Route path="/" />
+          <Route path="/" element={<Vacancies />} />
           <Route path="/sign-in" element={<SignIn />} />
         </Routes>
       </ThemeProvider>
