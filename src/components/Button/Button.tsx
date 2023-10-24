@@ -10,9 +10,8 @@ const Button = styled(MuiButton)<ButtonProps>(({ theme }) => ({
       props: { size: 'medium' },
       style: {
         height: 50,
-        width: 250,
         fontSize: 16,
-        lineHeight: 20,
+        lineHeight: '20px',
         fontWeight: 500,
         padding: 15,
       },
@@ -21,9 +20,8 @@ const Button = styled(MuiButton)<ButtonProps>(({ theme }) => ({
       props: { size: 'small' },
       style: {
         height: 40,
-        width: 156,
         fontSize: 14,
-        lineHeight: 20,
+        lineHeight: '20px',
         fontWeight: 400,
         padding: '10px 20px',
       },
