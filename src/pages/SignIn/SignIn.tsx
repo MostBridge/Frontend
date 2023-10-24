@@ -1,13 +1,15 @@
 import { FC } from 'react';
 
-import Form from '@components/Form/Form';
-
-import styles from './SignIn.module.css';
+import Button from '@components/Button';
 
 const SignIn: FC = () => {
   return (
     <main>
-      <Form title="Карьерный трекер" button="Войти"></Form>
+      <form>
+        <Button size="small" variant="contained">
+          Войти
+        </Button>
+      </form>
     </main>
   );
 };
