@@ -11,7 +11,9 @@
   font-family: 'YS Display';
   font-style: normal;
   font-weight: 500;
-  src: url('./fonts/YS.Display-Medium.ttf') format('truetype');
+  src: url('./fonts/YS.Display-Medium.woff2') format('woff2'),
+  url('./fonts/YS.Display-Medium.woff') format('woff'),
+  url('./fonts/YS.Display-Medium.ttf') format('truetype');
 }
 
 @font-face {
