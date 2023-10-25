@@ -30,7 +30,7 @@ const Button = styled(MuiButton)<ButtonProps>(({ theme }) => ({
       props: { variant: 'outlined' },
       style: {
         borderColor: theme.palette.primary.main,
-        color: theme.palette.primary.contrastText,
+        color: theme.palette.primary.main,
         fontWeight: 500,
 
         '&:hover': {

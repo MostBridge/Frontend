@@ -4,6 +4,9 @@
 }
 
 .vacancies__title {
-    margin: 0;
     padding-bottom: 32px;
+}
+
+.button {
+    margin-right: 20px;
 }

@@ -28,16 +28,19 @@ const theme = createTheme({
   },
 
   typography: {
-    fontFamily: "'YS Display', sans-serif",
+    fontFamily: "'YS Text', sans-serif",
     h1: {
+      fontFamily: "'YS Display', sans-serif",
       fontSize: 34,
       lineHeight: '40px',
     },
     h2: {
+      fontFamily: "'YS Display', sans-serif",
       fontSize: 24,
       lineHeight: '32px',
     },
     h3: {
+      fontFamily: "'YS Display', sans-serif",
       fontSize: 20,
       lineHeight: '24px',
     },
@@ -64,7 +67,7 @@ function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <StyledEngineProvider>
+        <StyledEngineProvider injectFirst>
           <Routes>
             <Route path="/" element={<Vacancies />} />
             <Route path="/sign-in" element={<SignIn />} />
