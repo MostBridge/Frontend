@@ -1,5 +1,5 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { Shadows, ThemeProvider, createTheme } from '@mui/material';
+import { Shadows, ThemeProvider, StyledEngineProvider, createTheme } from '@mui/material';
 
 import SignIn from '@pages/SignIn/SignIn';
 import Vacancies from '@pages/Vacancies/Vacancies';
@@ -13,6 +13,15 @@ const theme = createTheme({
       dark: '#1D6BF3',
       contrastText: '#FFF',
     },
+    text: {
+      primary: '#1A1B22',
+      secondary: '#797981',
+      disabled: '#DDE0E4',
+    },
+    background: {
+      paper: '#F9FAFB',
+      default: '#FFFFFF',
+    },
     error: {
       main: '#FF0200',
     },
@@ -22,51 +31,45 @@ const theme = createTheme({
     fontFamily: "'YS Display', sans-serif",
     h1: {
       fontSize: 34,
-      lineHeight: 40,
-      color: '#1A1B22',
+      lineHeight: '40px',
     },
     h2: {
       fontSize: 24,
-      lineHeight: 32,
-      color: '#1A1B22',
+      lineHeight: '32px',
     },
     h3: {
       fontSize: 20,
-      lineHeight: 1,
-      color: '#1A1B22',
+      lineHeight: '24px',
     },
     subtitle1: {
       fontSize: 18,
-      lineHeight: 24,
-      color: '#1A1B22',
+      lineHeight: '24px',
     },
     body1: {
       fontSize: 16,
-      lineHeight: 1.42,
-      color: '#1A1B22',
+      lineHeight: '20px',
     },
     body2: {
       fontSize: 14,
-      lineHeight: 20,
-      color: '#1A1B22',
+      lineHeight: '20px',
     },
     caption: {
-      fontSize: 14,
-      lineHeight: 16,
-      color: '#1A1B22',
+      fontSize: 13,
+      lineHeight: '16px',
     },
   },
-  
 });
 
 function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <Routes>
-          <Route path="/" element={<Vacancies />} />
-          <Route path="/sign-in" element={<SignIn />} />
-        </Routes>
+        <StyledEngineProvider>
+          <Routes>
+            <Route path="/" element={<Vacancies />} />
+            <Route path="/sign-in" element={<SignIn />} />
+          </Routes>
+        </StyledEngineProvider>
       </ThemeProvider>
     </BrowserRouter>
   );
