@@ -2,6 +2,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Shadows, ThemeProvider, createTheme } from '@mui/material';
 
 import SignIn from '@pages/SignIn/SignIn';
+import CreateVacancy from '@pages/CreateVacancy/CreateVacancy';
 
 const theme = createTheme({
   shadows: Array(25).fill('none') as Shadows,
@@ -62,6 +63,7 @@ function App() {
         <Routes>
           <Route path="/" />
           <Route path="/sign-in" element={<SignIn />} />
+          <Route path='/create-vacancy' element={<CreateVacancy />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>
