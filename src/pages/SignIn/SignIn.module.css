@@ -1,6 +1,6 @@
 .page {
   min-height: 100vh;
-  background: url(@assets/images/background.svg);
+  background: url(assets/images/background.svg);
   display: grid;
   grid-template-rows: auto 1fr auto;
   padding: 32px 40px;

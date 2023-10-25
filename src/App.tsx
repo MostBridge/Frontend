@@ -1,8 +1,9 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Shadows, ThemeProvider, StyledEngineProvider, createTheme } from '@mui/material';
 
-import SignIn from '@pages/SignIn/SignIn';
-import Vacancies from '@pages/Vacancies/Vacancies';
+import SignIn from 'pages/SignIn/SignIn';
+import Vacancies from 'pages/Vacancies/Vacancies';
+import Layout from 'components/Layout/Layout';
 
 const theme = createTheme({
   shadows: Array(25).fill('none') as Shadows,
@@ -33,32 +34,39 @@ const theme = createTheme({
       fontFamily: "'YS Display', sans-serif",
       fontSize: 34,
       lineHeight: '40px',
+      margin: 0,
     },
     h2: {
       fontFamily: "'YS Display', sans-serif",
       fontSize: 24,
       lineHeight: '32px',
+      margin: 0,
     },
     h3: {
       fontFamily: "'YS Display', sans-serif",
       fontSize: 20,
       lineHeight: '24px',
+      margin: 0,
     },
     subtitle1: {
       fontSize: 18,
       lineHeight: '24px',
+      margin: 0,
     },
     body1: {
       fontSize: 16,
       lineHeight: '20px',
+      margin: 0,
     },
     body2: {
       fontSize: 14,
       lineHeight: '20px',
+      margin: 0,
     },
     caption: {
       fontSize: 13,
       lineHeight: '16px',
+      margin: 0,
     },
   },
 });
@@ -69,8 +77,11 @@ function App() {
       <ThemeProvider theme={theme}>
         <StyledEngineProvider injectFirst>
           <Routes>
-            <Route path="/" element={<Vacancies />} />
+            <Route path="/" element={<div>Страница еще не готова</div>} />
             <Route path="/sign-in" element={<SignIn />} />
+            <Route element={<Layout />}>
+              <Route path="/vacancies" element={<Vacancies />} />
+            </Route>
           </Routes>
         </StyledEngineProvider>
       </ThemeProvider>

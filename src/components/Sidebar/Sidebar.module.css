@@ -1,0 +1,15 @@
+.sidebar {
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #1a1b22;
+  padding: 40px 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
