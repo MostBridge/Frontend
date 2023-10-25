@@ -1,16 +1,14 @@
 import { Typography, Tabs, Tab } from '@mui/material';
 import styles from './Vacancies.module.css';
-import gears from '@assets/images/sliders.svg';
-import Button from '@components/Button/Button';
+import gears from '../../assets/images/sliders.svg';
 import { useState } from 'react';
+import Button from 'components/Button/Button'; 
+import TabRow from 'components/TabRow/TabRow';
 
 const Vacancies = () => {
   const [tabsValues, setTabsValues] = useState({ first: 0, second: 0 });
 
-  const handleChange = (key: 'first' | 'second') => (
-    event: React.SyntheticEvent,
-    newValue: number
-  ) => {
+  const handleChange = (key: 'first' | 'second', newValue: number) => {
     setTabsValues((prevValues) => ({ ...prevValues, [key]: newValue }));
   };
 
@@ -21,7 +19,7 @@ const Vacancies = () => {
           Мои вакансии
         </Typography>
         <div className={styles.buttons}>
-          <Tabs value={tabsValues.first} onChange={handleChange('first')} aria-label="tabs">
+          <Tabs value={tabsValues.first} onChange={(event, value) => handleChange('first', value)} aria-label="tabs">
             <Tab
               style={{ color: tabsValues.first === 0 ? 'black' : '#797981', fontWeight: tabsValues.first === 0 ? 500 : 400 }}
               className={styles.vacancies__tab}
@@ -38,15 +36,15 @@ const Vacancies = () => {
           </Button>
         </div>
         <div className={styles.buttons}>
-          <Tabs value={tabsValues.second} onChange={handleChange('second')} aria-label="tabs" TabIndicatorProps={{ style: { display: 'none' } }}>
-            <Tab style={{ backgroundColor: tabsValues.second === 0 ? '#ACCCFF' : '#F1F6FF', color: 'black'}} className={styles.buttonFilter} label="Все" />
-            <Tab style={{ backgroundColor: tabsValues.second === 1 ? '#ACCCFF' : '#F1F6FF', color: 'black'}} className={styles.buttonFilter} label="Опубликованные" />
-            <Tab style={{ backgroundColor: tabsValues.second === 2 ? '#ACCCFF' : '#F1F6FF', color: 'black'}} className={styles.buttonFilter} label="Скрытые" />
-          </Tabs>
-          <Button variant="text" endIcon={<img src={gears} alt="gears" />} className={styles.buttonSetting}>
+        <Tabs aria-label="tabs">
+          <TabRow text="Все" isSelected={tabsValues.second === 0}  onClick={() => handleChange('second', 0)}/>
+          <TabRow text="Опубликованные" isSelected={tabsValues.second === 1} onClick={() => handleChange('second', 1)}/>
+          <TabRow text="Скрытые" isSelected={tabsValues.second === 2} onClick={() => handleChange('second', 2)}/>
+        </Tabs>
+        <Button variant="text" endIcon={<img src={gears} alt="gears" />} className={styles.buttonSetting}>
             Фильтры
           </Button>
-        </div>
+        </div> 
       </div>
     </main>
   );
