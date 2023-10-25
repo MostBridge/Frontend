@@ -19,7 +19,7 @@ const Vacancies = () => {
       <Typography className={styles.vacancies__title} variant="h2" component="h1">
            Мои вакансии
       </Typography>
-
+      <div>
       <Tabs className={styles.vacancies__tabs} value={value} onChange={handleChange} aria-label="tabs">
       <Tab 
        style={{ color: value === 0 ? 'black' : '#797981', fontWeight: value === 0 ? 500 : 400}} 
@@ -28,6 +28,7 @@ const Vacancies = () => {
        style={{ color: value === 1 ? 'black' : '#797981',  fontWeight: value === 1 ? 500 : 400 }} 
       className={styles.vacancies__tab} label="Архив" />
     </Tabs>
+      </div>
 
       <Stack direction="row" spacing={2.5}>
         <Button variant="outlined">
