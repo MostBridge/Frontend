@@ -1,12 +1,34 @@
 .vacancies {
     max-width: 756px;
     margin: 0 auto;
+    margin-top: 40px;
 }
 
 .vacancies__title {
     padding-bottom: 32px;
+    font-weight: 500;
+    line-height: 32px;
 }
 
 .button {
     margin-right: 20px;
+}
+
+.vacancies__tabs {
+    margin: 32px 0;
+}
+
+.vacancies__tab {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    min-width: 0;
+    margin-right: 24px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.tabItem :global(.Mui-selected) {
+    font-weight: 500;
 }
