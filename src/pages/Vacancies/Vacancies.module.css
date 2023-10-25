@@ -10,25 +10,40 @@
 }
 
 .button {
-    margin-right: 20px;
+   font-weight: 500;
 }
 
-.vacancies__tabs {
-    margin: 32px 0;
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 19px 0;
+}
+
+.buttonFilter {
+    color: #1A1B22;
+    font-weight: 400;
+    min-width: 0;
+    line-height: 20px;
+    padding: 4px 8px;
+    text-transform: capitalize;
+    margin-right: 16px;
+    border-radius: 4px;
+    min-height: 28px;
+}
+
+.buttonSetting {
+    color: #1A1B22 !important;
 }
 
 .vacancies__tab {
     padding-left: 0;
     padding-right: 0;
     padding-top: 0;
-    min-width: 0;
     margin-right: 24px;
     font-size: 18px;
     line-height: 24px;
     font-weight: 400;
     text-transform: capitalize;
-}
-
-.tabItem :global(.Mui-selected) {
-    font-weight: 500;
 }
