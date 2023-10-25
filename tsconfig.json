@@ -23,9 +23,10 @@
     /* Aliasing paths */
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@assets/*": ["src/assets/*"],
-      "@pages/*": ["src/pages/*"]
+      "components/*": ["src/components/*"],
+      "assets/*": ["src/assets/*"],
+      "pages/*": ["src/pages/*"],
+      "types/*": ["src/types/*"]
     }
   },
   "include": ["src"],

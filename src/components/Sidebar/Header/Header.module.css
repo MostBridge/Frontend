@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  gap: 8px;
+  padding: 0 20px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  margin-right: 8px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
