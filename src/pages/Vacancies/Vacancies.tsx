@@ -16,7 +16,7 @@ const Vacancies = () => {
   return (
     <main>
       <div className={styles.vacancies}>
-        {/* <Typography style={h1Style} className={styles.vacancies__title} variant="h2" component="h1">
+        <Typography style={h1Style} className={styles.vacancies__title} variant="h2" component="h1">
           Мои вакансии
         </Typography>
 
@@ -28,7 +28,7 @@ const Vacancies = () => {
           <Button variant="outlined" endIcon={<img src={Strange} alt="strange" />}>
             Скрытые вакансии
           </Button>
-        </Stack> */}
+        </Stack>
       </div>
     </main>
   );
