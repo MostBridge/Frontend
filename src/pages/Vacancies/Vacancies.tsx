@@ -4,6 +4,7 @@ import gears from '../../assets/images/sliders.svg';
 import { useState } from 'react';
 import Button from 'components/Button/Button'; 
 import TabRow from 'components/TabRow/TabRow';
+import AI from 'components/AI/AI';
 
 const Vacancies = () => {
   const [tabsValues, setTabsValues] = useState({ first: 0, second: 0 });
@@ -13,7 +14,7 @@ const Vacancies = () => {
   };
 
   return (
-    <main>
+    <main className={styles.main}>
       <div className={styles.vacancies}>
         <Typography className={styles.vacancies__title} variant="h2" component="h1">
           Мои вакансии
@@ -36,7 +37,7 @@ const Vacancies = () => {
           </Button>
         </div>
         <div className={styles.buttons}>
-        <Tabs aria-label="tabs">
+        <Tabs value={tabsValues.first} aria-label="tabs">
           <TabRow text="Все" isSelected={tabsValues.second === 0}  onClick={() => handleChange('second', 0)}/>
           <TabRow text="Опубликованные" isSelected={tabsValues.second === 1} onClick={() => handleChange('second', 1)}/>
           <TabRow text="Скрытые" isSelected={tabsValues.second === 2} onClick={() => handleChange('second', 2)}/>
@@ -46,6 +47,7 @@ const Vacancies = () => {
           </Button>
         </div> 
       </div>
+      <AI />
     </main>
   );
 };
