@@ -1,7 +1,7 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Shadows, ThemeProvider, StyledEngineProvider, createTheme } from '@mui/material';
 
-import CreateVacancy from '@pages/CreateVacancy/CreateVacancy';
+import CreateVacancy from './pages/CreateVacancy/CreateVacancy';
 import SignIn from 'pages/SignIn/SignIn';
 import Vacancies from 'pages/Vacancies/Vacancies';
 import Layout from 'components/Layout/Layout';
