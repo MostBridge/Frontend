@@ -5,10 +5,11 @@ import InputLabel from '@mui/material/InputLabel';
 import { useTheme } from '@mui/material/styles';
 
 interface InputProps {
-    label: string,
+    label?: string,
+    placeholder?: string,
 }
 
-const Input: FC<InputProps> = ({ label }) => {
+const Input: FC<InputProps> = ({ label, placeholder }) => {
 
     const id = useId()
 
@@ -22,8 +23,8 @@ const Input: FC<InputProps> = ({ label }) => {
 
     return (
         <li className={styles.input}>
-            <InputLabel style={inputLabelStyle} htmlFor={id}>{label}</InputLabel>
-            <InputMui id={id} type="text" variant="outlined" fullWidth />
+            {label && <InputLabel style={inputLabelStyle} htmlFor={id}>{label}</InputLabel>}
+            <InputMui id={id} type="text" variant="outlined" fullWidth placeholder={placeholder} />
         </li>
     )
 }

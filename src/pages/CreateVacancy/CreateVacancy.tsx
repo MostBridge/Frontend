@@ -37,6 +37,15 @@ const CreateVacancy = () => {
             <Input label="Название должности/cпециальность" />
             <Input label="Компания" />
           </ul>
+          <ul className={styles.list_of_inputs}>
+            <Input label="Страна" />
+            <Input label="город" />
+          </ul>
+          <ul className={styles.list_of_inputs}>
+            <Input label="Зарплата" placeholder="От"/>
+            <Input placeholder="До"/>
+            <Input label="Валюта" />
+          </ul>
         </article>
         <article className={styles.article}>
           <Typography className={styles.text} variant="h3" component="h2">
