@@ -1,6 +1,7 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Shadows, ThemeProvider, StyledEngineProvider, createTheme } from '@mui/material';
 
+import CreateVacancy from './pages/CreateVacancy/CreateVacancy';
 import SignIn from 'pages/SignIn/SignIn';
 import Vacancies from 'pages/Vacancies/Vacancies';
 import Layout from 'components/Layout/Layout';
@@ -81,6 +82,7 @@ function App() {
             <Route path="/sign-in" element={<SignIn />} />
             <Route element={<Layout />}>
               <Route path="/vacancies" element={<Vacancies />} />
+              <Route path='/create-vacancy' element={<CreateVacancy />} />
             </Route>
           </Routes>
         </StyledEngineProvider>
