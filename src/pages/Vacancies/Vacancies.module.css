@@ -1,0 +1,37 @@
+.vacancies {
+    max-width: 756px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.vacancies__title {
+    padding-bottom: 32px;
+    font-weight: 500;
+}
+
+.button {
+   font-weight: 500;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 19px 0;
+}
+
+.buttonSetting {
+    color: #1A1B22 !important;
+}
+
+.vacancies__tab {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    margin-right: 24px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    text-transform: capitalize;
+}
