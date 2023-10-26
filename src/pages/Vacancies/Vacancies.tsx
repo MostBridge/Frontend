@@ -19,7 +19,7 @@ const Vacancies = () => {
           Мои вакансии
         </Typography>
         <div className={styles.buttons}>
-          <Tabs value={tabsValues.first} onChange={(event, value) => handleChange('first', value)} aria-label="tabs">
+          <Tabs value={tabsValues.first} onChange={(_, value: number) => handleChange('first', value)} aria-label="tabs">
             <Tab
               style={{ color: tabsValues.first === 0 ? 'black' : '#797981', fontWeight: tabsValues.first === 0 ? 500 : 400 }}
               className={styles.vacancies__tab}
