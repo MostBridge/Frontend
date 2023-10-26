@@ -3,6 +3,7 @@ import BackButton from '../../components/BackButton/BackButton'
 import styles from './CreateVacancy.module.css'
 import { Typography } from '@mui/material'
 import Button from '../../components/Button/Button'
+import Input from './Input/Input'
 
 const CreateVacancy = () => {
   return (
@@ -32,6 +33,10 @@ const CreateVacancy = () => {
           <Typography className={styles.text} variant="h3" component="h2">
             Основная информация
           </Typography>
+          <ul className={styles.list_of_inputs}>
+            <Input label="Название должности/cпециальность" />
+            <Input label="Компания" />
+          </ul>
         </article>
         <article className={styles.article}>
           <Typography className={styles.text} variant="h3" component="h2">
