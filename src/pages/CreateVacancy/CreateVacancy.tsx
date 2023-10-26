@@ -1,8 +1,8 @@
-import BackButton from '@components/BackButton/BackButton'
+import BackButton from '../../components/BackButton/BackButton'
 // import React from 'react'
 import styles from './CreateVacancy.module.css'
 import { Typography } from '@mui/material'
-import Button from '@components/Button/Button'
+import Button from '../../components/Button/Button'
 
 const CreateVacancy = () => {
   return (
