@@ -1,11 +1,19 @@
 import BackButton from '../../components/BackButton/BackButton'
 // import React from 'react'
 import styles from './CreateVacancy.module.css'
-import { Typography } from '@mui/material'
+import { MenuItem, Typography } from '@mui/material'
 import Button from '../../components/Button/Button'
 import Input from './Input/Input'
+import SelectorWithLabel from 'components/Selector/SelectorWithLabel/SelectorWithLabel'
 
 const CreateVacancy = () => {
+
+  // const cityes = ["Москва", "Санкт-Петербург", "Новосибирск", "Екатаринбург", "Казань", "Нижний Новгород", "Красноярск", "Челябинск", "Самара", "Уфа"]
+
+  const currencies = ['₽ Рубль', '$ Доллар', '€ Евро',]
+
+  const education = ['Среднее', 'Высшее']
+
   return (
     <main className={styles.main}>
       <section className={styles.top_section}>
@@ -39,13 +47,18 @@ const CreateVacancy = () => {
           </ul>
           <ul className={styles.list_of_inputs}>
             <Input label="Страна" />
-            <Input label="город" />
+            <Input label="Город" />
           </ul>
           <ul className={styles.list_of_inputs}>
-            <Input label="Зарплата" placeholder="От"/>
-            <Input placeholder="До"/>
-            <Input label="Валюта" />
+            <Input label="Зарплата" placeholder="От" />
+            <Input placeholder="До" />
+            <SelectorWithLabel label='Валюта' baseValue="₽ Рубль" maxWidth='150px'>
+              {currencies.map((el, id) => <MenuItem key={id} value={el}>{el}</MenuItem>)}
+            </SelectorWithLabel>
           </ul>
+          <SelectorWithLabel label='Образование' maxWidth='296px' >
+            {education.map((el, id) => <MenuItem key={id} value={el}>{el}</MenuItem>)}
+          </SelectorWithLabel>
         </article>
         <article className={styles.article}>
           <Typography className={styles.text} variant="h3" component="h2">
