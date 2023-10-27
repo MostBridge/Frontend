@@ -43,7 +43,7 @@ const BlockVacancy: FC<VacancyProps> = ({ data }) => {
           {data.title}
           </Typography>
           <Typography className={styles.state} variant="body2" color="text.primary">
-          {`Опубликовано ${data.title}`}
+          {`Опубликовано ${data.date}`}
           </Typography>
         </div>
         <div className={styles.infoBlock}>
