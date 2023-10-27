@@ -11,7 +11,10 @@ const CreateVacancy = () => {
 
   // const cityes = ["Москва", "Санкт-Петербург", "Новосибирск", "Екатаринбург", "Казань", "Нижний Новгород", "Красноярск", "Челябинск", "Самара", "Уфа"]
   const currencies = ['₽ Рубль', '$ Доллар', '€ Евро',]
-  const filters = ['Полная занятость', 'Частичная занятость', 'Фриланс']
+  const filters1 = ['Полная занятость', 'Частичная занятость', 'Фриланс']
+  const filters2 = ['Офис', 'Гибрид', 'Удалённо', 'Релокейт']
+  const filters3 = ['Intern', 'Junior', 'Middle', 'Senior']
+  const filters4 = ['Без опыта', 'До 1 года', 'От 1 года', 'От 2 лет', 'От 3 лет']
   const education = ['Среднее', 'Высшее']
 
   return (
@@ -59,7 +62,10 @@ const CreateVacancy = () => {
           <SelectorWithLabel label='Образование' maxWidth='296px' >
             {education.map((el, id) => <MenuItem key={id} value={el}>{el}</MenuItem>)}
           </SelectorWithLabel>
-          <Filters filters={filters} title='Тип занятости'></Filters>
+          <Filters filters={filters1} title='Тип занятости'></Filters>
+          <Filters filters={filters2} title='Условия'></Filters>
+          <Filters filters={filters3} title='Квалификация'></Filters>
+          <Filters filters={filters4} title='Опыт в специальности'></Filters>
         </article>
         <article className={styles.article}>
           <Typography className={styles.text} variant="h3" component="h2">
