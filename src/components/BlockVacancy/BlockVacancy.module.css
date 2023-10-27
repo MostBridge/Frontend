@@ -4,6 +4,7 @@
     box-sizing: border-box;
     border-radius: 12px;
     border: 1px solid var(--Blue-light, #ACCCFF);
+    margin-bottom: 12px;
 }
 
 .block__first {

@@ -7,6 +7,14 @@
    padding: 40px;
 }
 
+.cardsContainer {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-direction: column;
+    max-height: 870px;
+}
+
 .main__block {
     display: grid;
     grid-template-columns: auto 355px;

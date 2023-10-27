@@ -12,8 +12,19 @@ import star from '../../assets/images/star.svg';
 import arrow from '../../assets/images/arrow_right.svg';
 import DropDown from 'components/DropDown/DropDown';
 import Button from 'components/Button/Button';
+interface VacancyProps {
+  data: {
+    title: string;
+    status: string;
+    date: string;
+    city: string;
+    salary: string;
+    level: string;
+    experience: string;
+  };
+}
 
-const BlockVacancy: FC = () => {
+const BlockVacancy: FC<VacancyProps> = ({ data }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -29,15 +40,15 @@ const BlockVacancy: FC = () => {
       <div className={styles.block__first}>
         <div className={styles.infoBlock}>
           <Typography variant="body1" color="text.primary">
-            Графический дизайнер
+          {data.title}
           </Typography>
           <Typography className={styles.state} variant="body2" color="text.primary">
-            Опубликовано
+          {`Опубликовано ${data.title}`}
           </Typography>
         </div>
         <div className={styles.infoBlock}>
           <Typography className={styles.date} variant="body2" color="text.secondary">
-            Создано 12 октября
+           {`Создано ${data.date}`}
           </Typography>
           <div className={styles.menuList}>
             <IconButton aria-controls="simple-menu" onClick={handleClick}>
@@ -67,22 +78,22 @@ const BlockVacancy: FC = () => {
       <div className={styles.block__second}>
         <div className={styles.infoBlock}>
           <img src={graph} alt="Иконка графика" />
-          <Typography color="text.secondary" variant='body2'>Middle</Typography>
+          <Typography color="text.secondary" variant='body2'>{data.level}</Typography>
         </div>
 
         <div className={styles.infoBlock}>
           <img src={map} alt="Иконка города" />
-          <Typography color="text.secondary" variant='body2'>Москва</Typography>
+          <Typography color="text.secondary" variant='body2'>{data.city}</Typography>
         </div>
 
         <div className={styles.infoBlock}>
           <img src={money} alt="Иконка денег" />
-          <Typography color="text.secondary" variant='body2'>100 000 ₽</Typography>
+          <Typography color="text.secondary" variant='body2'>{`${data.salary} ₽`}</Typography>
         </div>
 
         <div className={styles.infoBlock}>
           <img src={star} alt="Иконка звезды" />
-          <Typography color="text.secondary" variant='body2'>Опыт до 1 года</Typography>
+          <Typography color="text.secondary" variant='body2'>{`Опыт ${data.experience}`}</Typography>
         </div>
       </div>
       <div>
