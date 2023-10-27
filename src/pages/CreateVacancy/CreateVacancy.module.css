@@ -1,0 +1,44 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 40px;
+}
+
+.top_section {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom_section {
+    display: flex;
+    gap: 24px;
+}
+
+.button {
+    font-weight: 500;
+}
+
+.list_of_buttons {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 12px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text {
+    font-weight: 500;
+}
+
+.article {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 24px;
+}

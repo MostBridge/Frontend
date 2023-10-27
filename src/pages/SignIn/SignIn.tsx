@@ -2,10 +2,10 @@ import { FC } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Typography, Link as MuiLink } from '@mui/material';
 
-import Button from '@components/Button/Button';
-import Input from '@components/Input/Input';
-import logo from '@assets/images/logo.svg';
-import telegramIcon from '@assets/images/telegramIcon.svg';
+import Button from 'components/Button/Button';
+import Input from 'components/Input/Input';
+import logo from 'assets/images/logo.svg';
+import telegramIcon from 'assets/images/telegramIcon.svg';
 
 import styles from './SignIn.module.css';
 

@@ -1,0 +1,19 @@
+.title {
+    padding-bottom: 24px;
+    padding-top: 60px;
+    text-align: center;
+}
+
+.ai {
+    position: relative;
+    margin-left: 24px;
+}
+
+.ai__block {
+    display: flex;
+    flex-direction: column;
+    max-width: 246px;
+    position: absolute;
+    top: 0;
+    left: 54px;
+}

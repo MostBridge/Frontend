@@ -1,7 +1,12 @@
 .vacancies {
-    max-width: 756px;
-    margin: 0 auto;
-    margin-top: 40px;
+    max-width: 1213px;
+    width: 100%;
+}
+
+.main {
+   padding: 40px;
+   display: flex;
+   justify-content: space-between;
 }
 
 .vacancies__title {
@@ -19,18 +24,6 @@
     justify-content: space-between;
     align-items: baseline;
     margin: 19px 0;
-}
-
-.buttonFilter {
-    color: #1A1B22;
-    font-weight: 400;
-    min-width: 0;
-    line-height: 20px;
-    padding: 4px 8px;
-    text-transform: capitalize;
-    margin-right: 16px;
-    border-radius: 4px;
-    min-height: 28px;
 }
 
 .buttonSetting {
