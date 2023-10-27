@@ -1,0 +1,32 @@
+.block {
+    padding: 24px;
+    max-width: 733px;
+    box-sizing: border-box;
+}
+
+.block__first {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.state {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #C2E5CE;
+    margin-left: 12px;
+}
+
+.infoBlock {
+    display: flex;
+    align-items: center;
+}
+
+.date {
+    padding-right: 12px;
+}
+
+.menuList {
+    border-radius: 12px;
+    /* border: 1px solid #DDE0E4; */
+}

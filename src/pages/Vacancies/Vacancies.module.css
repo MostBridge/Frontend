@@ -5,7 +5,10 @@
 
 .main {
    padding: 40px;
-   display: flex;
+}
+
+.main__block {
+    display: flex;
    justify-content: space-between;
 }
 
