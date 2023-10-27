@@ -1,9 +1,9 @@
-import back from '../../assets/images/banner1.png'
+import back from '../../assets/images/banner1.png';
 import styles from './AI.module.css';
 import { Typography } from '@mui/material';
 import Button from 'components/Button/Button';
 
-function AI() {
+export default function AI() {
   return (
     <section className={styles.ai}>
        <img src={back} alt='background' />
@@ -14,5 +14,3 @@ function AI() {
     </section>
   )
 }
-
-export default AI;
