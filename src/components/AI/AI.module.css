@@ -6,7 +6,8 @@
 
 .ai {
     position: relative;
-    margin-left: 24px;
+    display: grid;
+    justify-self: end;
 }
 
 .ai__block {

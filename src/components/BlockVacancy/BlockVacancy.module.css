@@ -1,6 +1,6 @@
 .block {
     padding: 24px;
-    max-width: 733px;
+    max-width: 100%;
     box-sizing: border-box;
     border-radius: 12px;
     border: 1px solid var(--Blue-light, #ACCCFF);

@@ -1,5 +1,5 @@
 .vacancies {
-    max-width: 1213px;
+    max-width: 100%;
     width: 100%;
 }
 
@@ -8,8 +8,10 @@
 }
 
 .main__block {
-    display: flex;
-   justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 355px;
+    grid-template-rows: 222px auto;
+    column-gap: 24px;
 }
 
 .vacancies__title {
