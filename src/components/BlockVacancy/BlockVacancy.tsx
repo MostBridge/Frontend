@@ -1,11 +1,17 @@
-import { IconButton, Typography, MenuList, Menu, Popover } from '@mui/material';
+import { IconButton, Typography, Popover } from '@mui/material';
 import styles from './BlockVacancy.module.css';
 import { FC, useState } from 'react';
 import icon from '../../assets/images/Icons.svg';
 import file from '../../assets/images/file.svg';
 import write from '../../assets/images/write.svg';
 import box from '../../assets/images/box.svg';
+import graph from '../../assets/images/chart-column.svg';
+import map from '../../assets/images/map.svg';
+import money from '../../assets/images/money.svg';
+import star from '../../assets/images/star.svg';
+import arrow from '../../assets/images/arrow_right.svg';
 import DropDown from 'components/DropDown/DropDown';
+import Button from 'components/Button/Button';
 
 const BlockVacancy: FC = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
@@ -51,12 +57,51 @@ const BlockVacancy: FC = () => {
                 horizontal: 'left',
               }}
             >
-              <DropDown alt='Иконка скачивания' text="Опубликовать" closeMenu={handleClose} icon={file} />
-              <DropDown alt='Иконка редактирования' text="Редактировать" closeMenu={handleClose} icon={write} />
-              <DropDown alt='Иконка архива' text="Архивировать" closeMenu={handleClose} icon={box} />
+              <DropDown alt="Иконка скачивания" text="Опубликовать" closeMenu={handleClose} icon={file} />
+              <DropDown alt="Иконка редактирования" text="Редактировать" closeMenu={handleClose} icon={write} />
+              <DropDown alt="Иконка архива" text="Архивировать" closeMenu={handleClose} icon={box} />
             </Popover>
           </div>
         </div>
+      </div>
+      <div className={styles.block__second}>
+        <div className={styles.infoBlock}>
+          <img src={graph} alt="Иконка графика" />
+          <Typography color="text.secondary" variant='body2'>Middle</Typography>
+        </div>
+
+        <div className={styles.infoBlock}>
+          <img src={map} alt="Иконка города" />
+          <Typography color="text.secondary" variant='body2'>Москва</Typography>
+        </div>
+
+        <div className={styles.infoBlock}>
+          <img src={money} alt="Иконка денег" />
+          <Typography color="text.secondary" variant='body2'>100 000 ₽</Typography>
+        </div>
+
+        <div className={styles.infoBlock}>
+          <img src={star} alt="Иконка звезды" />
+          <Typography color="text.secondary" variant='body2'>Опыт до 1 года</Typography>
+        </div>
+      </div>
+      <div>
+        <Button className={styles.button} size='small' variant='outlined'>
+          <Typography variant="body2">Подборка 40</Typography>
+          <Typography className={styles.new} variant="body2">new 15</Typography>
+          <img src={arrow} alt="Иконка стрелки" />
+        </Button>
+
+        <Button className={styles.button} size='small' variant='outlined'>
+          <Typography variant="body2">Подборка 40</Typography>
+          <Typography className={styles.new} variant="body2">new 15</Typography>
+          <img src={arrow} alt="Иконка стрелки" />
+        </Button>
+
+        <Button className={styles.button} size='small' variant='outlined'>
+          <Typography variant="body2">Избранные</Typography>
+          <img src={arrow} alt="Иконка стрелки" />
+        </Button>
       </div>
     </section>
   );

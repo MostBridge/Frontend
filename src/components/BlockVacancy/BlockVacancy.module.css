@@ -2,6 +2,8 @@
     padding: 24px;
     max-width: 733px;
     box-sizing: border-box;
+    border-radius: 12px;
+    border: 1px solid var(--Blue-light, #ACCCFF);
 }
 
 .block__first {
@@ -20,6 +22,7 @@
 .infoBlock {
     display: flex;
     align-items: center;
+    gap: 4px;
 }
 
 .date {
@@ -28,5 +31,25 @@
 
 .menuList {
     border-radius: 12px;
-    /* border: 1px solid #DDE0E4; */
+}
+
+.block__second {
+    gap: 16px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.new {
+    color: #1A1B22;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 4px;
+    background: #FFF9D3;
+}
+
+.button {
+    gap: 8px;
+    margin-right: 12px;
 }
