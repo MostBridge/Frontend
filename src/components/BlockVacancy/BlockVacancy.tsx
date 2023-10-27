@@ -88,7 +88,7 @@ const BlockVacancy: FC<VacancyProps> = ({ data }) => {
 
         <div className={styles.infoBlock}>
           <img src={money} alt="Иконка денег" />
-          <Typography color="text.secondary" variant='body2'>{`${data.salary} ₽`}</Typography>
+          <Typography color="text.secondary" variant='body2'>{`${data.salary} ₽`}</Typography>
         </div>
 
         <div className={styles.infoBlock}>

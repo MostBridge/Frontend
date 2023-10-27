@@ -1,7 +1,5 @@
 import { FC, MouseEventHandler } from 'react';
-import { Menu, MenuItem, Typography } from '@mui/material';
-import classNames from 'classnames';
-
+import {MenuItem } from '@mui/material';
 import styles from './DropDown.module.css';
 
 export interface DropDownProps {
@@ -12,7 +10,7 @@ export interface DropDownProps {
   closeMenu: () => void;
 }
 
-const DropDown: FC<DropDownProps> = ({ alt, text, icon, onClick, closeMenu }) => {
+const DropDown: FC<DropDownProps> = ({ alt, text, icon, closeMenu }) => {
 
     return (
           <MenuItem className={styles.item} onClick={closeMenu}>
