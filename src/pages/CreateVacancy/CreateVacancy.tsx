@@ -6,6 +6,7 @@ import Button from '../../components/Button/Button'
 import Input from './Input/Input'
 import SelectorWithLabel from 'components/Selector/SelectorWithLabel/SelectorWithLabel'
 import Filters from './Filters/Filters'
+import TextAreaBlock from './TextAreaBlock/TextAreaBlock'
 
 const CreateVacancy = () => {
 
@@ -71,6 +72,8 @@ const CreateVacancy = () => {
           <Typography className={styles.text} variant="h3" component="h2">
             Детали
           </Typography>
+          <TextAreaBlock label='Описание вакансии' />
+          <TextAreaBlock label='Ожидания от кандидата' />
         </article>
       </section>
     </main>

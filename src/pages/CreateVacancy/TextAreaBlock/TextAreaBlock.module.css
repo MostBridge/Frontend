@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    max-width: 150px;
+    margin-top: 8px;
+}
+
+.text_field {
+    margin-top: 4px;
+}
