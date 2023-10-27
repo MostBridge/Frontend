@@ -5,13 +5,13 @@ import { MenuItem, Typography } from '@mui/material'
 import Button from '../../components/Button/Button'
 import Input from './Input/Input'
 import SelectorWithLabel from 'components/Selector/SelectorWithLabel/SelectorWithLabel'
+import Filters from './Filters/Filters'
 
 const CreateVacancy = () => {
 
   // const cityes = ["Москва", "Санкт-Петербург", "Новосибирск", "Екатаринбург", "Казань", "Нижний Новгород", "Красноярск", "Челябинск", "Самара", "Уфа"]
-
   const currencies = ['₽ Рубль', '$ Доллар', '€ Евро',]
-
+  const filters = ['Полная занятость', 'Частичная занятость', 'Фриланс']
   const education = ['Среднее', 'Высшее']
 
   return (
@@ -59,6 +59,7 @@ const CreateVacancy = () => {
           <SelectorWithLabel label='Образование' maxWidth='296px' >
             {education.map((el, id) => <MenuItem key={id} value={el}>{el}</MenuItem>)}
           </SelectorWithLabel>
+          <Filters filters={filters} title='Тип занятости'></Filters>
         </article>
         <article className={styles.article}>
           <Typography className={styles.text} variant="h3" component="h2">
