@@ -1,0 +1,9 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.condition {
+  width: 188px;
+}

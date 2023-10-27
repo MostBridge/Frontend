@@ -36,7 +36,7 @@ const Sidebar: FC = () => {
         <Tab icon={bell} text="Уведомления" />
         <Tab icon={gear} text="Настройки" />
         <Tab icon={circleInfo} text="Помощь" />
-        <Tab icon={signOut} text="Отклики" />
+        <Tab icon={signOut} text="Выход" />
       </List>
     </aside>
   );
