@@ -6,6 +6,7 @@
 
 .ai {
     position: relative;
+    margin-left: 24px;
 }
 
 .ai__block {
@@ -14,5 +15,5 @@
     max-width: 246px;
     position: absolute;
     top: 0;
-    right: 15%;
+    left: 54px;
 }
