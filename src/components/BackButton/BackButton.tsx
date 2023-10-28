@@ -10,7 +10,7 @@ type BackButtonProps = {
 const BackButton: FC<BackButtonProps> = ({ to }) => {
     return (
         <Link className={styles.button} href={to}>
-            <img src={arrow_left} alt="Стрека назад" />
+            <img src={arrow_left} alt="Стрелка назад" />
             Назад
         </Link>
     )

@@ -6,6 +6,7 @@ import Button from 'components/Button/Button';
 import TabRow from 'components/TabRow/TabRow';
 import AI from 'components/AI/AI';
 import BlockVacancy from 'components/BlockVacancy/BlockVacancy';
+import { Link } from 'react-router-dom';
 
 const Vacancies: FC = () => {
   const [tabsValues, setTabsValues] = useState({ first: 0, second: 0 });
@@ -102,9 +103,11 @@ const Vacancies: FC = () => {
                 label="Архив"
               />
             </Tabs>
-            <Button variant="contained" size="small" className={styles.button}>
-              Создать вакансию
-            </Button>
+            <Link to="/create-vacancy">
+              <Button variant="contained" size="small" className={styles.button}>
+                Создать вакансию
+              </Button>
+            </Link>
           </div>
           <div className={styles.buttons}>
             <Tabs value={tabsValues.second} aria-label="tabs">
