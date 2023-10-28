@@ -7,6 +7,7 @@ import Input from './Input/Input'
 import SelectorWithLabel from 'components/Selector/SelectorWithLabel/SelectorWithLabel'
 import Filters from './Filters/Filters'
 import TextAreaBlock from './TextAreaBlock/TextAreaBlock'
+import SkillBlock from './SkillBlock/SkillBlock'
 
 const CreateVacancy = () => {
 
@@ -17,6 +18,7 @@ const CreateVacancy = () => {
   const filters3 = ['Intern', 'Junior', 'Middle', 'Senior']
   const filters4 = ['Без опыта', 'До 1 года', 'От 1 года', 'От 2 лет', 'От 3 лет']
   const education = ['Среднее', 'Высшее']
+  const skills = ['UX дизайн', 'UI дизайн', 'Прототипирование', 'Android/IOS гайдлайны', 'Дизайн мобильных рилодений', 'Дизайн веб-приложений', 'Английский B1']
 
   return (
     <main className={styles.main}>
@@ -74,6 +76,7 @@ const CreateVacancy = () => {
           </Typography>
           <TextAreaBlock label='Описание вакансии' />
           <TextAreaBlock label='Ожидания от кандидата' />
+          <SkillBlock array={skills} />
         </article>
       </section>
     </main>
