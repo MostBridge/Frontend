@@ -43,8 +43,7 @@ const SkillBlock: FC<SkillBlockProps> = ({ array }) => {
             </div>
             <div className={styles.list_of_skills}>
                 {Array.from(set).map(el => <SkillButton
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-                    key={uuidv4() as string}
+                    key={uuidv4()}
                     text={el}
                     setSet={setSet} />)}
             </div>
