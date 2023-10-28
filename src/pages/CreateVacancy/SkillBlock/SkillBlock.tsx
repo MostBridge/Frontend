@@ -27,7 +27,7 @@ const SkillBlock: FC<SkillBlockProps> = ({ array }) => {
                     sx={{ maxWidth: 320 }}
                     renderInput={(params) => <TextField {...params} />}
                     value={value}
-                    onChange={(event: unknown, newValue: string | null) => {
+                    onChange={(_event: unknown, newValue: string | null) => {
                         setValue(newValue);
                         if (newValue !== null) {
                             setSet(el => {
@@ -36,7 +36,7 @@ const SkillBlock: FC<SkillBlockProps> = ({ array }) => {
                         }
                     }}
                     inputValue={inputValue}
-                    onInputChange={(event, newInputValue) => {
+                    onInputChange={(_event, newInputValue) => {
                         setInputValue(newInputValue);
                     }}
                 />
