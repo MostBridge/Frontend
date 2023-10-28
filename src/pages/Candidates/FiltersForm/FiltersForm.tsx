@@ -1,21 +1,21 @@
 import { FC, ChangeEvent } from 'react';
 import { SelectChangeEvent } from '@mui/material';
 
-import Labeled from 'components/Labeled/Labeled';
-import Select from 'components/Select/Select';
-import Input from 'components/Input/Input';
-import MenuItem from 'components/MenuItem/MenuItem';
 import icon from 'assets/images/search.svg';
+import Labeled from 'components/mui/Labeled/Labeled';
+import Select from 'components/mui/Select/Select';
+import Input from 'components/mui/Input/Input';
+import MenuItem from 'components/mui/MenuItem/MenuItem';
 import IVacancy from 'types/IVacancy';
 import IFilters from 'types/IFilters';
+import VacancyPlaceholder from 'components/custom/VacancyPlaceholder/VacancyPlaceholder';
 
 import styles from './FiltersForm.module.css';
-import VacancyItem from '../VacancyItem/VacancyItem';
 
 export interface FiltersFormProps {
+  className?: string;
   filters: IFilters;
   vacancies?: IVacancy[];
-  className?: string;
   onChange?: (event: SelectChangeEvent<number>) => void;
   onInput?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
@@ -25,7 +25,7 @@ const FiltersForm: FC<FiltersFormProps> = ({ filters, vacancies = [], className,
 
   const renderValue = (value: number) => {
     const vacancy = vacancies.find((vacancy) => vacancy?.id === value);
-    return vacancy ? <VacancyItem vacancy={vacancy} /> : 'По всей базе кандидатов';
+    return vacancy ? <VacancyPlaceholder vacancy={vacancy} /> : 'По всей базе кандидатов';
   };
 
   return (
@@ -36,7 +36,7 @@ const FiltersForm: FC<FiltersFormProps> = ({ filters, vacancies = [], className,
             <MenuItem value={0}>По всей базе кандидатов</MenuItem>
             {vacancies.map((vacancy) => (
               <MenuItem key={vacancy?.id} value={vacancy.id}>
-                <VacancyItem vacancy={vacancy} />
+                <VacancyPlaceholder vacancy={vacancy} />
               </MenuItem>
             ))}
           </Select>

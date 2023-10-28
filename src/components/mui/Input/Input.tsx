@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { InputAdornment, TextField, TextFieldProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-import Icon from 'components/Icon/Icon';
+import Icon from 'components/mui/Icon/Icon';
 
 const StyledInput = styled(TextField)<TextFieldProps>(({ theme }) => ({
   '& .MuiInputBase-input': {

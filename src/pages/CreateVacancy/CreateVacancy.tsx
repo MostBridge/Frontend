@@ -1,14 +1,14 @@
-import BackButton from '../../components/BackButton/BackButton'
+import BackButton from 'components/custom/BackButton/BackButton';
 // import React from 'react'
-import styles from './CreateVacancy.module.css'
-import { Typography } from '@mui/material'
-import Button from '../../components/Button/Button'
+import styles from './CreateVacancy.module.css';
+import { Typography } from '@mui/material';
+import Button from 'components/mui/Button/Button';
 
 const CreateVacancy = () => {
   return (
     <main className={styles.main}>
       <section className={styles.top_section}>
-        <BackButton to='back' />
+        <BackButton to="back" />
         <div className={styles.header}>
           <Typography className={styles.text} variant="h2" component="h1">
             Создание вакансии
@@ -40,7 +40,7 @@ const CreateVacancy = () => {
         </article>
       </section>
     </main>
-  )
-}
+  );
+};
 
-export default CreateVacancy
+export default CreateVacancy;

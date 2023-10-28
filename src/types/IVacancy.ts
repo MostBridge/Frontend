@@ -1,8 +1,8 @@
-import IProfession from 'types/IProffesion';
-import IUser from 'types/IUser';
-import ITown from 'types/ITown';
-import IEmployment from 'types/IEmployment';
-import ITechnology from 'types/ITechnology';
+import IProfession from 'src/types/IProffesion';
+import IUser from 'src/types/IUser';
+import ITown from 'src/types/ITown';
+import IEmployment from 'src/types/IEmployment';
+import ITechnology from 'src/types/ITechnology';
 
 export type Education = 'high' | 'high_profile' | 'no_matter' | 'secondary_professional';
 export type Status = 'active' | 'not_active' | 'archived' | 'hidden';

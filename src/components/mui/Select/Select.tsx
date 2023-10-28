@@ -1,8 +1,9 @@
 import { MenuProps, Select as MuiSelect, SelectProps as MuiSelectProps, Stack, styled } from '@mui/material';
 
-import Icon from 'components/Icon/Icon';
-import Placeholder from 'components/Select/Placeholder/Placeholder';
+import Icon from 'components/mui/Icon/Icon';
 import arrowDown from 'assets/images/arrowDown.svg';
+
+import Placeholder from './Placeholder/Placeholder';
 
 const StyledSelect = styled(MuiSelect)(({ theme }) => ({
   height: '40px',

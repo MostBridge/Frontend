@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Typography, Link as MuiLink } from '@mui/material';
 
-import Button from 'components/Button/Button';
-import Input from 'components/Input/Input';
+import Button from 'components/mui/Button/Button';
+import Input from 'components/mui/Input/Input';
 import logo from 'assets/images/logo.svg';
 import telegramIcon from 'assets/images/telegramIcon.svg';
 

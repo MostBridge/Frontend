@@ -2,7 +2,7 @@ import { ChangeEvent, FC, useState } from 'react';
 
 import { SelectChangeEvent, Typography } from '@mui/material';
 
-import IFilters from 'types/IFilters';
+import IFilters from 'src/types/IFilters';
 import { VACANCIES_LIST } from 'utils/constants';
 
 import FiltersForm from './FiltersForm/FiltersForm';

@@ -1,15 +1,15 @@
 import { FC } from 'react';
 
-import IVacancy from 'types/IVacancy';
+import IVacancy from 'src/types/IVacancy';
 import { capitalizeFirstLetter } from 'utils/utils';
 
-import styles from './VacancyItem.module.css';
+import styles from './VacancyPlaceholder.module.css';
 
-export interface VacancyItemProps {
+export interface VacancyPlaceholderProps {
   vacancy: IVacancy;
 }
 
-const VacancyItem: FC<VacancyItemProps> = ({ vacancy }) => {
+const VacancyPlaceholder: FC<VacancyPlaceholderProps> = ({ vacancy }) => {
   return (
     <div className={styles.vacancy}>
       Вакансия
@@ -19,4 +19,4 @@ const VacancyItem: FC<VacancyItemProps> = ({ vacancy }) => {
   );
 };
 
-export default VacancyItem;
+export default VacancyPlaceholder;

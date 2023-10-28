@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { MenuItem as MuiMenuItem, MenuItemProps, styled } from '@mui/material';
 
-import Icon from 'components/Icon/Icon';
+import Icon from 'components/mui/Icon/Icon';
 import checkMini from 'assets/images/checkMini.svg';
 
 const StyledMenuItem = styled(MuiMenuItem)<MenuItemProps>(({ theme }) => ({

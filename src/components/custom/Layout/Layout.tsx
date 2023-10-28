@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import Sidebar from 'components/Sidebar/Sidebar';
+import Sidebar from 'components/custom/Sidebar/Sidebar';
 
 import styles from './Layout.module.css';
 

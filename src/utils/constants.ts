@@ -1,4 +1,4 @@
-import IVacancy from 'types/IVacancy';
+import IVacancy from 'src/types/IVacancy';
 
 export const VACANCIES_LIST: IVacancy[] = [
   { id: 1, profession: { name: 'UX/UI дизайнер' }, grade: 'junior' },

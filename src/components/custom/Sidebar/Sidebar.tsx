@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import List from 'components/List/List';
-import IUser from 'types/IUser';
+import List from 'components/custom/List/List';
+import IUser from 'src/types/IUser';
 import avatar from 'assets/images/avatar.png';
 import house from 'assets/images/house.svg';
 import persons from 'assets/images/persons.svg';
@@ -18,7 +18,7 @@ import Tab from './Tab/Tab';
 import styles from './Sidebar.module.css';
 
 const Sidebar: FC = () => {
-  const user: IUser = { firstName: 'Надежда', lastName: 'Сидорова', email: 'sidorova@yandex.ru', avatar };
+  const user: IUser = { first_name: 'Надежда', last_name: 'Сидорова', email: 'sidorova@yandex.ru', avatar };
 
   return (
     <aside className={styles.sidebar}>
