@@ -1,0 +1,9 @@
+.vacancy {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.accent {
+  font-weight: 500;
+}

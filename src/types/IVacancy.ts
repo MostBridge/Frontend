@@ -16,7 +16,7 @@ export default interface IVacancy {
   education?: Education;
   status?: Status;
   author?: IUser;
-  grade?: Grade;
+  grade: Grade;
   profession?: IProfession;
   town?: ITown;
   employment?: IEmployment;

@@ -49,14 +49,23 @@ const StyledMenu: Partial<MenuProps> = {
   },
 };
 
-export interface SelectProps<Value> extends MuiSelectProps<Value> {
+export interface SelectProps<Value = unknown> extends MuiSelectProps<Value> {
   placeholder?: string;
 }
 
-export default function Select<Value>({ label, placeholder, multiple, ...props }: SelectProps<Value>): JSX.Element {
+export default function Select<Value = unknown>({
+  label,
+  placeholder,
+  multiple,
+  renderValue: renderValueProp,
+  ...props
+}: SelectProps<Value>): JSX.Element {
   const renderValue = (selected: any) => {
-    if (!selected || selected === '' || selected.length === 0) {
+    if (selected === null || selected === undefined || selected === '' || selected.length === 0) {
       return <Placeholder>{placeholder}</Placeholder>;
+    }
+    if (renderValueProp) {
+      return renderValueProp(selected);
     }
     if (multiple) {
       return selected.join(', ');

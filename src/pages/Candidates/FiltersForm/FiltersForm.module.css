@@ -5,9 +5,9 @@
 }
 
 .select {
-  width: 355px;
+  min-width: 355px;
 }
 
 .input {
-  width: 366px;
+  min-width: 366px;
 }
