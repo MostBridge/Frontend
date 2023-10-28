@@ -26,7 +26,7 @@ const Candidates: FC = () => {
     <main className={styles.page}>
       <Stack spacing="4px">
         <Label>Условие</Label>
-        <Select className={styles.condition} placeholder="Выберите из списка" value={condition} onChange={handleChange}>
+        <Select className={styles.condition} placeholder="Выберите из списка" value={condition} onChange={handleChange}>
           {options.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.text}

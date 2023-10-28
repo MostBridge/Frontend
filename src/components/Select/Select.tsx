@@ -14,7 +14,7 @@ const StyledSelect = styled(MuiSelect)(({ theme }) => ({
   ...theme.typography.body2,
 
   '.MuiOutlinedInput-notchedOutline': {
-    paddginLeft: '12px',
+    paddingLeft: '12px',
     paddingRight: '12px',
   },
 
@@ -61,7 +61,7 @@ export default function Select<Value>({ placeholder, multiple, ...props }: Selec
       displayEmpty
       multiple={multiple}
       renderValue={renderValue}
-      disableUnderline={true}
+      // disableUnderline={true}
       MenuProps={{
         anchorOrigin: {
           vertical: 'bottom',
@@ -70,6 +70,7 @@ export default function Select<Value>({ placeholder, multiple, ...props }: Selec
         transformOrigin: { vertical: -5, horizontal: 'center' },
         PaperProps: {
           sx: {
+            maxHeight: '220px',
             boxSizing: 'border-box',
             bgcolor: '#FFF',
             outline: '1px solid #DDE0E4',

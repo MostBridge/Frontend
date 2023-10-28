@@ -104,7 +104,7 @@ const BlockVacancy: FC<VacancyProps> = ({ data }) => {
         </Button>
 
         <Button className={styles.button} size='small' variant='outlined'>
-          <Typography variant="body2">Подборка 40</Typography>
+          <Typography variant="body2">Отклики 12</Typography>
           <Typography className={styles.new} variant="body2">new 15</Typography>
           <img src={arrow} alt="Иконка стрелки" />
         </Button>

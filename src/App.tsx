@@ -43,6 +43,7 @@ const theme = createTheme({
       fontSize: 24,
       lineHeight: '32px',
       margin: 0,
+      fontWeight: '500px',
     },
     h3: {
       fontFamily: "'YS Display'",

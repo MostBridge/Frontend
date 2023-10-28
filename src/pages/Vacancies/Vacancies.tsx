@@ -7,12 +7,19 @@ import TabRow from 'components/TabRow/TabRow';
 import AI from 'components/AI/AI';
 import BlockVacancy from 'components/BlockVacancy/BlockVacancy';
 import { Link } from 'react-router-dom';
+import Filters from 'components/Filters/Filters';
 
 const Vacancies: FC = () => {
   const [tabsValues, setTabsValues] = useState({ first: 0, second: 0 });
+  const [isPopupFilterOpen, setIsPopupFilterOpen] = useState(false);
+
 
   const handleChange = (key: 'first' | 'second', newValue: number) => {
     setTabsValues((prevValues) => ({ ...prevValues, [key]: newValue }));
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupFilterOpen(false);
   };
 
   //DELETE THIS MASSIVE
@@ -119,7 +126,7 @@ const Vacancies: FC = () => {
               />
               <TabRow text="Скрытые" isSelected={tabsValues.second === 2} onClick={() => handleChange('second', 2)} />
             </Tabs>
-            <Button variant="text" endIcon={<img src={gears} alt="gears" />} className={styles.buttonSetting}>
+            <Button onClick={() => setIsPopupFilterOpen(true)}  variant="text" endIcon={<img src={gears} alt="gears" />} className={styles.buttonSetting}>
               Фильтры
             </Button>
           </div>
@@ -131,6 +138,7 @@ const Vacancies: FC = () => {
           ))}
         </div>
       </div>
+      {isPopupFilterOpen && <Filters onClose={handleClosePopup} isPopupFilterOpen={isPopupFilterOpen} />}
     </main>
   );
 };
