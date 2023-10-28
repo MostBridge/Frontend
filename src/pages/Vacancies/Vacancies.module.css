@@ -1,7 +1,12 @@
 .vacancies {
-    max-width: 756px;
-    margin: 0 auto;
-    margin-top: 40px;
+    max-width: 1213px;
+    width: 100%;
+}
+
+.main {
+   padding: 40px;
+   display: flex;
+   justify-content: space-between;
 }
 
 .vacancies__title {
