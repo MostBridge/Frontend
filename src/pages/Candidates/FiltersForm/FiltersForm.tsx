@@ -21,12 +21,11 @@ export interface FiltersFormProps {
 }
 
 const FiltersForm: FC<FiltersFormProps> = ({ filters, vacancies = [], className, onChange, onInput }) => {
-  const defaultValue = 'По всей базе кандидатов';
   const { vacancyId, search } = filters;
 
   const renderValue = (value: number) => {
     const vacancy = vacancies.find((vacancy) => vacancy?.id === value);
-    return vacancy ? <VacancyItem vacancy={vacancy} /> : defaultValue;
+    return vacancy ? <VacancyItem vacancy={vacancy} /> : 'По всей базе кандидатов';
   };
 
   return (
@@ -34,7 +33,7 @@ const FiltersForm: FC<FiltersFormProps> = ({ filters, vacancies = [], className,
       <form className={styles.form}>
         <Labeled label="Подборка">
           <Select className={styles.select} renderValue={renderValue} value={vacancyId} onChange={onChange}>
-            <MenuItem value={0}>{defaultValue}</MenuItem>
+            <MenuItem value={0}>По всей базе кандидатов</MenuItem>
             {vacancies.map((vacancy) => (
               <MenuItem key={vacancy?.id} value={vacancy.id}>
                 <VacancyItem vacancy={vacancy} />
