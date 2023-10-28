@@ -1,9 +1,11 @@
 .page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 40px 40px 0;
 }
 
-.condition {
-  width: 188px;
+.title {
+  margin-bottom: 32px;
+}
+
+.navigation {
+  margin-bottom: 24px;
 }

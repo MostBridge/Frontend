@@ -28,8 +28,8 @@ const SignIn: FC = () => {
             Войти в аккаунт
           </Typography>
           <fieldset className={styles.fieldset}>
-            <Input type="email" variant="outlined" placeholder="Почта" fullWidth helperText=" " />
-            <Input type="password" variant="outlined" placeholder="Пароль" fullWidth helperText=" " />
+            <Input size="medium" type="email" variant="outlined" placeholder="Почта" fullWidth helperText=" " />
+            <Input size="medium" type="password" variant="outlined" placeholder="Пароль" fullWidth helperText=" " />
           </fieldset>
           <MuiLink
             className={styles.button}
