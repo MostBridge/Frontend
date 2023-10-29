@@ -1,24 +1,24 @@
 import { ChangeEvent, FC, useState } from 'react';
-
 import { SelectChangeEvent, Typography } from '@mui/material';
 
-import IFilters from 'src/types/IFilters';
-import { VACANCIES_LIST } from 'utils/constants';
+import { CANDIDATES_LIST, VACANCIES_LIST } from 'utils/constants';
+import IFilters from 'types/IFilters';
 
 import FiltersForm from './FiltersForm/FiltersForm';
 import styles from './Candidates.module.css';
+import Results from './Results/Results';
 
 const Candidates: FC = () => {
   const [filters, setFilters] = useState<IFilters>({ vacancyId: 0, search: '' });
 
   const handleVacancyChange = (event: SelectChangeEvent<number>) => {
     const value = event.target.value as number;
-    setFilters({ vacancyId: value, ...filters });
+    setFilters({ ...filters, vacancyId: value });
   };
 
   const handleSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    setFilters({ search: value, ...filters });
+    setFilters({ ...filters, search: value });
   };
 
   return (
@@ -34,6 +34,7 @@ const Candidates: FC = () => {
           onChange={handleVacancyChange}
           onInput={handleSearchInput}
         />
+        <Results candidates={CANDIDATES_LIST} />
       </main>
     </div>
   );

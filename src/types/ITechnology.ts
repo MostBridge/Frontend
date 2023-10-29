@@ -1,5 +1,5 @@
 export default interface ITechnology {
   id?: number;
-  name?: string;
+  name: string;
   slug?: string;
 }

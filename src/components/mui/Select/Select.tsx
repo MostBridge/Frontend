@@ -1,4 +1,4 @@
-import { MenuProps, Select as MuiSelect, SelectProps as MuiSelectProps, Stack, styled } from '@mui/material';
+import { MenuProps, Select as MuiSelect, SelectProps as MuiSelectProps, styled } from '@mui/material';
 
 import Icon from 'components/mui/Icon/Icon';
 import arrowDown from 'assets/images/arrowDown.svg';
@@ -55,7 +55,6 @@ export interface SelectProps<Value = unknown> extends MuiSelectProps<Value> {
 }
 
 export default function Select<Value = unknown>({
-  label,
   placeholder,
   multiple,
   renderValue: renderValueProp,

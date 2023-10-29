@@ -1,4 +1,6 @@
 .page {
+  max-width: 733px;
+  width: 100%;
   padding: 40px 40px 0;
 }
 

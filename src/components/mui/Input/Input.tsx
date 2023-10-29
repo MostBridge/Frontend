@@ -62,7 +62,7 @@ const StyledInput = styled(TextField)<TextFieldProps>(({ theme }) => ({
 
 export type InputProps = { icon?: string } & TextFieldProps;
 
-const Input: FC<InputProps> = ({ icon, InputProps, ...props }) => {
+const Input: FC<InputProps> = ({ icon, ...props }) => {
   return (
     <StyledInput
       InputProps={{

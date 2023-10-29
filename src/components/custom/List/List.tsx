@@ -5,8 +5,8 @@ import styles from './List.module.css';
 
 export interface ListProps {
   className?: {
-    list: string;
-    item: string;
+    list?: string;
+    item?: string;
   };
 }
 

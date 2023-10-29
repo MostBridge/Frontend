@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import List from 'components/custom/List/List';
-import IUser from 'src/types/IUser';
+import IUser from 'types/IUser';
 import avatar from 'assets/images/avatar.png';
 import house from 'assets/images/house.svg';
 import persons from 'assets/images/persons.svg';

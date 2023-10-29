@@ -1,13 +1,33 @@
-import IProfession from 'src/types/IProffesion';
-import IUser from 'src/types/IUser';
-import ITown from 'src/types/ITown';
-import IEmployment from 'src/types/IEmployment';
-import ITechnology from 'src/types/ITechnology';
+import IProfession from 'types/IProffesion';
+import IUser from 'types/IUser';
+import ITown from 'types/ITown';
+import IEmployment from 'types/IEmployment';
+import ITechnology from 'types/ITechnology';
 
-export type Education = 'high' | 'high_profile' | 'no_matter' | 'secondary_professional';
-export type Status = 'active' | 'not_active' | 'archived' | 'hidden';
-export type Grade = 'junior' | 'middle';
-export type Experience = 'no' | 'one' | 'three';
+export enum Status {
+  active = 'Активная',
+  not_active = 'Не активная',
+  archived = 'Архивная',
+  hidden = 'Скрытая',
+}
+
+export enum Education {
+  high = 'Высшее',
+  high_profile = 'Высшее профильное',
+  no_matter = 'Не важно',
+  secondary_professional = 'Средне-техническое',
+}
+
+export enum Grade {
+  junior = 'Junior',
+  middle = 'Middle',
+}
+
+export enum Experience {
+  no = 'Нет опыта',
+  one = 'Опыт 1 - 3 года',
+  three = 'Опыт 3 - 6 лет',
+}
 
 export default interface IVacancy {
   id?: number;
@@ -22,6 +42,6 @@ export default interface IVacancy {
   employment?: IEmployment;
   experience?: Experience;
   description?: string;
-  technology?: ITechnology;
+  technology?: ITechnology[];
   created_date?: Date;
 }

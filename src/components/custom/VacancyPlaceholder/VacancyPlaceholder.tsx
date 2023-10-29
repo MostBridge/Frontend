@@ -1,7 +1,6 @@
 import { FC } from 'react';
 
-import IVacancy from 'src/types/IVacancy';
-import { capitalizeFirstLetter } from 'utils/utils';
+import IVacancy from 'types/IVacancy';
 
 import styles from './VacancyPlaceholder.module.css';
 
@@ -14,7 +13,7 @@ const VacancyPlaceholder: FC<VacancyPlaceholderProps> = ({ vacancy }) => {
     <div className={styles.vacancy}>
       Вакансия
       <span className={styles.accent}>{vacancy.profession?.name}</span>
-      <span className={styles.accent}>{capitalizeFirstLetter(vacancy?.grade)}</span>
+      <span className={styles.accent}>{vacancy?.grade}</span>
     </div>
   );
 };
