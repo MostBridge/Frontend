@@ -30,14 +30,14 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onToggle }) => {
   const experience = candidate?.experience;
 
   return (
-    <article className={styles.block}>
+    <div className={styles.block}>
       <div className={styles.view}>
         <Avatar className={styles.avatar} src={candidate.photo} />
         <div className={styles.status}>
           <TabRow className={styles.tab} size="small" color="secondary" text="Совпадение 90%" />
-          <TabRow className={styles.tab} size="small" color="light" text="Ищу работу" />
+          <TabRow className={styles.tab} size="small" color="light" text="Ищу работу" />
           <Typography className={styles.activity} variant="caption" component="p">
-            Заходил(a) вчера в&nbsp;23:59
+            Заходил(a) вчера в 23:59
           </Typography>
         </div>
       </div>
@@ -60,7 +60,7 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onToggle }) => {
           </List>
           <List className={{ list: styles.skills }}>
             {candidate.technology?.map((skill) => (
-              <TabRow size="small" isSelected className={styles.tab} key={skill.id} text={skill.name} />
+              <TabRow className={styles.tab} isSelected size="small" key={skill.id} text={skill.name} />
             ))}
           </List>
         </div>
@@ -75,7 +75,7 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onToggle }) => {
           )}
         </div>
       </div>
-    </article>
+    </div>
   );
 };
 
