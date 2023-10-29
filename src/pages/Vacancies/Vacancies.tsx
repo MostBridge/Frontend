@@ -1,22 +1,27 @@
 import { Typography, Tabs, Tab } from '@mui/material';
 import styles from './Vacancies.module.css';
-import gears from '../../assets/images/sliders.svg';
+import gears from 'assets/images/sliders.svg';
+
 import { FC, useState } from 'react';
-import Button from 'components/Button/Button';
-import TabRow from 'components/TabRow/TabRow';
-import AI from 'components/AI/AI';
-import BlockVacancy from 'components/BlockVacancy/BlockVacancy';
+import Button from 'components/mui/Button/Button';
+import TabRow from 'components/custom/TabRow/TabRow';
+import AI from 'components/custom/AI/AI';
+import BlockVacancy from 'components/custom/BlockVacancy/BlockVacancy';
 import { Link } from 'react-router-dom';
-import Filters from 'components/Filters/Filters';
-import { vacancies } from '../../constants';
+import Filters from 'components/custom/Filters/Filters';
+import { vacancies } from 'utils/constants';
+import IconButton from 'components/mui/IconButton/IconButton';
 
 const Vacancies: FC = () => {
   const [tabsValues, setTabsValues] = useState({ first: 0, second: 0 });
   const [isPopupFilterOpen, setIsPopupFilterOpen] = useState(false);
 
-
   const handleChange = (key: 'first' | 'second', newValue: number) => {
     setTabsValues((prevValues) => ({ ...prevValues, [key]: newValue }));
+  };
+
+  const handleOpenPopup = () => {
+    setIsPopupFilterOpen(true);
   };
 
   const handleClosePopup = () => {
@@ -69,9 +74,9 @@ const Vacancies: FC = () => {
               />
               <TabRow text="Скрытые" isSelected={tabsValues.second === 2} onClick={() => handleChange('second', 2)} />
             </Tabs>
-            <Button onClick={() => setIsPopupFilterOpen(true)}  variant="text" endIcon={<img src={gears} alt="gears" />} className={styles.buttonSetting}>
+            <IconButton endIcon={gears} onClick={handleOpenPopup} alt="Иконка фильтров">
               Фильтры
-            </Button>
+            </IconButton>
           </div>
         </div>
         <AI />

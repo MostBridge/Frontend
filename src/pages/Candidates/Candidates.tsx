@@ -1,40 +1,42 @@
-import { FC, useState } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
+import { SelectChangeEvent, Typography } from '@mui/material';
 
-import { SelectChangeEvent, Stack } from '@mui/material';
-import Select from 'components/Select/Select';
-import MenuItem from 'components/MenuItem/MenuItem';
-import Label from 'components/Label/Label';
+import { CANDIDATES_LIST, VACANCIES_LIST } from 'utils/constants';
+import IFilters from 'types/IFilters';
 
+import FiltersForm from './FiltersForm/FiltersForm';
 import styles from './Candidates.module.css';
+import Results from './Results/Results';
 
 const Candidates: FC = () => {
-  const [condition, setCondition] = useState<string[]>([]);
+  const [filters, setFilters] = useState<IFilters>({ vacancyId: 0, search: '' });
 
-  const handleChange = (event: SelectChangeEvent<typeof condition>) => {
-    const value = event.target.value;
-    setCondition(typeof value === 'string' ? value.split(',') : value);
+  const handleVacancyChange = (event: SelectChangeEvent<number>) => {
+    const value = event.target.value as number;
+    setFilters({ ...filters, vacancyId: value });
   };
 
-  const options = [
-    { value: 'От', text: 'От' },
-    { value: 'До', text: 'До' },
-    { value: 'После', text: 'После' },
-    { value: 'Точная дата', text: 'Точная дата' },
-  ];
+  const handleSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setFilters({ ...filters, search: value });
+  };
 
   return (
-    <main className={styles.page}>
-      <Stack spacing="4px">
-        <Label>Условие</Label>
-        <Select className={styles.condition} placeholder="Выберите из списка" value={condition} onChange={handleChange}>
-          {options.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.text}
-            </MenuItem>
-          ))}
-        </Select>
-      </Stack>{' '}
-    </main>
+    <div className={styles.page}>
+      <main className={styles.content}>
+        <Typography className={styles.title} variant="h2" component="h1">
+          Поиск кандидатов
+        </Typography>
+        <FiltersForm
+          className={styles.navigation}
+          vacancies={VACANCIES_LIST}
+          filters={filters}
+          onChange={handleVacancyChange}
+          onInput={handleSearchInput}
+        />
+        <Results candidates={CANDIDATES_LIST} />
+      </main>
+    </div>
   );
 };
 
