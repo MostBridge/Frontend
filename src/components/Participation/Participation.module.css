@@ -1,0 +1,35 @@
+.card {
+    padding: 16px 20px;
+    border-radius: 8px;
+    border: 1px solid #ACCCFF;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+   font-weight: 500;
+}
+
+.paragraph {
+    margin-left: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #FFF9D3; 
+}
+
+.paragraphBlock {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.button {
+    font-weight: 500;
+    margin-right: 12px;
+}
+
+.button_type_last {
+    margin-right: 0;
+}

@@ -6,6 +6,9 @@ import map from '../../assets/images/map.svg';
 import money from '../../assets/images/money.svg';
 import star from '../../assets/images/star.svg';
 import like from '../../assets/images/icon_like.svg';
+import down from '../../assets/images/arrow_down.svg';
+import Button from 'components/Button/Button';
+import Participation from 'components/Participation/Participation';
 
 const User: FC = () => {
 
@@ -62,7 +65,7 @@ const User: FC = () => {
         </Typography>
           <div className={styles.skills}>
             <Typography variant="body1" component="p" className={styles.list}>
-              Разработка полиграфический материалов{' '}
+            • Разработка полиграфический материалов{' '}
             </Typography>
             <Typography variant="body1" component="p" className={styles.list}>
               • Векторная графика
@@ -113,7 +116,7 @@ const User: FC = () => {
                 label="Курсы"
               />
             </Tabs>
-            <Typography className={`${styles.title} ${styles.title_second}`}variant="body1" component="h3">
+            <Typography className={`${styles.title} ${styles.title_second}`} variant="body1" component="h3">
             ZephyrLab
         </Typography>
         <div className={styles.profession}>
@@ -138,6 +141,15 @@ const User: FC = () => {
               • Следую правилам дизайн-системы (объединяет несколько продуктов) и развиваю её
             </Typography>
           </div>
+          <Button className={styles.icon} variant='text' endIcon={<img src={down} alt="arrow down" />}>Развернуть</Button>
+          <Typography variant="subtitle1" component="p">
+          Участие в проектах
+            </Typography>
+            <div className={styles.cardsBlock}>
+            <Participation title='«Голосовой помощник для Яндекс»' name=' Дизайн-спринт, июнь 2023' achievement='Победитель' />
+            <Participation title='«Web-приложение „Corporate tasker“' name=' Дизайн-спринт, июнь 2023' achievement='Участник' />
+            <Participation title='«Агрегатор цен на отдых в России»' name=' Дизайн-спринт, июнь 2023' achievement='Участник' />
+            </div>
       </section>
     </main>
   );

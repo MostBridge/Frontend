@@ -53,6 +53,7 @@ const theme = createTheme({
       margin: 0,
     },
     subtitle1: {
+      fontWeight: 500,
       fontSize: 18,
       lineHeight: '24px',
       margin: 0,
