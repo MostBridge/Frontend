@@ -39,6 +39,18 @@ const Button = styled(MuiButton)<ButtonProps>(({ theme }) => ({
         },
       },
     },
+    {
+      props: { variant: 'text' },
+      style: {
+        padding: 0,
+        height: 'auto',
+        color: theme.palette.primary.main,
+        '&:hover': {
+          backgroundColor: 'transparent',
+          color: theme.palette.primary.dark,
+        },
+      },
+    },
   ],
 }));
 

@@ -65,7 +65,7 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onToggle }) => {
           </List>
         </div>
         <div className={styles.navigation}>
-          <Button variant="contained" size="small">
+          <Button className={styles.button} variant="contained" size="small">
             Подробнее
           </Button>
           {candidate.is_viewed && (

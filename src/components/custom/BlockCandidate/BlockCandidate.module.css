@@ -95,3 +95,7 @@
   justify-content: space-between;
   align-items: flex-end;
 }
+
+.button {
+  width: 168px;
+}
