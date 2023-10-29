@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.select {
+  width: 355px;
+}
+
+.input {
+  width: 366px;
+}

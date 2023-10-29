@@ -1,0 +1,21 @@
+.button {
+  border: none;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  transition: filter linear 0.2s;
+}
+
+.button.medium {
+  width: 28px;
+  height: 28px;
+}
+
+.button.small {
+  width: 20px;
+  height: 20px;
+}
