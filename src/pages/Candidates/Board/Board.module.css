@@ -1,5 +1,4 @@
 .board {
-  max-height: calc(100vh - 80px);
   height: auto;
   width: 355px;
   background-color: #f1f6ff;
@@ -46,7 +45,7 @@
 
 .candidates {
   padding: 8px 16px 0 0;
-  height: calc(100vh - 406px);
+  height: calc(100vh - 386px);
   overflow-y: scroll;
   box-sizing: border-box;
   scrollbar-width: 8px;
@@ -59,6 +58,7 @@
 }
 
 .candidates::-webkit-scrollbar-thumb {
+  width: 8px;
   border-radius: 8px;
   background-color: #acccff;
 }
