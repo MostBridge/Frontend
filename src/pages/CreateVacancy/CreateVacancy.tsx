@@ -8,6 +8,7 @@ import SelectorWithLabel from 'components/mui/Selector/SelectorWithLabel/Selecto
 import Filters from './Filters/Filters';
 import TextAreaBlock from './TextAreaBlock/TextAreaBlock';
 import SkillBlock from './SkillBlock/SkillBlock';
+import { useNavigate } from 'react-router-dom';
 
 const CreateVacancy = () => {
   // const cityes = ["Москва", "Санкт-Петербург", "Новосибирск", "Екатаринбург", "Казань", "Нижний Новгород", "Красноярск", "Челябинск", "Самара", "Уфа"]
@@ -27,10 +28,16 @@ const CreateVacancy = () => {
     'Английский B1',
   ];
 
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  };
+  
   return (
     <main className={styles.main}>
       <section className={styles.top_section}>
-        <BackButton to="back" />
+        <BackButton onBack={goBack} />
         <div className={styles.header}>
           <Typography className={styles.text} variant="h2" component="h1">
             Создание вакансии

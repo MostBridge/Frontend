@@ -1,12 +1,13 @@
 import { ChangeEvent, FC, useState } from 'react';
 import { SelectChangeEvent, Typography } from '@mui/material';
 
-import { CANDIDATES_LIST, VACANCIES_LIST } from 'utils/constants';
+import { CANDIDATES_LIST, FAVORITE_LIST, VACANCIES_LIST } from 'utils/constants';
 import IFilters from 'types/IFilters';
 
 import FiltersForm from './FiltersForm/FiltersForm';
 import styles from './Candidates.module.css';
 import Results from './Results/Results';
+import Board from './Board/Board';
 
 const Candidates: FC = () => {
   const [filters, setFilters] = useState<IFilters>({ vacancyId: 0, search: '' });
@@ -36,6 +37,7 @@ const Candidates: FC = () => {
         />
         <Results candidates={CANDIDATES_LIST} />
       </main>
+      <Board candidates={FAVORITE_LIST} />
     </div>
   );
 };

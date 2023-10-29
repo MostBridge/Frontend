@@ -53,6 +53,7 @@ const theme = createTheme({
       margin: 0,
     },
     subtitle1: {
+      fontWeight: 500,
       fontSize: 18,
       lineHeight: '24px',
       margin: 0,
@@ -81,10 +82,9 @@ function App() {
       <ThemeProvider theme={theme}>
         <StyledEngineProvider injectFirst>
           <Routes>
-            <Route path="/" element={<div>Страница еще не готова</div>} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route element={<Layout />}>
-              <Route path="/vacancies" element={<Vacancies />} />
+              <Route path="/" element={<Vacancies />} />
               <Route path="/candidates" element={<Candidates />} />
               <Route path="/create-vacancy" element={<CreateVacancy />} />
               <Route path="/user" element={<User />} />

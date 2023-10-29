@@ -5,12 +5,12 @@ import styles from './BackButton.module.css';
 import { Typography } from '@mui/material';
 
 type BackButtonProps = {
-  to: string;
+  onBack: () => void;
 };
 
-const BackButton: FC<BackButtonProps> = ({ to }) => {
+const BackButton: FC<BackButtonProps> = ({ onBack }) => {
   return (
-    <Link className={styles.button} href={to}>
+    <Link className={styles.button} onClick={onBack} >
       <img src={arrow_left} alt="Стрека назад" />
       <Typography className={styles.text} variant="h3" component="p">
         Назад

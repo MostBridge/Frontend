@@ -27,6 +27,15 @@ const Button = styled(MuiButton)<ButtonProps>(({ theme }) => ({
       },
     },
     {
+      props: { variant: 'contained' },
+      style: {
+        '&:disabled': {
+          backgroundColor: '#B5B5B7',
+          color: '#FFF',
+        },
+      },
+    },
+    {
       props: { variant: 'outlined' },
       style: {
         borderColor: theme.palette.primary.dark,
@@ -36,6 +45,11 @@ const Button = styled(MuiButton)<ButtonProps>(({ theme }) => ({
         '&:hover': {
           backgroundColor: theme.palette.primary.main,
           color: theme.palette.primary.contrastText,
+        },
+
+        '&:disabled': {
+          borderColor: '#B5B5B7',
+          color: '#B5B5B7',
         },
       },
     },
