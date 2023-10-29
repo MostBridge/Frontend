@@ -63,7 +63,7 @@ const CreateVacancy = () => {
               </Button>
             </li>
             <li>
-              <Button variant="contained" size="small" className={styles.button}>
+              <Button onClick={handleOpenPopup} variant="contained" size="small" className={styles.button}>
                 Опубликовать вакансию
               </Button>
             </li>

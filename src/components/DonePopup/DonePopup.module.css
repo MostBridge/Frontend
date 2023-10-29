@@ -13,87 +13,24 @@
     transition: visibility 1s, opacity 0.5s linear;
   }
   
-  .done {
-    display: flex;
-    justify-content: flex-end;
-    margin: 12px 0 20px;
-  }
-  
   .popup_opened {
     visibility: visible;
     opacity: 1;
   }
   
-  .filters {
+  .done {
     background-color: white;
-    min-width: 716px;
-    padding: 32px;
+    max-width: 525px;
+    padding: 40px;
     border-radius: 12px;
     position: relative;
     box-sizing: border-box;
-  }
-  
-  .buttonDrop {
-    background-image: url('assets/images/close.svg');
-    padding: 0;
-    background-color: white;
-    border: none;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-  }
-  
-  .filters__block {
+    gap: 20px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .condition {
-    width: 422px;
+
+  .block {
+    margin-right: 12px;
   }
-  
-  .employment {
-    width: 206px;
-  }
-  
-  .conditionBlock {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-  
-  .city {
-    width: 206px;
-  }
-  
-  .salary {
-    width: 126px;
-    margin-right: 4px;
-  }
-  
-  .currency {
-    width: 76px;
-    text-align: center;
-  }
-  
-  .forthInput {
-    width: 314px;
-  }
-  
-  .buttonBlock {
-    display: flex;
-    justify-content: end;
-    margin-top: 8px;
-  }
-  
-  .buttonHide {
-    width: 196px;
-    margin-right: 16px;
-  }
-  
-  .buttonSearch {
-    width: 176px;
-  }
-  
