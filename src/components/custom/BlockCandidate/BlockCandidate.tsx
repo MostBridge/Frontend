@@ -15,6 +15,7 @@ import { getFullName } from 'utils/utils';
 import styles from './BlockCandidate.module.css';
 import TabRow from '../TabRow/TabRow';
 import HeartButton from '../HeartButton/HeartButton';
+import { Link } from 'react-router-dom';
 
 export interface BlockCandidateProps {
   candidate: ICandidate;
@@ -65,9 +66,11 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onToggle }) => {
           </List>
         </div>
         <div className={styles.navigation}>
-          <Button className={styles.button} variant="contained" size="small">
-            Подробнее
-          </Button>
+          <Link to="/user">
+            <Button className={styles.button} variant="contained" size="small">
+              Подробнее
+            </Button>
+          </Link>
           {candidate.is_viewed && (
             <Typography variant="caption" component="p" color="text.secondary">
               Просмотрено

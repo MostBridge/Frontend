@@ -33,6 +33,7 @@ const CreateVacancy = () => {
   const goBack = () => {
     navigate(-1);
   };
+  
   return (
     <main className={styles.main}>
       <section className={styles.top_section}>
