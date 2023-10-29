@@ -1,0 +1,44 @@
+.tab {
+  padding: 4px 8px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  margin-right: 16px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: all linear 0.2s;
+}
+
+.tab.medium {
+  height: 28px;
+}
+
+.tab.small {
+  height: 24px;
+}
+
+.tab.primary {
+  background-color: #f1f6ff;
+}
+
+.tab.primary:hover {
+  background-color: #acccff;
+}
+
+.tab.primary.selected {
+  background-color: #acccff;
+}
+
+.tab.secondary {
+  background-color: #87cc9e;
+}
+
+.tab.light {
+  background-color: #c2e5ce;
+}
+
+.text {
+  font-weight: 400;
+  min-width: 0;
+}

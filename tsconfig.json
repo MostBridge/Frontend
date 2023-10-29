@@ -26,9 +26,10 @@
       "components/*": ["src/components/*"],
       "assets/*": ["src/assets/*"],
       "pages/*": ["src/pages/*"],
-      "types/*": ["src/types/*"]
+      "types/*": ["src/types/*"],
+      "utils/*": ["src/utils/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "src/components/mui/Label/Label/.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
