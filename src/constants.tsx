@@ -45,4 +45,62 @@ const currencies = [
         { value: 'Фриланс', text: 'Фриланс' },
       ];
 
-      export { ITSpecialties, currencies, qualification, education, experience, typeEmployment }
+        //DELETE THIS MASSIVE
+  const vacancies = [
+    {
+      title: 'Графический дизайнер',
+      status: 'Опубликовано',
+      date: '12 октября',
+      city: 'Москва',
+      salary: '100 000',
+      level: 'Middle',
+      experience: 'до 1 года',
+    },
+    {
+      title: 'Веб-разработчик',
+      status: 'Опубликовано',
+      date: '10 октября',
+      city: 'Санкт-Петербург',
+      salary: '120 000',
+      level: 'Junior',
+      experience: 'до 6 месяцев',
+    },
+    {
+      title: 'QA инженер',
+      status: 'В поиске',
+      date: '14 октября',
+      city: 'Казань',
+      salary: '90 000',
+      level: 'Middle',
+      experience: 'до 2 лет',
+    },
+    {
+      title: 'Менеджер проекта',
+      status: 'Опубликовано',
+      date: '15 октября',
+      city: 'Екатеринбург',
+      salary: '130 000',
+      level: 'Senior',
+      experience: 'от 3 до 5 лет',
+    },
+    {
+      title: 'Дизайнер интерфейсов',
+      status: 'Опубликовано',
+      date: '11 октября',
+      city: 'Новосибирск',
+      salary: '110 000',
+      level: 'Middle',
+      experience: 'до 1,5 лет',
+    },
+    {
+      title: 'Android разработчик',
+      status: 'В поиске',
+      date: '9 октября',
+      city: 'Самара',
+      salary: '125 000',
+      level: 'Middle',
+      experience: 'до 3 лет',
+    },
+  ];
+
+      export { vacancies, ITSpecialties, currencies, qualification, education, experience, typeEmployment }

@@ -1,0 +1,80 @@
+.main {
+    padding: 40px;
+}
+
+.info {
+    width: 100%;
+}
+
+.paragraphFirst {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: var(--Green, #87CC9E);
+    margin-right: 8px;
+}
+
+.paragraphSecond {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: var(--Green-light, #C2E5CE);
+}
+
+.paragraphBlock {
+    display: flex;
+    position: relative;
+}
+
+.infoBlock {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.block__second {
+    gap: 24px;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.like {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+}
+
+.title {
+    font-weight: 500;
+    padding-bottom: 16px;
+}
+
+.list {
+    margin-right: 10px;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.vacancies__tab {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    margin-right: 24px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    text-transform: none;
+} 
+
+.title_second {
+    margin-top: 24px;
+}
+
+.profession {
+    display: flex;
+    padding-bottom: 16px;
+}
