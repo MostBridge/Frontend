@@ -17,7 +17,7 @@ export interface ResultsProps {
 }
 
 const Results: FC<ResultsProps> = ({ candidates = [] }) => {
-  const label = `Всего найдено ${candidates.length} ${getCandidatesDeclension(candidates.length)}`;
+  const candidatesNumber = `Всего найдено ${candidates.length} ${getCandidatesDeclension(candidates.length)}`;
   const [isPopupFilterOpen, setIsPopupFilterOpen] = useState<boolean>(false);
 
   const handleOpenPopup = () => {
@@ -32,7 +32,7 @@ const Results: FC<ResultsProps> = ({ candidates = [] }) => {
     <section className={styles.results}>
       <article className={styles.panel}>
         <Typography className={styles.label} variant="body2" component="label">
-          {label}
+          {candidatesNumber}
           <Button size="small" variant="text" disableRipple>
             Добавить всех в избранные
           </Button>
@@ -43,7 +43,7 @@ const Results: FC<ResultsProps> = ({ candidates = [] }) => {
       </article>
       <article className={styles.candidates}>
         <List className={{ item: styles.candidate }}>
-          {candidates.map((candidate) => (
+          {candidates?.map((candidate) => (
             <BlockCandidate key={candidate.id} candidate={candidate} />
           ))}
         </List>

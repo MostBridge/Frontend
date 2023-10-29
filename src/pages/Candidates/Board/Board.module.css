@@ -1,0 +1,68 @@
+.board {
+  max-height: calc(100vh - 80px);
+  height: auto;
+  width: 355px;
+  background-color: #f1f6ff;
+  border-radius: 12px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.accardion {
+  background-color: transparent;
+}
+
+.summary {
+  align-items: flex-start;
+  gap: 11px;
+  padding: 0;
+}
+
+.summary > div {
+  margin: 0;
+}
+
+.content {
+  margin: 0;
+}
+
+.title {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.candidatesNumber {
+  margin-top: 16px;
+  color: #797981;
+}
+
+.buttons {
+  margin-top: 16px;
+}
+
+.button + .button {
+  margin-top: 12px;
+}
+
+.candidates {
+  padding: 8px 16px 0 0;
+  height: calc(100vh - 406px);
+  overflow-y: scroll;
+  box-sizing: border-box;
+  scrollbar-width: 8px;
+}
+
+.candidates::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 8px;
+  background-color: #dde0e4;
+}
+
+.candidates::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #acccff;
+}
+
+.candidate + .candidate {
+  margin-top: 8px;
+}
