@@ -2,11 +2,11 @@ import { FC, PropsWithChildren } from 'react';
 
 import { Stack, Typography } from '@mui/material';
 
-export interface LabeledProps {
+export interface LabelProps {
   label: string;
 }
 
-const Labeled: FC<PropsWithChildren<LabeledProps>> = ({ label, children }) => {
+const Label: FC<PropsWithChildren<LabelProps>> = ({ label, children }) => {
   return (
     <Stack spacing="4px" justifyContent="flex-start" alignItems="flex-start">
       <Typography variant="caption" component="label" fontWeight={500}>
@@ -17,4 +17,4 @@ const Labeled: FC<PropsWithChildren<LabeledProps>> = ({ label, children }) => {
   );
 };
 
-export default Labeled;
+export default Label;

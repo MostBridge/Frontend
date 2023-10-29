@@ -39,6 +39,7 @@ const StyledMenu: Partial<MenuProps> = {
   transformOrigin: { vertical: -5, horizontal: 'center' },
   PaperProps: {
     sx: {
+      maxHeight: '220px',
       boxSizing: 'border-box',
       bgcolor: '#FFF',
       outline: '1px solid #DDE0E4',

@@ -2,7 +2,7 @@ import { FC, ChangeEvent } from 'react';
 import { SelectChangeEvent } from '@mui/material';
 
 import icon from 'assets/images/search.svg';
-import Labeled from 'components/mui/Labeled/Labeled';
+import Label from 'components/mui/Label/Label';
 import Select from 'components/mui/Select/Select';
 import Input from 'components/mui/Input/Input';
 import MenuItem from 'components/mui/MenuItem/MenuItem';
@@ -31,7 +31,7 @@ const FiltersForm: FC<FiltersFormProps> = ({ filters, vacancies = [], className,
   return (
     <section className={className}>
       <form className={styles.form}>
-        <Labeled label="Подборка">
+        <Label label="Подборка">
           <Select className={styles.select} renderValue={renderValue} value={vacancyId} onChange={onChange}>
             <MenuItem value={0}>По всей базе кандидатов</MenuItem>
             {vacancies.map((vacancy) => (
@@ -40,7 +40,7 @@ const FiltersForm: FC<FiltersFormProps> = ({ filters, vacancies = [], className,
               </MenuItem>
             ))}
           </Select>
-        </Labeled>
+        </Label>
         <Input value={search} className={styles.input} size="small" icon={icon} placeholder="Поиск" onInput={onInput} />
       </form>
     </section>

@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Avatar, Typography } from '@mui/material';
 
 import IUser from 'types/IUser';
@@ -14,8 +15,14 @@ const Header: FC<HeaderProps> = ({ user = {} }) => {
   const { avatar, first_name = 'Имя', last_name = 'Фамилия', email = 'example@yandex.ru' } = user;
   const name = getFullName(first_name, last_name);
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/user');
+  };
+
   return (
-    <header className={styles.header}>
+    <header onClick={handleClick} className={styles.header}>
       <Avatar src={avatar} className={styles.avatar} />
       <div className={styles.profile}>
         <Typography variant="body1" component="h2" color="primary.contrastText">

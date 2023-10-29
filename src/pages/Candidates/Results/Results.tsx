@@ -14,15 +14,15 @@ export interface ResultsProps {
 }
 
 const Results: FC<ResultsProps> = ({ candidates = [] }) => {
-  const number = candidates.length;
+  const label = `Всего найдено ${candidates.length} ${getCandidatesDeclension(candidates.length)}`;
 
   return (
     <section className={styles.results}>
       <div className={styles.panel}>
         <Typography className={styles.label} variant="body2" component="label">
-          {`Всего найдено ${number} ${getCandidatesDeclension(number)}`}
+          {label}
           <Button size="small" variant="text" disableRipple>
-            Добавить всех в избранные
+            Добавить всех в избранные
           </Button>
         </Typography>
       </div>

@@ -25,7 +25,7 @@ const Sidebar: FC = () => {
       <div className={styles.container}>
         <Header user={user} />
         <List>
-          <Tab icon={house} text="Мои вакансии" to="/vacancies" />
+          <Tab icon={house} text="Мои вакансии" to="/vacancies"/>
           <Tab icon={persons} text="Поиск кандидатов" to="/candidates" />
           <Tab icon={heart} text="Избранные кандидаты" to="/favourites" />
           <Tab icon={circleCheck} text="Отклики" />

@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    padding: 4px 8px;
+    border-radius: 4px;
+    gap: 4px;
+    align-items: center;
+    width: min-content;
+    text-wrap: nowrap;
+}
+
+.button {
+    background-color: inherit;
+    background-image: url(../../../assets/images/xmark.svg);
+    border: none;
+    height: 16px;
+    width: 16px;
+}
