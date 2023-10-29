@@ -7,6 +7,7 @@ import SignIn from 'pages/SignIn/SignIn';
 import Vacancies from './pages/Vacancies/Vacancies';
 import Candidates from 'pages/Candidates/Candidates';
 import User from './pages/User/User';
+import Favorite from 'pages/Favorite/Favorite';
 
 const theme = createTheme({
   shadows: Array(25).fill('none') as Shadows,
@@ -86,6 +87,7 @@ function App() {
             <Route element={<Layout />}>
               <Route path="/" element={<Vacancies />} />
               <Route path="/candidates" element={<Candidates />} />
+              <Route path="/favorite" element={<Favorite />} />
               <Route path="/create-vacancy" element={<CreateVacancy />} />
               <Route path="/user" element={<User />} />
             </Route>

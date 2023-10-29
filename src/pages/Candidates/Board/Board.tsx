@@ -7,7 +7,7 @@ import Button from 'components/mui/Button/Button';
 import BlockFavorite from 'components/custom/BlockFavorite/BlockFavorite';
 import List from 'components/custom/List/List';
 import ICandidate from 'types/ICandidate';
-import { getCandidatesDeclension, isEmpty } from 'utils/utils';
+import { getCandidatesDeclension, isEmpty } from '../../../utils/utils';
 
 import styles from './Board.module.css';
 
