@@ -7,8 +7,8 @@ import money from '../../assets/images/money.svg';
 import star from '../../assets/images/star.svg';
 import like from '../../assets/images/icon_like.svg';
 import down from '../../assets/images/arrow_down.svg';
-import Button from 'components/Button/Button';
-import Participation from 'components/Participation/Participation';
+import Participation from 'components/custom/Participation/Participation';
+import Button from 'components/mui/Button/Button';
 
 const User: FC = () => {
 

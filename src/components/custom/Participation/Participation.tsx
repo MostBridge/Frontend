@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
 import { FC } from 'react';
 import styles from './Participation.module.css';
-import Button from 'components/Button/Button';
+import Button from 'components/mui/Button/Button';
 
 type ParticipationProps = {
     title: string;
