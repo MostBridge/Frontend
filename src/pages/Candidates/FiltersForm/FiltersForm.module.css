@@ -1,5 +1,6 @@
 .form {
   display: flex;
+  justify-content: space-between;
   align-items: flex-end;
   gap: 12px;
 }
@@ -9,5 +10,5 @@
 }
 
 .input {
-  width: 366px;
+  width: 100%;
 }

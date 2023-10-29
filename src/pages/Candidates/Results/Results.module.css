@@ -1,5 +1,4 @@
 .results {
-  max-width: 733px;
   width: 100%;
 }
 
@@ -22,7 +21,7 @@
   overflow: scroll;
   scrollbar-width: none;
   box-sizing: border-box;
-  padding-bottom: 12px;
+  padding: 12px 0;
 }
 
 .candidates::-webkit-scrollbar {
