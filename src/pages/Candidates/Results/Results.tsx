@@ -5,7 +5,7 @@ import sliders from 'assets/images/sliders.svg';
 import Button from 'components/mui/Button/Button';
 import List from 'components/custom/List/List';
 import BlockCandidate from 'components/custom/BlockCandidate/BlockCandidate';
-import IconButton from 'components/custom/IconButton/IconButton';
+import IconButton from 'components/mui/IconButton/IconButton';
 import Filters from 'components/custom/Filters/Filters';
 import ICandidate from 'types/ICandidate';
 import { getCandidatesDeclension } from 'utils/utils';
@@ -37,7 +37,7 @@ const Results: FC<ResultsProps> = ({ candidates = [] }) => {
             Добавить всех в избранные
           </Button>
         </Typography>
-        <IconButton icon={sliders} onClick={handleOpenPopup} alt="Иконка фильтров">
+        <IconButton endIcon={sliders} onClick={handleOpenPopup} alt="Иконка фильтров">
           Фильтры
         </IconButton>
       </article>

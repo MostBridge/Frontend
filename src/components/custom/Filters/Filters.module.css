@@ -1,100 +1,98 @@
 .popup {
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    min-height: 100%;
-    min-width: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 1s, opacity 0.5s linear;
-  }
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  min-height: 100%;
+  min-width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 1s, opacity 0.5s linear;
+}
 
-  .popup_opened {
-    visibility: visible;
-    opacity: 1;
-  }
+.clear {
+  display: flex;
+  justify-content: flex-end;
+  margin: 12px 0 20px;
+}
 
-  .filters {
-    background-color: white;
-    min-width: 716px;
-    padding: 32px;
-    border-radius: 12px;
-    position: relative;
-    box-sizing: border-box;
-  }
+.popup_opened {
+  visibility: visible;
+  opacity: 1;
+}
 
-  .buttonDrop {
-    background-image: url('../../assets/images/close.svg');
-    padding: 0;
-    background-color: white;
-    border: none;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-  }
+.filters {
+  background-color: white;
+  min-width: 716px;
+  padding: 32px;
+  border-radius: 12px;
+  position: relative;
+  box-sizing: border-box;
+}
 
-  .filters__block {
-    display: flex;
-    justify-content: space-between;
-  }
+.buttonDrop {
+  background-image: url('assets/images/close.svg');
+  padding: 0;
+  background-color: white;
+  border: none;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
 
-  .buttonSetting {
-    color: #1A1B22;
-    padding: 0;
-    display: flex;
-    margin-left: auto;
-    margin-bottom: 10px;
-  }
-  
-  .condition {
-    width: 422px;
-  }
+.filters__block {
+  display: flex;
+  justify-content: space-between;
+}
 
-  .employment {
-    width: 206px;
-  }
+.condition {
+  width: 422px;
+}
 
-  .conditionBlock {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
+.employment {
+  width: 206px;
+}
 
-  .city {
-    width: 206px;
-  }
+.conditionBlock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 16px;
+}
 
-  .salary {
-    width: 126px;
-    margin-right: 4px;
-  }
+.city {
+  width: 206px;
+}
 
-  .currency {
-    width: 76px;
-    text-align: center;
-  }
+.salary {
+  width: 126px;
+  margin-right: 4px;
+}
 
-  .forthInput {
-    width: 314px;
-  }
+.currency {
+  width: 76px;
+  text-align: center;
+}
 
-  .buttonBlock {
-    display: flex;
-    justify-content: end;
-    margin-top: 8px;
-  }
+.forthInput {
+  width: 314px;
+}
 
-  .buttonHide {
-    width: 196px;
-    margin-right: 16px;
-  }
+.buttonBlock {
+  display: flex;
+  justify-content: end;
+  margin-top: 8px;
+}
 
-  .buttonSearch {
-    width: 176px;
-  }
-  
+.buttonHide {
+  width: 196px;
+  margin-right: 16px;
+}
+
+.buttonSearch {
+  width: 176px;
+}

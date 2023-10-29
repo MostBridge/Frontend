@@ -7,6 +7,7 @@ import Select from 'components/mui/Select/Select';
 import Label from 'components/mui/Label/Label';
 import MenuItem from 'components/mui/MenuItem/MenuItem';
 import { ITSpecialties, currencies, qualification, education, experience, typeEmployment } from 'utils/constants';
+import IconButton from 'components/mui/IconButton/IconButton';
 
 type FiltersProps = {
   onClose: () => void;
@@ -61,14 +62,12 @@ const Filters: FC<FiltersProps> = ({ onClose, isPopupFilterOpen }) => {
           </Typography>
           <button className={styles.buttonDrop} aria-label="Закрытие попапа" type="button" onClick={onClose}></button>
         </div>
-        <Button
-          variant="text"
-          size="small"
-          startIcon={<img src={deleteIcon} alt="иконка очистки" />}
-          className={styles.buttonSetting}
-        >
-          Очистить фильтры
-        </Button>
+        <div className={styles.clear}>
+          <IconButton startIcon={deleteIcon} alt="Иконка очистить фильтры">
+            Очистить фильтры
+          </IconButton>
+        </div>
+
         <div className={styles.conditionBlock}>
           <Label label="Специализация">
             <Select

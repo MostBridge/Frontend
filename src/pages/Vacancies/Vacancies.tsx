@@ -10,7 +10,7 @@ import BlockVacancy from 'components/custom/BlockVacancy/BlockVacancy';
 import { Link } from 'react-router-dom';
 import Filters from 'components/custom/Filters/Filters';
 import { vacancies } from 'utils/constants';
-import IconButton from 'components/custom/IconButton/IconButton';
+import IconButton from 'components/mui/IconButton/IconButton';
 
 const Vacancies: FC = () => {
   const [tabsValues, setTabsValues] = useState({ first: 0, second: 0 });
@@ -74,7 +74,7 @@ const Vacancies: FC = () => {
               />
               <TabRow text="Скрытые" isSelected={tabsValues.second === 2} onClick={() => handleChange('second', 2)} />
             </Tabs>
-            <IconButton icon={gears} onClick={handleOpenPopup} alt="Иконка фильтров">
+            <IconButton endIcon={gears} onClick={handleOpenPopup} alt="Иконка фильтров">
               Фильтры
             </IconButton>
           </div>
