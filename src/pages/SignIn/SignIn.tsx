@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Typography, Link as MuiLink } from '@mui/material';
+import { FieldValues, useForm } from 'react-hook-form';
 
 import Button from 'components/mui/Button/Button';
 import Input from 'components/mui/Input/Input';
@@ -8,10 +9,29 @@ import logo from 'assets/images/logo.svg';
 import telegramIcon from 'assets/images/telegramIcon.svg';
 
 import styles from './SignIn.module.css';
+import { LoginParams, useLoginMutation } from '../../redux/slices/API';
 
 const SignIn: FC = () => {
   const navigate = useNavigate();
 
+  const { register, handleSubmit } = useForm<LoginParams>()
+
+  const [login] = useLoginMutation();
+
+  const onSubmit = async (data: FieldValues) => {
+    try {
+      const result = await login({ email: data.email, password: data.password });
+      if ('data' in result) {
+        // Save tokens in localStorage
+        localStorage.setItem('accessToken', result.data.access);
+        localStorage.setItem('refreshToken', result.data.refresh);
+      } else {
+        console.log(result.error)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  };
   return (
     <div className={styles.page}>
       <header className={styles.header}>
@@ -20,7 +40,7 @@ const SignIn: FC = () => {
         </Link>
       </header>
       <main className={styles.main}>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <Typography className={styles.title} variant="h2" component="h1">
             Карьерный трекер
           </Typography>
@@ -28,8 +48,8 @@ const SignIn: FC = () => {
             Войти в аккаунт
           </Typography>
           <fieldset className={styles.fieldset}>
-            <Input size="medium" type="email" variant="outlined" placeholder="Почта" fullWidth helperText=" " />
-            <Input size="medium" type="password" variant="outlined" placeholder="Пароль" fullWidth helperText=" " />
+            <Input {...register('email')} size="medium" type="email" variant="outlined" placeholder="Почта" fullWidth helperText=" " />
+            <Input {...register('password')} size="medium" type="password" variant="outlined" placeholder="Пароль" fullWidth helperText=" " />
           </fieldset>
           <MuiLink
             className={styles.button}
@@ -40,7 +60,7 @@ const SignIn: FC = () => {
           >
             Не помню пароль
           </MuiLink>
-          <Button size="medium" variant="contained" fullWidth>
+          <Button size="medium" variant="contained" fullWidth type='submit'>
             Войти
           </Button>
         </form>
