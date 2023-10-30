@@ -89,11 +89,11 @@ function App() {
             <Routes>
               <Route path="/sign-in" element={<SignIn />} />
               <Route element={<ProtectedRoute component={<Layout />} />}>
-                <Route path="/" element={<Vacancies />} />
-                <Route path="/candidates" element={<Candidates />} />
-                <Route path="/favorite" element={<Favorite />} />
-                <Route path="/create-vacancy" element={<CreateVacancy />} />
-                <Route path="/user" element={<User />} />
+                <Route path="/" element={<ProtectedRoute component ={<Vacancies />} />} />
+                <Route path="/candidates" element={<ProtectedRoute component ={<Candidates />} />} />
+                <Route path="/favorite" element={<ProtectedRoute component ={<Favorite />} />} />
+                <Route path="/create-vacancy" element={<ProtectedRoute component ={<CreateVacancy />} />} />
+                <Route path="/user"element={<ProtectedRoute component ={<User />} />} />
               </Route>
             </Routes>
           </Provider>
