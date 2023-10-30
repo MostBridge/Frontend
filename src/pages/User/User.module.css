@@ -1,6 +1,9 @@
 .main {
     padding: 40px;
     padding-top: 84px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .info {
@@ -70,7 +73,7 @@
     line-height: 24px;
     font-weight: 400;
     text-transform: none;
-} 
+}
 
 .title_second {
     margin-top: 24px;
@@ -90,4 +93,73 @@
 
 .cardsBlock {
     margin-top: 16px;
+}
+
+.flex_row {
+    display: flex;
+    gap: 24px;
+}
+
+.sidebar {
+    background-color: #F1F6FF;
+    max-width: 354px;
+    padding: 44px 40px 50px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+}
+
+.image {
+    border-radius: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.name {
+    font-weight: 500;
+}
+
+.name_container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 28px;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.contacts_element {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.contacts_row {
+    display: flex;
+    gap: 12px;
+}
+
+.info_bottom {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
