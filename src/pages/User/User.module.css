@@ -1,6 +1,7 @@
 .main {
-    padding: 40px;
-    padding-top: 84px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -45,7 +46,7 @@
 .like {
     position: absolute;
     right: 40px;
-    top: 40px;
+    top: 90px;
 }
 
 .title {

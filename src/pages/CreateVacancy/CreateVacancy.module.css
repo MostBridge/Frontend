@@ -1,54 +1,63 @@
 .main {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    padding: 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 40px 40px;
 }
 
 .top_section {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .bottom_section {
-    display: flex;
-    gap: 24px;
+  display: flex;
+  gap: 24px;
 }
 
 .button {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .list_of_buttons {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    gap: 12px;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  gap: 12px;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .text {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .article {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 24px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 24px;
 }
 
 .list_of_inputs {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    gap: 12px;
+  display: flex;
+  align-items: flex-end;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  gap: 12px;
+}
+
+.currency {
+  width: 148px;
+}
+
+.education {
+  width: 296px;
 }

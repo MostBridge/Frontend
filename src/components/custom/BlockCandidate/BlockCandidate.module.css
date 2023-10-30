@@ -1,7 +1,7 @@
 .block {
-  display: grid;
-  grid-template-columns: 156px 1fr;
-  grid-gap: 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
   width: 100%;
   min-height: 296px;
   border-radius: 12px;
@@ -16,9 +16,21 @@
   cursor: pointer;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+}
+
 .view {
   display: flex;
   width: 156px;
+  gap: 12px;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -82,7 +94,7 @@
 .skills {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 4px 8px;
+  gap: 4px;
 }
 
 .tab {

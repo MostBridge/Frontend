@@ -1,40 +1,108 @@
-import IVacancy, { Experience, Grade } from 'types/IVacancy';
-import ICandidate from 'types/ICandidate';
-import candidate from 'assets/images/candidate.png';
-import { generateCandidates } from './utils';
+import IVacancy, { Grade } from 'types/IVacancy';
+import ITech from 'types/ICandidate';
+// import { generateCandidates } from './utils';
 
 export const VACANCIES_LIST: IVacancy[] = [
   { id: 1, profession: { name: 'UX/UI дизайнер' }, grade: Grade.junior },
   { id: 2, profession: { name: 'Motion дизайнер' }, grade: Grade.junior },
   { id: 3, profession: { name: 'Графический дизайнер' }, grade: Grade.junior },
 ];
-
-const CANDIDATE_TEMPLATE: ICandidate = {
-  first_name: 'Людмила',
-  last_name: 'Петрушевская',
-  profession: { name: 'Графический дизайнер' },
-  grade: Grade.junior,
-  town: {
-    city: 'Москва',
-  },
-  photo: candidate,
-  experience: Experience.one,
-  is_favorited: true,
-  is_viewed: true,
-  technology: [
-    { id: 0, name: 'Дизайн иконок' },
-    { id: 1, name: 'Растровая графика' },
-    { id: 2, name: 'Разработка фирменного стиля' },
-    { id: 3, name: 'Дизайн полиграфической продукции' },
-    { id: 4, name: 'Векторная графика' },
-    { id: 5, name: 'Создание иллюстраций' },
-    { id: 6, name: 'Создание скетчей' },
+export const TECHNOLOGY: ITech[][] = [
+  [
+    { ids: 0, name: 'Node.js' },
+    { ids: 1, name: 'Фреймворк Express.js' },
+    { ids: 2, name: 'База данных MongoDB' },
+    { ids: 3, name: 'База данных SQL' },
+    { ids: 4, name: 'Язык Python' },
+    { ids: 5, name: 'Язык Django' },
+    { ids: 6, name: 'Ruby on Rails' }
   ],
-};
+  [
+    { ids: 0, name: 'Node.js' },
+    { ids: 1, name: 'Фреймворк Express.js' },
+    { ids: 2, name: 'База данных MongoDB' },
+    { ids: 3, name: 'База данных SQL' },
+    { ids: 4, name: 'Язык Python' },
+    { ids: 5, name: 'Язык Django' },
+    { ids: 6, name: 'Ruby on Rails' }
+  ],
+  [
+    { ids: 0, name: 'Фреймворк React' },
+    { ids: 1, name: 'Фреймворк Vue.js' },
+    { ids: 2, name: 'Фреймворк Angular' },
+    { ids: 3, name: 'Язык JavaScript' },
+    { ids: 4, name: 'HTML/CSS' },
+    { ids: 5, name: 'Язык TypeScript' },
+    { ids: 6, name: 'Стейт-менеджер Redux' }
+  ],
+  [
+    { ids: 0, name: 'Фреймворк React' },
+    { ids: 1, name: 'Фреймворк Vue.js' },
+    { ids: 2, name: 'Фреймворк Angular' },
+    { ids: 3, name: 'Язык JavaScript' },
+    { ids: 4, name: 'HTML/CSS' },
+    { ids: 5, name: 'Язык TypeScript' },
+    { ids: 6, name: 'Стейт-менеджер Redux' }
+  ],
+  [
+    { ids: 0, name: 'Дизайн иконок' },
+    { ids: 1, name: 'Растровая графика' },
+    { ids: 2, name: 'Разработка фирменного стиля' },
+    { ids: 3, name: 'Дизайн полиграфической продукции' },
+    { ids: 4, name: 'Векторная графика' },
+    { ids: 5, name: 'Создание иллюстраций' },
+    { ids: 6, name: 'Создание скетчей' }
+  ],
+  [
+    { ids: 0, name: 'Дизайн иконок' },
+    { ids: 1, name: 'Растровая графика' },
+    { ids: 2, name: 'Разработка фирменного стиля' },
+    { ids: 3, name: 'Дизайн полиграфической продукции' },
+    { ids: 4, name: 'Векторная графика' },
+    { ids: 5, name: 'Создание иллюстраций' },
+    { ids: 6, name: 'Создание скетчей' }
+  ],
+  [
+    { ids: 0, name: 'Node.js' },
+    { ids: 1, name: 'Фреймворк Express.js' },
+    { ids: 2, name: 'База данных MongoDB' },
+    { ids: 3, name: 'База данных SQL' },
+    { ids: 4, name: 'Язык Python' },
+    { ids: 5, name: 'Язык Django' },
+    { ids: 6, name: 'Ruby on Rails' }
+  ],
+  [
+    { ids: 0, name: 'Дизайн иконок' },
+    { ids: 1, name: 'Растровая графика' },
+    { ids: 2, name: 'Разработка фирменного стиля' },
+    { ids: 3, name: 'Дизайн полиграфической продукции' },
+    { ids: 4, name: 'Векторная графика' },
+    { ids: 5, name: 'Создание иллюстраций' },
+    { ids: 6, name: 'Создание скетчей' }
+  ],
+  [
+    { ids: 0, name: 'Node.js' },
+    { ids: 1, name: 'Фреймворк Express.js' },
+    { ids: 2, name: 'База данных MongoDB' },
+    { ids: 3, name: 'База данных SQL' },
+    { ids: 4, name: 'Язык Python' },
+    { ids: 5, name: 'Язык Django' },
+    { ids: 6, name: 'Ruby on Rails' }
+  ],
+  [
+    { ids: 0, name: 'Node.js' },
+    { ids: 1, name: 'Фреймворк Express.js' },
+    { ids: 2, name: 'База данных MongoDB' },
+    { ids: 3, name: 'База данных SQL' },
+    { ids: 4, name: 'Язык Python' },
+    { ids: 5, name: 'Язык Django' },
+    { ids: 6, name: 'Ruby on Rails' }
+  ],
+];
 
-export const CANDIDATES_LIST: ICandidate[] = generateCandidates(CANDIDATE_TEMPLATE, 3);
 
-export const FAVORITE_LIST: ICandidate[] = generateCandidates(CANDIDATE_TEMPLATE, 7);
+
+// export const FAVORITE_LIST: ICandidate[] = generateCandidates(FAVORITE_LIST, 7);
 
 //УДАЛИТЬ
 

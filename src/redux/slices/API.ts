@@ -6,6 +6,7 @@ import type {
 } from '@reduxjs/toolkit/query'
 import User from 'types/IUser';
 import IVacancy from 'types/IVacancy';
+import ICandidate from 'types/ICandidate';
 
 
 interface LoginResponse {
@@ -23,6 +24,13 @@ interface GetVacancyResponse {
     next: string,
     previous: string,
     results: IVacancy[],
+}
+
+interface ResultResponse {
+    count: number,
+    next: string,
+    previous: null,
+    results: ICandidate[],
 }
 
 
@@ -93,6 +101,8 @@ export const API = createApi({
         }),
         getVacancy: builder.query<GetVacancyResponse, void>({
             query: () => ({ url: 'vacancy' }),
+        getCandidates: builder.query<ResultResponse, void>({
+            query: () => ({ url: 'candidates/' }),
         }),
     }),
 })
@@ -100,4 +110,4 @@ export const API = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useLoginMutation, useGetUserQuery, useGetVacancyQuery } = API
+export const { useLoginMutation, useGetUserQuery, useGetVacancyQuery, useGetCandidatesQuery } = API

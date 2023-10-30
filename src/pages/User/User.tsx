@@ -11,22 +11,21 @@ import Participation from 'components/custom/Participation/Participation';
 import Button from 'components/mui/Button/Button';
 import BackButton from 'components/custom/BackButton/BackButton';
 import { useNavigate } from 'react-router-dom';
-import user_image from './../../assets/images/img.png'
-import email_icon from './../../assets/images/envelope-open.svg'
-import telegram_icon from './../../assets/images/logo-telegram.svg'
+import user_image from './../../assets/images/img.png';
+import email_icon from './../../assets/images/envelope-open.svg';
+import telegram_icon from './../../assets/images/logo-telegram.svg';
 
 const User: FC = () => {
-
-  const [tabsValues, setTabsValues] = useState({ first: 0, second: 0, third: 0, });
+  const [tabsValues, setTabsValues] = useState({ first: 0, second: 0, third: 0 });
 
   const handleChange = (key: 'first' | 'second' | 'third', newValue: number) => {
     setTabsValues((prevValues) => ({ ...prevValues, [key]: newValue }));
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const goBack = () => {
-    navigate(-1)
-  }
+    navigate(-1);
+  };
 
   const candidateInfo = {
     first_name: 'Константин',
@@ -39,7 +38,7 @@ const User: FC = () => {
     profession: {
       name: 'Графический дизайнер',
     },
-  }
+  };
 
   return (
     <main className={styles.main}>
@@ -48,8 +47,12 @@ const User: FC = () => {
         <section className={styles.sidebar}>
           <img className={styles.image} src={user_image} alt="Фотография кандидата" />
           <div className={styles.name_container}>
-            <Typography className={styles.name} variant="h3" component="h1">{`${candidateInfo.first_name} ${candidateInfo.last_name}`}</Typography>
-            <Typography className={styles.name} variant="body1" component="h2">{candidateInfo.profession.name}</Typography>
+            <Typography className={styles.name} variant="h3" component="h1">
+              {`${candidateInfo.first_name} ${candidateInfo.last_name}`}
+            </Typography>
+            <Typography className={styles.name} variant="body1" component="h2">
+              {candidateInfo.profession.name}
+            </Typography>
           </div>
           <div className={styles.buttons}>
             <Button variant="contained" size="small">
@@ -61,29 +64,45 @@ const User: FC = () => {
           </div>
           <div className={styles.info_bottom}>
             <div className={styles.contacts}>
-              <Typography className={styles.name} variant="body1" component="h3">Контакты</Typography>
+              <Typography className={styles.name} variant="body1" component="h3">
+                Контакты
+              </Typography>
               <div className={styles.contacts_element}>
                 <div className={styles.contacts_row}>
-                  <img src={email_icon} alt='Иконка email' />
-                  <Typography variant="body1" component="p">{candidateInfo.contacts.email}</Typography>
+                  <img src={email_icon} alt="Иконка email" />
+                  <Typography variant="body1" component="p">
+                    {candidateInfo.contacts.email}
+                  </Typography>
                 </div>
                 <div className={styles.contacts_row}>
-                  <img src={telegram_icon} alt='Иконка телеграм' />
-                  <Typography variant="body1" component="p">{candidateInfo.contacts.Telegram}</Typography>
+                  <img src={telegram_icon} alt="Иконка телеграм" />
+                  <Typography variant="body1" component="p">
+                    {candidateInfo.contacts.Telegram}
+                  </Typography>
                 </div>
               </div>
             </div>
             <div className={styles.contacts}>
-              <Typography className={styles.name} variant="body1" component="h3">Дополнительные ссылки</Typography>
+              <Typography className={styles.name} variant="body1" component="h3">
+                Дополнительные ссылки
+              </Typography>
               <div className={styles.contacts_element}>
-                <Button size="small" variant="text" disableRipple>Портфолио на Behance</Button>
-                <Button size="small" variant="text" disableRipple>Блог на VC</Button>
+                <Button size="small" variant="text" disableRipple>
+                  Портфолио на Behance
+                </Button>
+                <Button size="small" variant="text" disableRipple>
+                  Блог на VC
+                </Button>
               </div>
             </div>
             <div className={styles.contacts}>
-              <Typography className={styles.name} variant="body1" component="h3">Учебный статус</Typography>
+              <Typography className={styles.name} variant="body1" component="h3">
+                Учебный статус
+              </Typography>
               <div className={styles.contacts_element}>
-                <Typography variant="body1" component="p">Выпускник курса «Графический дизайн», 2023 г.</Typography>
+                <Typography variant="body1" component="p">
+                  Выпускник курса «Графический дизайн», 2023 г.
+                </Typography>
               </div>
             </div>
           </div>
@@ -208,18 +227,32 @@ const User: FC = () => {
               • Следую правилам дизайн-системы (объединяет несколько продуктов) и развиваю её
             </Typography>
           </div>
-          <Button className={styles.icon} variant='text' endIcon={<img src={down} alt="arrow down" />}>Развернуть</Button>
+          <Button className={styles.icon} variant="text" endIcon={<img src={down} alt="arrow down" />}>
+            Развернуть
+          </Button>
           <Typography variant="subtitle1" component="p">
             Участие в проектах
           </Typography>
           <div className={styles.cardsBlock}>
-            <Participation title='«Голосовой помощник для Яндекс»' name=' Дизайн-спринт, июнь 2023' achievement='Победитель' />
-            <Participation title='«Web-приложение „Corporate tasker“' name=' Дизайн-спринт, июнь 2023' achievement='Участник' />
-            <Participation title='«Агрегатор цен на отдых в России»' name=' Дизайн-спринт, июнь 2023' achievement='Участник' />
+            <Participation
+              title="«Голосовой помощник для Яндекс»"
+              name=" Дизайн-спринт, июнь 2023"
+              achievement="Победитель"
+            />
+            <Participation
+              title="«Web-приложение „Corporate tasker“"
+              name=" Дизайн-спринт, июнь 2023"
+              achievement="Участник"
+            />
+            <Participation
+              title="«Агрегатор цен на отдых в России»"
+              name=" Дизайн-спринт, июнь 2023"
+              achievement="Участник"
+            />
           </div>
         </section>
-      </div >
-    </main >
+      </div>
+    </main>
   );
 };
 

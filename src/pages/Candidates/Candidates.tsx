@@ -1,13 +1,13 @@
 import { ChangeEvent, FC, useState } from 'react';
 import { SelectChangeEvent, Typography } from '@mui/material';
 
-import { CANDIDATES_LIST, FAVORITE_LIST, VACANCIES_LIST } from '../../utils/constants';
+import { VACANCIES_LIST } from '../../utils/constants';
 import IFilters from 'types/IFilters';
 
 import FiltersForm from '../../components/custom/FiltersForm/FiltersForm';
 import styles from './Candidates.module.css';
 import Results from '../../components/custom/Results/Results';
-import Board from './Board/Board';
+// import Board from './Board/Board';
 
 const Candidates: FC = () => {
   const [filters, setFilters] = useState<IFilters>({ vacancyId: 0, search: '' });
@@ -36,9 +36,9 @@ const Candidates: FC = () => {
           onChange={handleVacancyChange}
           onInput={handleSearchInput}
         />
-        <Results componentName='Candidates' allocation='Фильтры' addText='Добавить всех в избранные' candidates={CANDIDATES_LIST} />
+        <Results componentName='Candidates' allocation='Фильтры' addText='Добавить всех в избранные' />
       </main>
-      <Board candidates={FAVORITE_LIST} />
+      {/* <Board candidates={FAVORITE_LIST} /> */}
     </div>
   );
 };
