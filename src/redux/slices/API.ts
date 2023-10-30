@@ -18,6 +18,13 @@ export interface LoginParams {
     password: string,
 }
 
+interface ResultResponse {
+    count: number,
+    next: string,
+    previous: null,
+    results: ICandidate[],
+}
+
 
 const baseQueryWithoutReauth = fetchBaseQuery({ baseUrl: 'http://bridge.sytes.net/api/v1/' })
 
@@ -82,7 +89,7 @@ export const API = createApi({
         getUser: builder.query<User, void>({
             query: () => ({ url: 'users/me/' }),
         }),
-        getCandidates: builder.query<ICandidate [], void>({
+        getCandidates: builder.query<ResultResponse, void>({
             query: () => ({ url: 'candidates/' }),
         }),
     }),

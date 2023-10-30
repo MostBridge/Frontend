@@ -15,25 +15,18 @@ import styles from './Results.module.css';
 import { useGetCandidatesQuery } from '../../../redux/slices/API';
 
 export interface ResultsProps {
-  candidates?: ICandidate[];
   addText: string,
   allocation: string,
   componentName: string,
 }
 
 const Results: FC<ResultsProps> = ({ addText, allocation, componentName }) => {
-  const getCandidate = useGetCandidatesQuery();
 
+  const { data: candidates, isSuccess } = useGetCandidatesQuery();
 
-  useEffect(() => {
-    if (getCandidate.isSuccess) {
-      console.log(getCandidate.data);
-    }
-  }, [getCandidate.isSuccess]);
+  const candidatesCount = candidates ? candidates.count : 0;
   
-  const candidates = getCandidate.data;
-  
-  const candidatesNumber = `Всего найдено ${candidates.length} ${getCandidatesDeclension(candidates.length)}`;
+  const candidatesNumber = `Всего найдено ${candidatesCount} ${getCandidatesDeclension(candidates.count)}`;
   const [isPopupFilterOpen, setIsPopupFilterOpen] = useState<boolean>(false);
 
   let endIcon;
@@ -66,11 +59,11 @@ const Results: FC<ResultsProps> = ({ addText, allocation, componentName }) => {
         </IconButton>
       </article>
       <article className={styles.candidates}>
-        <List className={{ item: styles.candidate }}>
+        {/* <List className={{ item: styles.candidate }}>
           {candidates?.map((candidate) => (
             <BlockCandidate key={candidate.id} candidate={candidate} />
           ))}
-        </List>
+        </List> */}
       </article>
       {isPopupFilterOpen && <Filters onClose={handleClosePopup} isPopupFilterOpen={isPopupFilterOpen} />}
     </section>
