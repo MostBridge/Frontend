@@ -10,6 +10,7 @@ import Vacancies from './pages/Vacancies/Vacancies';
 import Candidates from 'pages/Candidates/Candidates';
 import User from './pages/User/User';
 import Favorite from 'pages/Favorite/Favorite';
+import ProtectedRoute from 'components/ProtectedRoute/ProtectedRoute';
 
 const theme = createTheme({
   shadows: Array(25).fill('none') as Shadows,
@@ -87,7 +88,7 @@ function App() {
           <Provider store={store}>
             <Routes>
               <Route path="/sign-in" element={<SignIn />} />
-              <Route element={<Layout />}>
+              <Route element={<ProtectedRoute component={<Layout />} />}>
                 <Route path="/" element={<Vacancies />} />
                 <Route path="/candidates" element={<Candidates />} />
                 <Route path="/favorite" element={<Favorite />} />

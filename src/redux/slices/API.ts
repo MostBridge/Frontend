@@ -4,6 +4,7 @@ import type {
     FetchArgs,
     FetchBaseQueryError,
 } from '@reduxjs/toolkit/query'
+import User from 'types/IUser';
 
 
 interface LoginResponse {
@@ -78,10 +79,13 @@ export const API = createApi({
                 body: params
             }),
         }),
+        getUser: builder.query<User, void>({
+            query: () => ({ url: 'users/me/' }),
+        }),
     }),
 })
 
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useLoginMutation } = API
+export const { useLoginMutation, useGetUserQuery } = API
