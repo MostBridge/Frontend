@@ -3,8 +3,11 @@ import IContact from 'types/IContact';
 import ITown from 'types/ITown';
 import IProfession from 'types/IProffesion';
 import { Experience, Grade } from 'types/IVacancy';
-import ITechnology from 'types/ITechnology';
 
+export default interface ITech {
+  ids: number;
+  name: string;
+}
 export default interface ICandidate {
   id?: number;
   first_name?: string;
@@ -18,9 +21,8 @@ export default interface ICandidate {
   contacts?: IContact;
   town?: ITown;
   profession?: IProfession;
-  technology?: ITechnology[];
   grade?: Grade;
   photo?: string;
   is_favorited?: boolean;
-  is_viewed?: boolean;
+  is_viewed?: boolean,
 }

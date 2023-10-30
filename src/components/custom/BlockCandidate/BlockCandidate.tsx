@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 
 import { Avatar, Typography } from '@mui/material';
 
@@ -16,29 +16,22 @@ import styles from './BlockCandidate.module.css';
 import TabRow from '../TabRow/TabRow';
 import HeartButton from '../HeartButton/HeartButton';
 import { Link } from 'react-router-dom';
-// import { useGetCandidatesQuery } from '../../../redux/slices/API';
+import ITech from 'types/ICandidate';
+
 export interface BlockCandidateProps {
   candidate: ICandidate;
   onToggle?: () => void;
+  tech: ITech[];
 }
 
-const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onToggle }) => {
+const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onToggle, tech }) => {
   const { first_name, last_name } = candidate;
   const name = getFullName(first_name, last_name);
   const profession = candidate.profession?.name;
   const grade = candidate?.grade;
   const town = candidate.town?.city;
-  const experience = candidate?.experience;
 
-
-  // const getCandidate = useGetCandidatesQuery();
-
-
-  // useEffect(() => {
-  //   console.log(getCandidate.data)
-  // }, [getCandidate.isSuccess])
-
-  // const candidates = getCandidate.data;
+  console.log(tech);
 
   return (
     <div className={styles.block}>
@@ -67,13 +60,15 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onToggle }) => {
             <IconTag icon={chartColumn} text={grade} alt="Иконка квалификации" />
             <IconTag icon={map} text={town} alt="Иконка города" />
             <IconTag icon={money} text="100 000 ₽" alt="Иконка зарплаты" />
-            <IconTag icon={star} text={experience} alt="Иконка опыта" />
+            <IconTag icon={star} text={`Опыт от ${candidate.experience}`} alt="Иконка опыта" />
           </List>
           <List className={{ list: styles.skills }}>
-            {candidate.technology?.map((skill) => (
-              <TabRow className={styles.tab} isSelected size="small" key={skill.id} text={skill.name} />
-            ))}
-          </List>
+          <List className={{ list: styles.skills }}>
+        {tech?.map((skill) => (
+          <TabRow className={styles.tab} isSelected size="small" key={skill.ids} text={skill.name} />
+        ))}
+      </List>
+</List>
         </div>
         <div className={styles.navigation}>
           <Link to="/user">

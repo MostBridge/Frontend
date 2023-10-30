@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { Typography } from '@mui/material';
 
 import sliders from 'assets/images/sliders.svg';
@@ -12,6 +12,7 @@ import { getCandidatesDeclension } from '../../../utils/utils';
 
 import styles from './Results.module.css';
 import { useGetCandidatesQuery } from '../../../redux/slices/API';
+import { TECHNOLOGY } from '../../../utils/constants';
 
 export interface ResultsProps {
   addText: string,
@@ -21,10 +22,10 @@ export interface ResultsProps {
 
 const Results: FC<ResultsProps> = ({ addText, allocation, componentName }) => {
 
-  const { data: candidates, isSuccess } = useGetCandidatesQuery();
+  const { data: candidates } = useGetCandidatesQuery();
 
   const candidatesCount = candidates ? candidates.count : 0;
-  
+  const candidatesResults = candidates ? candidates.results : [];
   
   const candidatesNumber = `Всего найдено ${candidatesCount} ${getCandidatesDeclension(candidatesCount)}`;
   const [isPopupFilterOpen, setIsPopupFilterOpen] = useState<boolean>(false);
@@ -54,16 +55,16 @@ const Results: FC<ResultsProps> = ({ addText, allocation, componentName }) => {
             {addText}
           </Button>
         </Typography>
-        <IconButton endIcon={endIcon}       onClick={componentName === 'Candidates' ? handleOpenPopup : undefined} alt="Иконка фильтров">
+        <IconButton endIcon={endIcon} onClick={componentName === 'Candidates' ? handleOpenPopup : undefined} alt="Иконка фильтров">
          {allocation}
         </IconButton>
       </article>
       <article className={styles.candidates}>
-        {/* <List className={{ item: styles.candidate }}>
-          {candidates?.map((candidate) => (
-            <BlockCandidate key={candidate.id} candidate={candidate} />
+        <List className={{ item: styles.candidate }}>
+          {candidatesResults.map((candidate, index) => (
+            <BlockCandidate key={candidate.id} candidate={candidate} tech={TECHNOLOGY[index]} />
           ))}
-        </List> */}
+        </List>
       </article>
       {isPopupFilterOpen && <Filters onClose={handleClosePopup} isPopupFilterOpen={isPopupFilterOpen} />}
     </section>
