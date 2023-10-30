@@ -17,7 +17,7 @@ export interface LoginParams {
 }
 
 
-const baseQueryWithoutReauth = fetchBaseQuery({ baseUrl: 'http://bridge.sytes.net/' })
+const baseQueryWithoutReauth = fetchBaseQuery({ baseUrl: 'http://bridge.sytes.net/api/v1/' })
 
 const baseQueryWithReauth: BaseQueryFn<
     string | FetchArgs,
