@@ -9,8 +9,8 @@ import AI from 'components/custom/AI/AI';
 import BlockVacancy from 'components/custom/BlockVacancy/BlockVacancy';
 import { Link } from 'react-router-dom';
 import Filters from 'components/custom/Filters/Filters';
-import { vacancies } from 'utils/constants';
 import IconButton from 'components/mui/IconButton/IconButton';
+import { useGetVacancyQuery } from '../../redux/slices/API';
 
 const Vacancies: FC = () => {
   const [tabsValues, setTabsValues] = useState({ first: 0, second: 0 });
@@ -27,6 +27,8 @@ const Vacancies: FC = () => {
   const handleClosePopup = () => {
     setIsPopupFilterOpen(false);
   };
+
+  const getVacancyQuery = useGetVacancyQuery()
 
   return (
     <main className={styles.main}>
@@ -81,7 +83,7 @@ const Vacancies: FC = () => {
         </div>
         <AI />
         <div className={styles.cardsContainer}>
-          {vacancies.map((vacancy, index) => (
+          {getVacancyQuery.isSuccess && getVacancyQuery.data.results.map((vacancy, index) => (
             <BlockVacancy key={index} data={vacancy} />
           ))}
         </div>

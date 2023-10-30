@@ -5,6 +5,7 @@ import type {
     FetchBaseQueryError,
 } from '@reduxjs/toolkit/query'
 import User from 'types/IUser';
+import IVacancy from 'types/IVacancy';
 
 
 interface LoginResponse {
@@ -15,6 +16,13 @@ interface LoginResponse {
 export interface LoginParams {
     email: string,
     password: string,
+}
+
+interface GetVacancyResponse {
+    count: number,
+    next: string,
+    previous: string,
+    results: IVacancy[],
 }
 
 
@@ -83,10 +91,13 @@ export const API = createApi({
         getUser: builder.query<User, void>({
             query: () => ({ url: 'users/me/' }),
         }),
+        getVacancy: builder.query<GetVacancyResponse, void>({
+            query: () => ({ url: 'vacancy' }),
+        }),
     }),
 })
 
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useLoginMutation, useGetUserQuery } = API
+export const { useLoginMutation, useGetUserQuery, useGetVacancyQuery } = API
