@@ -4,6 +4,7 @@ import type {
     FetchArgs,
     FetchBaseQueryError,
 } from '@reduxjs/toolkit/query'
+import User from 'types/IUser';
 
 
 interface LoginResponse {
@@ -17,7 +18,7 @@ export interface LoginParams {
 }
 
 
-const baseQueryWithoutReauth = fetchBaseQuery({ baseUrl: 'http://bridge.sytes.net/' })
+const baseQueryWithoutReauth = fetchBaseQuery({ baseUrl: 'http://bridge.sytes.net/api/v1/' })
 
 const baseQueryWithReauth: BaseQueryFn<
     string | FetchArgs,
@@ -33,8 +34,16 @@ const baseQueryWithReauth: BaseQueryFn<
     }
     let result = await baseQueryWithoutReauth(args, api, extraOptions)
     if (result.error && result.error.status === 401) {
+        // get refresh token from localStorage
+        const refreshToken = localStorage.getItem('refreshToken');
         // try to get a new token
-        const refreshResult = await baseQueryWithoutReauth('/refreshToken', api, extraOptions)
+        const refreshResult = await baseQueryWithoutReauth({
+            url: 'auth/jwt/refresh/',
+            method: 'POST',
+            body: {
+                refresh: refreshToken,
+            },
+        }, api, extraOptions)
         if (refreshResult.data) {
             // store the new tokens
             localStorage.setItem('accessToken', (refreshResult.data as LoginResponse).access);
@@ -56,7 +65,7 @@ export const API = createApi({
     reducerPath: 'API',
     baseQuery: (args, api, extraOptions) => {
         // Проверяем, содержит ли URL строку 'auth/jwt/create/'
-        if (typeof args === 'string' && args.includes('auth/jwt/create/')) {
+        if (args.url && args.url === 'auth/jwt/create/') {
             return baseQueryWithoutReauth(args, api, extraOptions);
         } else {
             return baseQueryWithReauth(args as string | FetchArgs, api, extraOptions);
@@ -70,10 +79,13 @@ export const API = createApi({
                 body: params
             }),
         }),
+        getUser: builder.query<User, void>({
+            query: () => ({ url: 'users/me/' }),
+        }),
     }),
 })
 
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useLoginMutation } = API
+export const { useLoginMutation, useGetUserQuery } = API
