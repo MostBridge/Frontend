@@ -2,23 +2,35 @@ import { FC, useState } from 'react';
 import { Typography } from '@mui/material';
 
 import sliders from 'assets/images/sliders.svg';
+import sort from 'assets/images/sort.svg';
 import Button from 'components/mui/Button/Button';
 import List from 'components/custom/List/List';
 import BlockCandidate from 'components/custom/BlockCandidate/BlockCandidate';
 import IconButton from 'components/mui/IconButton/IconButton';
 import Filters from 'components/custom/Filters/Filters';
 import ICandidate from 'types/ICandidate';
-import { getCandidatesDeclension } from 'utils/utils';
+import { getCandidatesDeclension } from '../../../utils/utils';
 
 import styles from './Results.module.css';
 
 export interface ResultsProps {
   candidates?: ICandidate[];
+  addText: string,
+  allocation: string,
+  componentName: string,
 }
 
-const Results: FC<ResultsProps> = ({ candidates = [] }) => {
+const Results: FC<ResultsProps> = ({ candidates = [], addText, allocation, componentName }) => {
   const candidatesNumber = `Всего найдено ${candidates.length} ${getCandidatesDeclension(candidates.length)}`;
   const [isPopupFilterOpen, setIsPopupFilterOpen] = useState<boolean>(false);
+
+  let endIcon;
+
+  if (componentName === 'Favorites') {
+    endIcon = sort;
+  } else if (componentName === 'Candidates') {
+    endIcon = sliders;
+  }
 
   const handleOpenPopup = () => {
     setIsPopupFilterOpen(true);
@@ -34,11 +46,11 @@ const Results: FC<ResultsProps> = ({ candidates = [] }) => {
         <Typography className={styles.label} variant="body2" component="label">
           {candidatesNumber}
           <Button size="small" variant="text" disableRipple>
-            Добавить всех в избранные
+            {addText}
           </Button>
         </Typography>
-        <IconButton endIcon={sliders} onClick={handleOpenPopup} alt="Иконка фильтров">
-          Фильтры
+        <IconButton endIcon={endIcon}       onClick={componentName === 'Candidates' ? handleOpenPopup : undefined} alt="Иконка фильтров">
+         {allocation}
         </IconButton>
       </article>
       <article className={styles.candidates}>

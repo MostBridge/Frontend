@@ -9,8 +9,22 @@ import Filters from './Filters/Filters';
 import TextAreaBlock from './TextAreaBlock/TextAreaBlock';
 import SkillBlock from './SkillBlock/SkillBlock';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import DonePopup from 'components/DonePopup/DonePopup';
 
 const CreateVacancy = () => {
+
+  const [isPopupDoneOpen, setIsPopupDoneOpen] = useState(false);
+
+  const handleOpenPopup = () => {
+    setIsPopupDoneOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupDoneOpen(false);
+  };
+
+
   // const cityes = ["Москва", "Санкт-Петербург", "Новосибирск", "Екатаринбург", "Казань", "Нижний Новгород", "Красноярск", "Челябинск", "Самара", "Уфа"]
   const currencies = ['₽ Рубль', '$ Доллар', '€ Евро'];
   const filters1 = ['Полная занятость', 'Частичная занятость', 'Фриланс'];
@@ -33,7 +47,7 @@ const CreateVacancy = () => {
   const goBack = () => {
     navigate(-1);
   };
-  
+
   return (
     <main className={styles.main}>
       <section className={styles.top_section}>
@@ -49,7 +63,7 @@ const CreateVacancy = () => {
               </Button>
             </li>
             <li>
-              <Button variant="contained" size="small" className={styles.button}>
+              <Button onClick={handleOpenPopup} variant="contained" size="small" className={styles.button}>
                 Опубликовать вакансию
               </Button>
             </li>
@@ -101,6 +115,7 @@ const CreateVacancy = () => {
           <SkillBlock array={skills} />
         </article>
       </section>
+      {isPopupDoneOpen && <DonePopup onClose={handleClosePopup} isPopupDoneOpen={isPopupDoneOpen} />}
     </main>
   );
 };

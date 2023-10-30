@@ -27,7 +27,7 @@ const Sidebar: FC = () => {
         <List>
           <Tab icon={house} text="Мои вакансии" to="/"/>
           <Tab icon={persons} text="Поиск кандидатов" to="/candidates" />
-          <Tab icon={heart} text="Избранные кандидаты" to="/favourites" />
+          <Tab icon={heart} text="Избранные кандидаты" to="/favorite" />
           <Tab icon={circleCheck} text="Отклики" />
           <Tab icon={comment} text="Мессенджер" />
         </List>
