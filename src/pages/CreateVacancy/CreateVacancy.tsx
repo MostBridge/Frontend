@@ -9,7 +9,7 @@ import TextAreaBlock from './TextAreaBlock/TextAreaBlock';
 import SkillBlock from './SkillBlock/SkillBlock';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import DonePopup from 'components/DonePopup/DonePopup';
+import DonePopup from 'components/custom/DonePopup/DonePopup';
 import Label from 'components/mui/Label/Label';
 import Select from 'components/mui/Select/Select';
 
