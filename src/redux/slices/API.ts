@@ -48,7 +48,9 @@ const baseQueryWithReauth: BaseQueryFn<
             // store the new tokens
             localStorage.setItem('accessToken', (refreshResult.data as LoginResponse).access);
             // retry the initial query
-            result = await baseQueryWithoutReauth(args, api, extraOptions)
+            if (typeof args !== 'string') {
+                result = await baseQueryWithoutReauth({ ...args, headers: { ...args.headers, 'Authorization': `Bearer ${(refreshResult.data as LoginResponse).access}` } }, api, extraOptions)
+            }
         } else {
             // The refresh token has expired, user must log in again
             localStorage.removeItem('accessToken');
