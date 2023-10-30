@@ -64,7 +64,7 @@ export const API = createApi({
     reducerPath: 'API',
     baseQuery: (args, api, extraOptions) => {
         // Проверяем, содержит ли URL строку 'auth/jwt/create/'
-        if (typeof args === 'string' && args.includes('auth/jwt/create/')) {
+        if (args.url && args.url === 'auth/jwt/create/') {
             return baseQueryWithoutReauth(args, api, extraOptions);
         } else {
             return baseQueryWithReauth(args as string | FetchArgs, api, extraOptions);
