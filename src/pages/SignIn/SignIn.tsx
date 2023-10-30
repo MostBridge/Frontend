@@ -27,6 +27,7 @@ const SignIn: FC = () => {
         // Save tokens in localStorage
         localStorage.setItem('accessToken', result.data.access);
         localStorage.setItem('refreshToken', result.data.refresh);
+        navigate('/')
       } else {
         console.log(result.error)
       }
