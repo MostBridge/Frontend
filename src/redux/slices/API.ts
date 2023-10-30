@@ -33,8 +33,16 @@ const baseQueryWithReauth: BaseQueryFn<
     }
     let result = await baseQueryWithoutReauth(args, api, extraOptions)
     if (result.error && result.error.status === 401) {
+        // get refresh token from localStorage
+        const refreshToken = localStorage.getItem('refreshToken');
         // try to get a new token
-        const refreshResult = await baseQueryWithoutReauth('/refreshToken', api, extraOptions)
+        const refreshResult = await baseQueryWithoutReauth({
+            url: 'auth/jwt/refresh/',
+            method: 'POST',
+            body: {
+                refresh: refreshToken,
+            },
+        }, api, extraOptions)
         if (refreshResult.data) {
             // store the new tokens
             localStorage.setItem('accessToken', (refreshResult.data as LoginResponse).access);
