@@ -6,6 +6,8 @@ import CreateVacancy from './pages/CreateVacancy/CreateVacancy';
 import SignIn from 'pages/SignIn/SignIn';
 import Vacancies from 'pages/Vacancies/Vacancies';
 import Candidates from 'pages/Candidates/Candidates';
+import { Provider } from 'react-redux';
+import { store } from './redux/store/store';
 
 const theme = createTheme({
   shadows: Array(25).fill('none') as Shadows,
@@ -78,15 +80,17 @@ function App() {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <StyledEngineProvider injectFirst>
-          <Routes>
-            <Route path="/" element={<div>Страница еще не готова</div>} />
-            <Route path="/sign-in" element={<SignIn />} />
-            <Route element={<Layout />}>
-              <Route path="/vacancies" element={<Vacancies />} />
-              <Route path="/candidates" element={<Candidates />} />
-              <Route path="/create-vacancy" element={<CreateVacancy />} />
-            </Route>
-          </Routes>
+          <Provider store={store}>
+            <Routes>
+              <Route path="/" element={<div>Страница еще не готова</div>} />
+              <Route path="/sign-in" element={<SignIn />} />
+              <Route element={<Layout />}>
+                <Route path="/vacancies" element={<Vacancies />} />
+                <Route path="/candidates" element={<Candidates />} />
+                <Route path="/create-vacancy" element={<CreateVacancy />} />
+              </Route>
+            </Routes>
+          </Provider>
         </StyledEngineProvider>
       </ThemeProvider>
     </BrowserRouter>
