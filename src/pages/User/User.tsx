@@ -83,8 +83,7 @@ const User: FC = () => {
             <div className={styles.contacts}>
               <Typography className={styles.name} variant="body1" component="h3">Учебный статус</Typography>
               <div className={styles.contacts_element}>
-                <Typography variant="body1" component="p">Выпускник курса «Графический
-                  дизайн», 2023 г.</Typography>
+                <Typography variant="body1" component="p">Выпускник курса «Графический дизайн», 2023 г.</Typography>
               </div>
             </div>
           </div>
