@@ -48,8 +48,8 @@ const User: FC = () => {
         <section className={styles.sidebar}>
           <img className={styles.image} src={user_image} alt="Фотография кандидата" />
           <div className={styles.name_container}>
-            <Typography className={styles.name} variant="caption" component="h1">{`${candidateInfo.first_name} ${candidateInfo.last_name}`}</Typography>
-            <Typography className={styles.name} variant="caption" component="h2">{candidateInfo.profession.name}</Typography>
+            <Typography className={styles.name} variant="h3" component="h1">{`${candidateInfo.first_name} ${candidateInfo.last_name}`}</Typography>
+            <Typography className={styles.name} variant="body1" component="h2">{candidateInfo.profession.name}</Typography>
           </div>
           <div className={styles.buttons}>
             <Button variant="contained" size="small">
