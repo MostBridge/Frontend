@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Typography } from '@mui/material';
 
 import sliders from 'assets/images/sliders.svg';
@@ -12,6 +12,7 @@ import ICandidate from 'types/ICandidate';
 import { getCandidatesDeclension } from '../../../utils/utils';
 
 import styles from './Results.module.css';
+import { useGetCandidatesQuery } from '../../../redux/slices/API';
 
 export interface ResultsProps {
   candidates?: ICandidate[];
@@ -20,7 +21,18 @@ export interface ResultsProps {
   componentName: string,
 }
 
-const Results: FC<ResultsProps> = ({ candidates = [], addText, allocation, componentName }) => {
+const Results: FC<ResultsProps> = ({ addText, allocation, componentName }) => {
+  const getCandidate = useGetCandidatesQuery();
+
+
+  useEffect(() => {
+    if (getCandidate.isSuccess) {
+      console.log(getCandidate.data);
+    }
+  }, [getCandidate.isSuccess]);
+  
+  const candidates = getCandidate.data;
+  
   const candidatesNumber = `Всего найдено ${candidates.length} ${getCandidatesDeclension(candidates.length)}`;
   const [isPopupFilterOpen, setIsPopupFilterOpen] = useState<boolean>(false);
 
@@ -39,7 +51,7 @@ const Results: FC<ResultsProps> = ({ candidates = [], addText, allocation, compo
   const handleClosePopup = () => {
     setIsPopupFilterOpen(false);
   };
-
+  
   return (
     <section className={styles.results}>
       <article className={styles.panel}>

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 
 import { Avatar, Typography } from '@mui/material';
 
@@ -10,13 +10,13 @@ import Button from 'components/mui/Button/Button';
 import IconTag from 'components/custom/IconTag/IconTag';
 import List from 'components/custom/List/List';
 import ICandidate from 'types/ICandidate';
-import { getFullName } from 'utils/utils';
+import { getFullName } from '../../../utils/utils';
 
 import styles from './BlockCandidate.module.css';
 import TabRow from '../TabRow/TabRow';
 import HeartButton from '../HeartButton/HeartButton';
 import { Link } from 'react-router-dom';
-
+// import { useGetCandidatesQuery } from '../../../redux/slices/API';
 export interface BlockCandidateProps {
   candidate: ICandidate;
   onToggle?: () => void;
@@ -29,6 +29,16 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onToggle }) => {
   const grade = candidate?.grade;
   const town = candidate.town?.city;
   const experience = candidate?.experience;
+
+
+  // const getCandidate = useGetCandidatesQuery();
+
+
+  // useEffect(() => {
+  //   console.log(getCandidate.data)
+  // }, [getCandidate.isSuccess])
+
+  // const candidates = getCandidate.data;
 
   return (
     <div className={styles.block}>
