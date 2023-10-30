@@ -10,9 +10,9 @@ type BackButtonProps = {
 
 const BackButton: FC<BackButtonProps> = ({ onBack }) => {
   return (
-    <Link className={styles.button} onClick={onBack} >
+    <Link className={styles.button} onClick={onBack}>
       <img src={arrow_left} alt="Стрека назад" />
-      <Typography className={styles.text} variant="h3" component="p">
+      <Typography className={styles.text} variant="body1" component="p">
         Назад
       </Typography>
     </Link>

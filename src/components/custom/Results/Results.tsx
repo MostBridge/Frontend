@@ -15,12 +15,13 @@ import styles from './Results.module.css';
 
 export interface ResultsProps {
   candidates?: ICandidate[];
-  addText: string,
-  allocation: string,
-  componentName: string,
+  addText: string;
+  allocation: string;
+  componentName: string;
+  onSelect?: () => void;
 }
 
-const Results: FC<ResultsProps> = ({ candidates = [], addText, allocation, componentName }) => {
+const Results: FC<ResultsProps> = ({ candidates = [], addText, allocation, componentName, onSelect }) => {
   const candidatesNumber = `Всего найдено ${candidates.length} ${getCandidatesDeclension(candidates.length)}`;
   const [isPopupFilterOpen, setIsPopupFilterOpen] = useState<boolean>(false);
 
@@ -49,14 +50,18 @@ const Results: FC<ResultsProps> = ({ candidates = [], addText, allocation, compo
             {addText}
           </Button>
         </Typography>
-        <IconButton endIcon={endIcon}       onClick={componentName === 'Candidates' ? handleOpenPopup : undefined} alt="Иконка фильтров">
-         {allocation}
+        <IconButton
+          endIcon={endIcon}
+          onClick={componentName === 'Candidates' ? handleOpenPopup : undefined}
+          alt="Иконка фильтров"
+        >
+          {allocation}
         </IconButton>
       </article>
       <article className={styles.candidates}>
         <List className={{ item: styles.candidate }}>
           {candidates?.map((candidate) => (
-            <BlockCandidate key={candidate.id} candidate={candidate} />
+            <BlockCandidate key={candidate.id} candidate={candidate} onSelect={onSelect} />
           ))}
         </List>
       </article>
