@@ -12,17 +12,10 @@ import star from 'assets/images/star.svg';
 import arrow from 'assets/images/arrow_right.svg';
 import DropDown from 'components/custom/DropDown/DropDown';
 import Button from 'components/mui/Button/Button';
+import IVacancy from 'types/IVacancy';
 
 interface VacancyProps {
-  data: {
-    title: string;
-    status: string;
-    date: string;
-    city: string;
-    salary: string;
-    level: string;
-    experience: string;
-  };
+  data: IVacancy;
 }
 
 const BlockVacancy: FC<VacancyProps> = ({ data }) => {
@@ -36,6 +29,21 @@ const BlockVacancy: FC<VacancyProps> = ({ data }) => {
     setAnchorEl(null);
   };
 
+  let formattedDate
+
+  let date = data.created_date;
+
+  if (typeof data.created_date === 'string') {
+    date = new Date(data.created_date);
+  }
+
+  if (date instanceof Date) {
+    formattedDate = date.toLocaleDateString('ru-RU', {
+      day: '2-digit', // двухзначный день
+      month: '2-digit', // двухзначный месяц
+      year: 'numeric' // год в формате "yyyy"
+    });
+  }
   return (
     <section className={styles.block}>
       <div className={styles.block__first}>
@@ -44,12 +52,12 @@ const BlockVacancy: FC<VacancyProps> = ({ data }) => {
             {data.title}
           </Typography>
           <Typography className={styles.state} variant="body2" color="text.primary">
-            {`Опубликовано ${data.date}`}
+            Опубликовано {formattedDate}
           </Typography>
         </div>
         <div className={styles.infoBlock}>
           <Typography className={styles.date} variant="body2" color="text.secondary">
-            {`Создано ${data.date}`}
+            {`Создано ${formattedDate}`}
           </Typography>
           <div className={styles.menuList}>
             <IconButton aria-controls="simple-menu" onClick={handleClick}>
@@ -80,20 +88,20 @@ const BlockVacancy: FC<VacancyProps> = ({ data }) => {
         <div className={styles.infoBlock}>
           <img src={graph} alt="Иконка графика" />
           <Typography color="text.secondary" variant="body2">
-            {data.level}
+            {data.grade}
           </Typography>
         </div>
 
         <div className={styles.infoBlock}>
           <img src={map} alt="Иконка города" />
           <Typography color="text.secondary" variant="body2">
-            {data.city}
+            {data.town?.city}
           </Typography>
         </div>
 
         <div className={styles.infoBlock}>
           <img src={money} alt="Иконка денег" />
-          <Typography color="text.secondary" variant="body2">{`${data.salary} ₽`}</Typography>
+          <Typography color="text.secondary" variant="body2">{`---- ₽`}</Typography>
         </div>
 
         <div className={styles.infoBlock}>
