@@ -47,7 +47,6 @@ const baseQueryWithReauth: BaseQueryFn<
         if (refreshResult.data) {
             // store the new tokens
             localStorage.setItem('accessToken', (refreshResult.data as LoginResponse).access);
-            localStorage.setItem('refreshToken', (refreshResult.data as LoginResponse).refresh);
             // retry the initial query
             result = await baseQueryWithoutReauth(args, api, extraOptions)
         } else {
