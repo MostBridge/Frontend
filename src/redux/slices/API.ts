@@ -101,6 +101,7 @@ export const API = createApi({
         }),
         getVacancy: builder.query<GetVacancyResponse, void>({
             query: () => ({ url: 'vacancy' }),
+        }),
         getCandidates: builder.query<ResultResponse, void>({
             query: () => ({ url: 'candidates/' }),
         }),
