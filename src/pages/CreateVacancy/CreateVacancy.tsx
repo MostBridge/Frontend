@@ -3,17 +3,17 @@ import BackButton from 'components/custom/BackButton/BackButton';
 import styles from './CreateVacancy.module.css';
 import { MenuItem, Typography } from '@mui/material';
 import Button from 'components/mui/Button/Button';
-import Input from './Input/Input';
-import SelectorWithLabel from 'components/mui/Selector/SelectorWithLabel/SelectorWithLabel';
+import Input from 'components/mui/Input/Input';
 import Filters from './Filters/Filters';
 import TextAreaBlock from './TextAreaBlock/TextAreaBlock';
 import SkillBlock from './SkillBlock/SkillBlock';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import DonePopup from 'components/DonePopup/DonePopup';
+import Label from 'components/mui/Label/Label';
+import Select from 'components/mui/Select/Select';
 
 const CreateVacancy = () => {
-
   const [isPopupDoneOpen, setIsPopupDoneOpen] = useState(false);
 
   const handleOpenPopup = () => {
@@ -23,7 +23,6 @@ const CreateVacancy = () => {
   const handleClosePopup = () => {
     setIsPopupDoneOpen(false);
   };
-
 
   // const cityes = ["Москва", "Санкт-Петербург", "Новосибирск", "Екатаринбург", "Казань", "Нижний Новгород", "Красноярск", "Челябинск", "Самара", "Уфа"]
   const currencies = ['₽ Рубль', '$ Доллар', '€ Евро'];
@@ -76,31 +75,45 @@ const CreateVacancy = () => {
             Основная информация
           </Typography>
           <ul className={styles.list_of_inputs}>
-            <Input label="Название должности/cпециальность" />
-            <Input label="Компания" />
+            <Label label="Название должности/cпециальность">
+              <Input size="small" fullWidth />
+            </Label>
+            <Label label="Компания">
+              <Input size="small" fullWidth />
+            </Label>
           </ul>
           <ul className={styles.list_of_inputs}>
-            <Input label="Страна" />
-            <Input label="Город" />
+            <Label label="Страна">
+              <Input defaultValue="Россия" size="small" fullWidth />
+            </Label>
+            <Label label="Город">
+              <Input size="small" fullWidth />
+            </Label>
           </ul>
           <ul className={styles.list_of_inputs}>
-            <Input label="Зарплата" placeholder="От" />
-            <Input placeholder="До" />
-            <SelectorWithLabel label="Валюта" baseValue="₽ Рубль" maxWidth="150px">
-              {currencies.map((el, id) => (
+            <Label label="Зарплата">
+              <Input placeholder="От" size="small" fullWidth />
+            </Label>
+            <Input placeholder="До" size="small" fullWidth />
+            <Label label="Валюта" fullWidth={false}>
+              <Select defaultValue="₽ Рубль" className={styles.currency}>
+                {currencies.map((el, id) => (
+                  <MenuItem key={id} value={el}>
+                    {el}
+                  </MenuItem>
+                ))}
+              </Select>
+            </Label>
+          </ul>
+          <Label label="Образование">
+            <Select className={styles.education} placeholder="Выберите из списка">
+              {education.map((el, id) => (
                 <MenuItem key={id} value={el}>
                   {el}
                 </MenuItem>
               ))}
-            </SelectorWithLabel>
-          </ul>
-          <SelectorWithLabel label="Образование" maxWidth="296px">
-            {education.map((el, id) => (
-              <MenuItem key={id} value={el}>
-                {el}
-              </MenuItem>
-            ))}
-          </SelectorWithLabel>
+            </Select>
+          </Label>
           <Filters filters={filters1} title="Тип занятости"></Filters>
           <Filters filters={filters2} title="Условия"></Filters>
           <Filters filters={filters3} title="Квалификация"></Filters>
