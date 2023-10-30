@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import { useGetUserQuery } from "../../redux/slices/API";
+// import { useGetUserQuery } from "../../redux/slices/API";
 
 type ProtectedRouteProps = {
     component: ReactNode,
@@ -7,7 +7,7 @@ type ProtectedRouteProps = {
 
 const ProtectedRoute: FC<ProtectedRouteProps> = ({ component }) => {
 
-    useGetUserQuery()
+    // useGetUserQuery()
     return component;
 }
 
