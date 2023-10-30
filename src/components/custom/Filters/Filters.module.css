@@ -27,8 +27,9 @@
 
 .filters {
   background-color: white;
-  min-width: 716px;
-  padding: 32px;
+  max-width: 716px;
+  width: 100%;
+  padding: 32px 40px 40px;
   border-radius: 12px;
   position: relative;
   box-sizing: border-box;
@@ -60,9 +61,12 @@
 .conditionBlock {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: stretch;
   gap: 8px;
-  margin-bottom: 16px;
+}
+
+.conditionBlock + .conditionBlock {
+  margin-top: 16px;
 }
 
 .city {
@@ -86,7 +90,7 @@
 .buttonBlock {
   display: flex;
   justify-content: end;
-  margin-top: 8px;
+  margin-top: 24px;
 }
 
 .buttonHide {

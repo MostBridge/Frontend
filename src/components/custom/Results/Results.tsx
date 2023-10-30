@@ -13,14 +13,17 @@ import { getCandidatesDeclension } from '../../../utils/utils';
 import styles from './Results.module.css';
 import { useGetCandidatesQuery } from '../../../redux/slices/API';
 import { TECHNOLOGY } from '../../../utils/constants';
+import ICandidate from 'types/ICandidate';
 
 export interface ResultsProps {
-  addText: string,
-  allocation: string,
-  componentName: string,
+  candidates?: ICandidate[];
+  addText: string;
+  allocation: string;
+  componentName: string;
+  onSelect?: () => void;
 }
 
-const Results: FC<ResultsProps> = ({ addText, allocation, componentName }) => {
+const Results: FC<ResultsProps> = ({ addText, allocation, componentName, onSelect }) => {
 
   const { data: candidates } = useGetCandidatesQuery();
 
@@ -55,14 +58,18 @@ const Results: FC<ResultsProps> = ({ addText, allocation, componentName }) => {
             {addText}
           </Button>
         </Typography>
-        <IconButton endIcon={endIcon} onClick={componentName === 'Candidates' ? handleOpenPopup : undefined} alt="Иконка фильтров">
-         {allocation}
+        <IconButton
+          endIcon={endIcon}
+          onClick={componentName === 'Candidates' ? handleOpenPopup : undefined}
+          alt="Иконка фильтров"
+        >
+          {allocation}
         </IconButton>
       </article>
       <article className={styles.candidates}>
         <List className={{ item: styles.candidate }}>
           {candidatesResults.map((candidate, index) => (
-            <BlockCandidate key={candidate.id} candidate={candidate} tech={TECHNOLOGY[index]} />
+            <BlockCandidate key={candidate.id} candidate={candidate} onSelect={onSelect} tech={TECHNOLOGY[index]} />
           ))}
         </List>
       </article>

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Avatar, Typography } from '@mui/material';
+import { Avatar, Checkbox, Typography } from '@mui/material';
 
 import chartColumn from 'assets/images/chartColumn.svg';
 import map from 'assets/images/map.svg';
@@ -20,29 +20,31 @@ import ITech from 'types/ICandidate';
 
 export interface BlockCandidateProps {
   candidate: ICandidate;
-  onToggle?: () => void;
+  onSelect?: () => void;
+  onFavorite?: () => void;
   tech: ITech[];
 }
 
-const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onToggle, tech }) => {
+const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, onFavorite, tech }) => {
   const { first_name, last_name } = candidate;
   const name = getFullName(first_name, last_name);
   const profession = candidate.profession?.name;
   const grade = candidate?.grade;
   const town = candidate.town?.city;
 
-  console.log(tech);
-
   return (
     <div className={styles.block}>
-      <div className={styles.view}>
-        <Avatar className={styles.avatar} src={candidate.photo} />
-        <div className={styles.status}>
-          <TabRow className={styles.tab} size="small" color="secondary" text="Совпадение 90%" />
-          <TabRow className={styles.tab} size="small" color="light" text="Ищу работу" />
-          <Typography className={styles.activity} variant="caption" component="p">
-            Заходил(a) вчера в 23:59
-          </Typography>
+      <div className={styles.container}>
+        {onSelect && <Checkbox className={styles.checkbox} disableRipple onClick={onSelect} />}
+        <div className={styles.view}>
+          <Avatar className={styles.avatar} src={candidate.photo} />
+          <div className={styles.status}>
+            <TabRow className={styles.tab} size="small" color="secondary" text="Совпадение 90%" />
+            <TabRow className={styles.tab} size="small" color="light" text="Ищу работу" />
+            <Typography className={styles.activity} variant="caption" component="p">
+              Заходил(a) вчера в 23:59
+            </Typography>
+          </div>
         </div>
       </div>
       <div className={styles.body}>
@@ -51,7 +53,7 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onToggle, tech }) 
             <Typography className={styles.name} variant="h3" component="h2">
               {name}
             </Typography>
-            <HeartButton isFavorite={candidate.is_favorited} onClick={onToggle} />
+            <HeartButton isFavorite={candidate.is_favorited} onClick={onFavorite} />
           </header>
           <Typography className={styles.profession} variant="body1" component="p">
             {profession}

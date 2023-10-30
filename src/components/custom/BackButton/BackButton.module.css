@@ -3,9 +3,9 @@
   gap: 8px;
   text-decoration: none;
   width: min-content;
+  cursor: pointer;
 }
 
 .text {
   color: black;
-  cursor: pointer;
 }
