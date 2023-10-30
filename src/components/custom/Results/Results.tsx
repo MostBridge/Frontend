@@ -8,7 +8,6 @@ import List from 'components/custom/List/List';
 import BlockCandidate from 'components/custom/BlockCandidate/BlockCandidate';
 import IconButton from 'components/mui/IconButton/IconButton';
 import Filters from 'components/custom/Filters/Filters';
-import ICandidate from 'types/ICandidate';
 import { getCandidatesDeclension } from '../../../utils/utils';
 
 import styles from './Results.module.css';
@@ -26,7 +25,8 @@ const Results: FC<ResultsProps> = ({ addText, allocation, componentName }) => {
 
   const candidatesCount = candidates ? candidates.count : 0;
   
-  const candidatesNumber = `Всего найдено ${candidatesCount} ${getCandidatesDeclension(candidates.count)}`;
+  
+  const candidatesNumber = `Всего найдено ${candidatesCount} ${getCandidatesDeclension(candidatesCount)}`;
   const [isPopupFilterOpen, setIsPopupFilterOpen] = useState<boolean>(false);
 
   let endIcon;
