@@ -1,0 +1,11 @@
+.button {
+  display: flex;
+  gap: 8px;
+  text-decoration: none;
+  width: min-content;
+}
+
+.text {
+  color: black;
+  cursor: pointer;
+}

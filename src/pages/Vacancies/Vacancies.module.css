@@ -1,12 +1,25 @@
 .vacancies {
-    max-width: 1213px;
+    max-width: 100%;
     width: 100%;
 }
 
 .main {
    padding: 40px;
-   display: flex;
-   justify-content: space-between;
+}
+
+.cardsContainer {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-direction: column;
+    max-height: 870px;
+}
+
+.main__block {
+    display: grid;
+    grid-template-columns: auto 355px;
+    grid-template-rows: 222px auto;
+    column-gap: 24px;
 }
 
 .vacancies__title {
@@ -38,5 +51,5 @@
     font-size: 18px;
     line-height: 24px;
     font-weight: 400;
-    text-transform: capitalize;
+    text-transform: none;
 }

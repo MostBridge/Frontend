@@ -1,0 +1,16 @@
+.button {
+  height: 20px;
+  color: #1a1b22 !important;
+}
+
+.button > .MuiButton-endIcon {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+.button > .MuiButton-startIcon {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}

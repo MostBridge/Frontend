@@ -1,13 +1,15 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Shadows, ThemeProvider, StyledEngineProvider, createTheme } from '@mui/material';
-
-import Layout from 'components/Layout/Layout';
-import CreateVacancy from './pages/CreateVacancy/CreateVacancy';
-import SignIn from 'pages/SignIn/SignIn';
-import Vacancies from 'pages/Vacancies/Vacancies';
-import Candidates from 'pages/Candidates/Candidates';
 import { Provider } from 'react-redux';
 import { store } from './redux/store/store';
+
+import Layout from 'components/custom/Layout/Layout';
+import CreateVacancy from './pages/CreateVacancy/CreateVacancy';
+import SignIn from 'pages/SignIn/SignIn';
+import Vacancies from './pages/Vacancies/Vacancies';
+import Candidates from 'pages/Candidates/Candidates';
+import User from './pages/User/User';
+import Favorite from 'pages/Favorite/Favorite';
 
 const theme = createTheme({
   shadows: Array(25).fill('none') as Shadows,
@@ -45,6 +47,7 @@ const theme = createTheme({
       fontSize: 24,
       lineHeight: '32px',
       margin: 0,
+      fontWeight: '500px',
     },
     h3: {
       fontFamily: "'YS Display'",
@@ -53,6 +56,7 @@ const theme = createTheme({
       margin: 0,
     },
     subtitle1: {
+      fontWeight: 500,
       fontSize: 18,
       lineHeight: '24px',
       margin: 0,
@@ -82,12 +86,13 @@ function App() {
         <StyledEngineProvider injectFirst>
           <Provider store={store}>
             <Routes>
-              <Route path="/" element={<div>Страница еще не готова</div>} />
               <Route path="/sign-in" element={<SignIn />} />
               <Route element={<Layout />}>
-                <Route path="/vacancies" element={<Vacancies />} />
+                <Route path="/" element={<Vacancies />} />
                 <Route path="/candidates" element={<Candidates />} />
+                <Route path="/favorite" element={<Favorite />} />
                 <Route path="/create-vacancy" element={<CreateVacancy />} />
+                <Route path="/user" element={<User />} />
               </Route>
             </Routes>
           </Provider>

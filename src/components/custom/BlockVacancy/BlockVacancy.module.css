@@ -1,0 +1,56 @@
+.block {
+    padding: 24px;
+    max-width: 100%;
+    box-sizing: border-box;
+    border-radius: 12px;
+    border: 1px solid var(--Blue-light, #ACCCFF);
+    margin-bottom: 12px;
+}
+
+.block__first {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.state {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #C2E5CE;
+    margin-left: 12px;
+}
+
+.infoBlock {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.date {
+    padding-right: 12px;
+}
+
+.menuList {
+    border-radius: 12px;
+}
+
+.block__second {
+    gap: 16px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.new {
+    color: #1A1B22;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 4px;
+    background: #FFF9D3;
+}
+
+.button {
+    gap: 8px;
+    margin-right: 12px;
+}
