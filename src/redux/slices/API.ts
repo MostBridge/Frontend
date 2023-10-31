@@ -5,6 +5,7 @@ import IVacancy from 'types/IVacancy';
 import ITown from 'types/ITown';
 import IEmployment from 'types/IEmployment';
 import ITechnology from 'types/ITechnology';
+import ICandidate from 'types/ICandidate';
 
 interface LoginResponse {
   refresh: string;
@@ -19,6 +20,19 @@ export interface LoginParams {
 export interface GetTownsResponse {
   count: number;
   results: ITown[];
+}
+interface GetVacancyResponse {
+  count: number;
+  next: string;
+  previous: string;
+  results: IVacancy[];
+}
+
+interface ResultResponse {
+  count: number;
+  next: string;
+  previous: null;
+  results: ICandidate[];
 }
 
 export interface GetEmploymentsResponse {
@@ -123,6 +137,12 @@ export const API = createApi({
     getUser: builder.query<User, void>({
       query: () => ({ url: 'users/me/' }),
     }),
+    getVacancy: builder.query<GetVacancyResponse, void>({
+      query: () => ({ url: 'vacancy' }),
+    }),
+    getCandidates: builder.query<ResultResponse, void>({
+      query: () => ({ url: 'candidates/' }),
+    }),
     createVacancy: builder.mutation<IVacancy, CreateVacancyParams>({
       query: (params) => ({
         url: 'vacancy/',
@@ -155,4 +175,6 @@ export const {
   useGetTechnologiesQuery,
   useCreateVacancyMutation,
   useGetVacanciesQuery,
+  useGetVacancyQuery,
+  useGetCandidatesQuery,
 } = API;

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Avatar, Typography } from '@mui/material';
 
 import IUser from 'types/IUser';
-import { getFullName } from 'utils/utils';
+import { getFullName } from '../../../../utils/utils';
 
 import styles from './Header.module.css';
 
@@ -12,7 +12,7 @@ export interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ user = {} }) => {
-  const { avatar, first_name = 'Имя', last_name = 'Фамилия', email = 'example@yandex.ru' } = user;
+  const { avatar, first_name, last_name, email } = user;
   const name = getFullName(first_name, last_name);
 
   const navigate = useNavigate();
@@ -28,8 +28,7 @@ const Header: FC<HeaderProps> = ({ user = {} }) => {
         <Typography variant="body1" component="h2" color="primary.contrastText">
           {name}
         </Typography>
-        <Typography variant="body2" component="p" color="primary.contrastText">
-          {email}
+        <Typography variant="body2" component="p" color="primary.contrastText">{email}
         </Typography>
       </div>
     </header>

@@ -8,10 +8,12 @@ import List from 'components/custom/List/List';
 import BlockCandidate from 'components/custom/BlockCandidate/BlockCandidate';
 import IconButton from 'components/mui/IconButton/IconButton';
 import Filters from 'components/custom/Filters/Filters';
-import ICandidate from 'types/ICandidate';
 import { getCandidatesDeclension } from '../../../utils/utils';
 
 import styles from './Results.module.css';
+import { useGetCandidatesQuery } from '../../../redux/slices/API';
+import { TECHNOLOGY } from '../../../utils/constants';
+import ICandidate from 'types/ICandidate';
 
 export interface ResultsProps {
   candidates?: ICandidate[];
@@ -21,8 +23,14 @@ export interface ResultsProps {
   onSelect?: () => void;
 }
 
-const Results: FC<ResultsProps> = ({ candidates = [], addText, allocation, componentName, onSelect }) => {
-  const candidatesNumber = `Всего найдено ${candidates.length} ${getCandidatesDeclension(candidates.length)}`;
+const Results: FC<ResultsProps> = ({ addText, allocation, componentName, onSelect }) => {
+
+  const { data: candidates } = useGetCandidatesQuery();
+
+  const candidatesCount = candidates ? candidates.count : 0;
+  const candidatesResults = candidates ? candidates.results : [];
+  
+  const candidatesNumber = `Всего найдено ${candidatesCount} ${getCandidatesDeclension(candidatesCount)}`;
   const [isPopupFilterOpen, setIsPopupFilterOpen] = useState<boolean>(false);
 
   let endIcon;
@@ -40,7 +48,7 @@ const Results: FC<ResultsProps> = ({ candidates = [], addText, allocation, compo
   const handleClosePopup = () => {
     setIsPopupFilterOpen(false);
   };
-
+  
   return (
     <section className={styles.results}>
       <article className={styles.panel}>
@@ -60,8 +68,8 @@ const Results: FC<ResultsProps> = ({ candidates = [], addText, allocation, compo
       </article>
       <article className={styles.candidates}>
         <List className={{ item: styles.candidate }}>
-          {candidates?.map((candidate) => (
-            <BlockCandidate key={candidate.id} candidate={candidate} onSelect={onSelect} />
+          {candidatesResults.map((candidate, index) => (
+            <BlockCandidate key={candidate.id} candidate={candidate} onSelect={onSelect} tech={TECHNOLOGY[index]} />
           ))}
         </List>
       </article>

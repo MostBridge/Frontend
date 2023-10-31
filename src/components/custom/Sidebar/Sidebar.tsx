@@ -12,13 +12,20 @@ import bell from 'assets/images/bell.svg';
 import gear from 'assets/images/gear.svg';
 import circleInfo from 'assets/images/circleInfo.svg';
 import signOut from 'assets/images/signOut.svg';
-
+import styles from './Sidebar.module.css';
 import Header from './Header/Header';
 import Tab from './Tab/Tab';
-import styles from './Sidebar.module.css';
+import { useGetUserQuery } from '../../../redux/slices/API';
 
 const Sidebar: FC = () => {
-  const user: IUser = { first_name: 'Надежда', last_name: 'Сидорова', email: 'sidorova@yandex.ru', avatar };
+
+  const { data } = useGetUserQuery();
+  const email = data?.email || "";
+  const first_name = data?.first_name || "";
+  const last_name = data?.last_name || "";
+  
+  const user: IUser = { avatar, email, first_name, last_name };
+
 
   return (
     <aside className={styles.sidebar}>

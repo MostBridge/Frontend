@@ -1,8 +1,8 @@
 import { ChangeEvent, FC, useState } from 'react';
 import { SelectChangeEvent, Typography } from '@mui/material';
-import { CANDIDATES_LIST, VACANCIES_LIST } from '../../utils/constants';
+import { VACANCIES_LIST } from '../../utils/constants';
 import IFilters from 'types/IFilters';
-import Results from 'components/custom/Results/Results';
+// import Results from 'components/custom/Results/Results';
 import FiltersForm from 'components/custom/FiltersForm/FiltersForm';
 import styles from './Favorite.module.css';
 import Action from './Action/Action';
@@ -34,13 +34,13 @@ const Favorite: FC = () => {
           onChange={handleVacancyChange}
           onInput={handleSearchInput}
         />
-        <Results
+        {/* <Results
           componentName="Favorites"
           allocation="Сортировка"
           addText="Выбрать всех"
           candidates={CANDIDATES_LIST}
           onSelect={() => {}}
-        />
+        /> */}
       </main>
       <Action />
     </div>
