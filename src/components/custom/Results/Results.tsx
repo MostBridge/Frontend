@@ -15,15 +15,18 @@ import { TECHNOLOGY } from '../../../utils/constants';
 import ICandidate from 'types/ICandidate';
 
 export interface ResultsProps {
-  candidates?: ICandidate[];
+  candidates: ICandidate[];
   addText: string;
   allocation: string;
   componentName: string;
   onSelect?: () => void;
+  count: number
 }
 
-const Results: FC<ResultsProps> = ({ candidates = [], addText, allocation, componentName, onSelect }) => {
-  const candidatesCount = candidates.length;
+const Results: FC<ResultsProps> = ({ addText, allocation, componentName, candidates, onSelect, count }) => {
+
+  const candidatesCount = count;
+    
   const candidatesNumber = `Всего найдено ${candidatesCount} ${getCandidatesDeclension(candidatesCount)}`;
 
   const [isPopupFilterOpen, setIsPopupFilterOpen] = useState<boolean>(false);

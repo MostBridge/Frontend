@@ -12,9 +12,9 @@ import { useGetCandidatesQuery, useGetVacancyQuery } from '../../redux/slices/AP
 const Candidates: FC = () => {
   const getCandidatesQuery = useGetCandidatesQuery();
   const getVacanciesQuery = useGetVacancyQuery();
-  const candidates = getCandidatesQuery.data?.results;
+  const candidates = getCandidatesQuery.data?.results || [];
   const vacancies = getVacanciesQuery.data?.results;
-  const favorite = candidates?.filter((candidate) => candidate.is_favorited);
+  const favorite = candidates?.filter((candidate) => candidate.is_favorited) || [];
   const [filters, setFilters] = useState<IFilters>({ vacancyId: 0, search: '' });
 
   const handleVacancyChange = (event: SelectChangeEvent<number>) => {
@@ -26,6 +26,8 @@ const Candidates: FC = () => {
     const value = event.target.value;
     setFilters({ ...filters, search: value });
   };
+
+  getCandidatesQuery.data?.results
 
   return (
     <div className={styles.page}>
@@ -41,12 +43,7 @@ const Candidates: FC = () => {
           onChange={handleVacancyChange}
           onInput={handleSearchInput}
         />
-        <Results
-          candidates={candidates}
-          componentName="Candidates"
-          allocation="Фильтры"
-          addText="Добавить всех в избранные"
-        />
+        <Results componentName='Candidates' candidates={candidates} count={candidates.length} allocation='Фильтры' addText='Добавить всех в избранные' />
       </main>
       <Board candidates={favorite} />
     </div>

@@ -11,7 +11,7 @@ import Results from 'components/custom/Results/Results';
 
 const Favorite: FC = () => {
   const getCandidatesQuery = useGetCandidatesQuery();
-  const candidates = getCandidatesQuery.data?.results?.filter((candidate) => candidate.is_favorited);
+  const candidates = getCandidatesQuery.data?.results?.filter((candidate) => candidate.is_favorited) || [];
   const [filters, setFilters] = useState<IFilters>({ vacancyId: 0, search: '' });
 
   const handleVacancyChange = (event: SelectChangeEvent<number>) => {
@@ -43,7 +43,8 @@ const Favorite: FC = () => {
           allocation="Сортировка"
           addText="Выбрать всех"
           candidates={candidates}
-          onSelect={() => {}}
+          onSelect={() => { }}
+          count={candidates.length}
         />
       </main>
       <Action />

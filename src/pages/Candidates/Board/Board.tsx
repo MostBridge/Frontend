@@ -12,10 +12,11 @@ import { getCandidatesDeclension, isEmpty } from '../../../utils/utils';
 import styles from './Board.module.css';
 
 export interface BoardProps {
-  candidates?: ICandidate[];
+  candidates: ICandidate[];
 }
 
-const Board: FC<BoardProps> = ({ candidates = [] }) => {
+const Board: FC<BoardProps> = ({ candidates }) => {
+  console.log(candidates)
   const candidatesNumber = `Добавлено ${candidates.length} ${getCandidatesDeclension(candidates.length)}`;
   const expandedIcon = <Icon src={arrowDown} alt="Иконка раскрытия доски" />;
 

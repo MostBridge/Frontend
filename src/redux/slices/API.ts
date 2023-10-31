@@ -117,53 +117,66 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 
 // Define a service using a base URL and expected endpoints
 export const API = createApi({
-  reducerPath: 'API',
-  baseQuery: (args, api, extraOptions) => {
-    // Проверяем, содержит ли URL строку 'auth/jwt/create/'
-    if (args.url && args.url === 'auth/jwt/create/') {
-      return baseQueryWithoutReauth(args, api, extraOptions);
-    } else {
-      return baseQueryWithReauth(args as string | FetchArgs, api, extraOptions);
-    }
-  },
-  endpoints: (builder) => ({
-    login: builder.mutation<LoginResponse, LoginParams>({
-      query: (params) => ({
-        url: 'auth/jwt/create/',
-        method: 'POST',
-        body: params,
+    reducerPath: 'API',
+    baseQuery: (args, api, extraOptions) => {
+        // Проверяем, содержит ли URL строку 'auth/jwt/create/'
+        if (args.url && args.url === 'auth/jwt/create/') {
+            return baseQueryWithoutReauth(args, api, extraOptions);
+        } else {
+            return baseQueryWithReauth(args as string | FetchArgs, api, extraOptions);
+        }
+    },
+    endpoints: (builder) => ({
+        login: builder.mutation<LoginResponse, LoginParams>({
+            query: (params) => ({
+                url: 'auth/jwt/create/',
+                method: 'POST',
+                body: params
+            }),
+        }),
+        getUser: builder.query<User, void>({
+            query: () => ({ url: 'users/me/' }),
+        }),
+        getVacancy: builder.query<GetVacancyResponse, void>({
+            query: () => ({ url: 'vacancy' }),
+        }),
+        getCandidates: builder.query<ResultResponse, void>({
+            query: () => ({ url: 'candidates/' }),
+        }),
+        addToFavorite: builder.mutation<ICandidate, string>({
+            query: (id) => ({
+                url: `candidates/${id}/favorite/`,
+                method: 'POST',
+            }),
+        }),
+        removeFromFavorite: builder.mutation<ICandidate, string>({
+            query: (id) => ({
+                url: `candidates/${id}/favorite/`,
+                method: 'DELETE',
+            }),
+        }),
+        createVacancy: builder.mutation<IVacancy, CreateVacancyParams>({
+          query: (params) => ({
+            url: 'vacancy/',
+            method: 'POST',
+            body: params,
+          }),
+        }),
+        getTowns: builder.query<GetTownsResponse, void>({
+          query: () => ({ url: 'town/' }),
+        }),
+        getEmployments: builder.query<GetEmploymentsResponse, void>({
+          query: () => ({ url: 'employment/' }),
+        }),
+        getTechnologies: builder.query<GetTechnologiesResponse, void>({
+          query: () => ({ url: 'technology/' }),
+        }),
+        getVacancies: builder.query<IVacancy[], void>({
+          query: () => ({ url: 'vacancy/' }),
+        }),
       }),
-    }),
-    getUser: builder.query<User, void>({
-      query: () => ({ url: 'users/me/' }),
-    }),
-    getVacancy: builder.query<GetVacancyResponse, void>({
-      query: () => ({ url: 'vacancy/' }),
-    }),
-    getCandidates: builder.query<ResultResponse, void>({
-      query: () => ({ url: 'candidates/' }),
-    }),
-    createVacancy: builder.mutation<IVacancy, CreateVacancyParams>({
-      query: (params) => ({
-        url: 'vacancy/',
-        method: 'POST',
-        body: params,
-      }),
-    }),
-    getTowns: builder.query<GetTownsResponse, void>({
-      query: () => ({ url: 'town/' }),
-    }),
-    getEmployments: builder.query<GetEmploymentsResponse, void>({
-      query: () => ({ url: 'employment/' }),
-    }),
-    getTechnologies: builder.query<GetTechnologiesResponse, void>({
-      query: () => ({ url: 'technology/' }),
-    }),
-    getVacancies: builder.query<IVacancy[], void>({
-      query: () => ({ url: 'vacancy/' }),
-    }),
-  }),
-});
+  })
+   
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
@@ -177,4 +190,6 @@ export const {
   useGetVacanciesQuery,
   useGetVacancyQuery,
   useGetCandidatesQuery,
+  useAddToFavoriteMutation, 
+  useRemoveFromFavoriteMutation 
 } = API;
