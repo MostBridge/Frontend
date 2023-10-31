@@ -117,6 +117,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 128px;
+    height: 128px;
 }
 
 .name {

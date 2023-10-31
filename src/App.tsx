@@ -93,7 +93,7 @@ function App() {
                 <Route path="/candidates" element={<ProtectedRoute component={<Candidates />} />} />
                 <Route path="/favorite" element={<ProtectedRoute component={<Favorite />} />} />
                 <Route path="/create-vacancy" element={<ProtectedRoute component={<CreateVacancy />} />} />
-                <Route path="/user" element={<ProtectedRoute component={<User />} />} />
+                <Route path="/user/:id" element={<ProtectedRoute component={<User />} />} />
               </Route>
             </Routes>
           </Provider>

@@ -28,16 +28,18 @@ export interface BlockCandidateProps {
 const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, onFavorite, tech }) => {
   const { first_name, last_name } = candidate;
   const name = getFullName(first_name, last_name);
+
   const profession = candidate.profession?.name;
   const grade = candidate?.grade;
   const town = candidate.town?.city;
+  const photo = candidate?.photo;
 
   return (
     <div className={styles.block}>
       <div className={styles.container}>
         {onSelect && <Checkbox className={styles.checkbox} disableRipple onClick={onSelect} />}
         <div className={styles.view}>
-          <Avatar className={styles.avatar} src={candidate.photo} />
+          <Avatar className={styles.avatar} src={photo} />
           <div className={styles.status}>
             <TabRow className={styles.tab} size="small" color="secondary" text="Совпадение 90%" />
             <TabRow className={styles.tab} size="small" color="light" text="Ищу работу" />
@@ -73,7 +75,7 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, onFavori
           </List>
         </div>
         <div className={styles.navigation}>
-          <Link to="/user">
+          <Link to={`/user/${candidate.id}`}>
             <Button className={styles.button} variant="contained" size="small">
               Подробнее
             </Button>

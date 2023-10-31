@@ -69,7 +69,7 @@ const Results: FC<ResultsProps> = ({ addText, allocation, componentName, onSelec
       <article className={styles.candidates}>
         <List className={{ item: styles.candidate }}>
           {candidatesResults.map((candidate, index) => (
-            <BlockCandidate key={candidate.id} candidate={candidate} onSelect={onSelect} tech={TECHNOLOGY[index]} />
+              <BlockCandidate key={candidate.id} candidate={candidate}  onSelect={onSelect} tech={TECHNOLOGY[index]} />
           ))}
         </List>
       </article>
