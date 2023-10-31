@@ -175,7 +175,7 @@ export const API = createApi({
           query: () => ({ url: 'vacancy/' }),
         }),
       }),
-  }),
+  })
    
 
 // Export hooks for usage in functional components, which are

@@ -11,7 +11,7 @@ import Results from 'components/custom/Results/Results';
 
 const Favorite: FC = () => {
   const getCandidatesQuery = useGetCandidatesQuery();
-  const candidates = getCandidatesQuery.data?.results?.filter((candidate) => candidate.is_favorited);
+  const candidates = getCandidatesQuery.data?.results?.filter((candidate) => candidate.is_favorited) || [];
   const [filters, setFilters] = useState<IFilters>({ vacancyId: 0, search: '' });
 
   const handleVacancyChange = (event: SelectChangeEvent<number>) => {
@@ -23,12 +23,6 @@ const Favorite: FC = () => {
     const value = event.target.value;
     setFilters({ ...filters, search: value });
   };
-
-  const getCandidatesQuery = useGetCandidatesQuery()
-  const favoritesList = getCandidatesQuery.data?.results.filter((el) => {
-    console.log(el.is_favorited)
-    return el.is_favorited === true
-  }) || []
 
   return (
     <div className={styles.page}>
@@ -48,9 +42,9 @@ const Favorite: FC = () => {
           componentName="Favorites"
           allocation="Сортировка"
           addText="Выбрать всех"
-          candidates={favoritesList}
+          candidates={candidates}
           onSelect={() => { }}
-          count={favoritesList.length}
+          count={candidates.length}
         />
       </main>
       <Action />
