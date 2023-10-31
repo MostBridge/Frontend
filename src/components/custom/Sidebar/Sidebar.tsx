@@ -12,18 +12,27 @@ import bell from 'assets/images/bell.svg';
 import gear from 'assets/images/gear.svg';
 import circleInfo from 'assets/images/circleInfo.svg';
 import signOut from 'assets/images/signOut.svg';
-
+import styles from './Sidebar.module.css';
+import { useAppSelector } from '../../../hooks/useAppSelector';
+import { RootState } from 'src/redux/store/store';
 import Header from './Header/Header';
 import Tab from './Tab/Tab';
-import styles from './Sidebar.module.css';
 
 const Sidebar: FC = () => {
-  const user: IUser = { first_name: 'Надежда', last_name: 'Сидорова', email: 'sidorova@yandex.ru', avatar };
+
+   interface email {
+    email: string;
+  }
+  const selectEmail = (state: RootState) => state.Profile.email;
+  const email = useAppSelector(selectEmail);
+
+
+  const user: IUser = { first_name: 'Надежда', last_name: 'Сидорова', avatar };
 
   return (
     <aside className={styles.sidebar}>
       <div className={styles.container}>
-        <Header user={user} />
+        <Header user={user} email={email} />
         <List>
           <Tab icon={house} text="Мои вакансии" to="/"/>
           <Tab icon={persons} text="Поиск кандидатов" to="/candidates" />
