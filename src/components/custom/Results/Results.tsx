@@ -11,25 +11,24 @@ import Filters from 'components/custom/Filters/Filters';
 import { getCandidatesDeclension } from '../../../utils/utils';
 
 import styles from './Results.module.css';
-import { useGetCandidatesQuery } from '../../../redux/slices/API';
 import { TECHNOLOGY } from '../../../utils/constants';
 import ICandidate from 'types/ICandidate';
 
 export interface ResultsProps {
-  candidates?: ICandidate[];
+  candidates: ICandidate[];
   addText: string;
   allocation: string;
   componentName: string;
   onSelect?: () => void;
+  count: number
 }
 
-const Results: FC<ResultsProps> = ({ addText, allocation, componentName, onSelect }) => {
+const Results: FC<ResultsProps> = ({ addText, allocation, componentName, candidates, onSelect, count }) => {
 
-  const { data: candidates } = useGetCandidatesQuery();
+  // const { data: candidates } = useGetCandidatesQuery();
 
-  const candidatesCount = candidates ? candidates.count : 0;
-  const candidatesResults = candidates ? candidates.results : [];
-  
+  const candidatesCount = count;
+
   const candidatesNumber = `Всего найдено ${candidatesCount} ${getCandidatesDeclension(candidatesCount)}`;
   const [isPopupFilterOpen, setIsPopupFilterOpen] = useState<boolean>(false);
 
@@ -48,7 +47,7 @@ const Results: FC<ResultsProps> = ({ addText, allocation, componentName, onSelec
   const handleClosePopup = () => {
     setIsPopupFilterOpen(false);
   };
-  
+
   return (
     <section className={styles.results}>
       <article className={styles.panel}>
@@ -68,7 +67,7 @@ const Results: FC<ResultsProps> = ({ addText, allocation, componentName, onSelec
       </article>
       <article className={styles.candidates}>
         <List className={{ item: styles.candidate }}>
-          {candidatesResults.map((candidate, index) => (
+          {candidates.map((candidate, index) => (
             <BlockCandidate key={candidate.id} candidate={candidate} onSelect={onSelect} tech={TECHNOLOGY[index]} />
           ))}
         </List>

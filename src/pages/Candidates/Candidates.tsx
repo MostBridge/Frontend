@@ -7,6 +7,7 @@ import IFilters from 'types/IFilters';
 import FiltersForm from '../../components/custom/FiltersForm/FiltersForm';
 import styles from './Candidates.module.css';
 import Results from '../../components/custom/Results/Results';
+import { useGetCandidatesQuery } from '../../redux/slices/API';
 // import Board from './Board/Board';
 
 const Candidates: FC = () => {
@@ -22,6 +23,12 @@ const Candidates: FC = () => {
     setFilters({ ...filters, search: value });
   };
 
+  const getCandidatesQuery = useGetCandidatesQuery()
+  const candidatesList = getCandidatesQuery.data?.results || []
+  const count = getCandidatesQuery.data?.count || 0
+
+  getCandidatesQuery.data?.results
+
   return (
     <div className={styles.page}>
       <main className={styles.content}>
@@ -36,7 +43,7 @@ const Candidates: FC = () => {
           onChange={handleVacancyChange}
           onInput={handleSearchInput}
         />
-        <Results componentName='Candidates' allocation='Фильтры' addText='Добавить всех в избранные' />
+        <Results componentName='Candidates' candidates={candidatesList} count={count} allocation='Фильтры' addText='Добавить всех в избранные' />
       </main>
       {/* <Board candidates={FAVORITE_LIST} /> */}
     </div>

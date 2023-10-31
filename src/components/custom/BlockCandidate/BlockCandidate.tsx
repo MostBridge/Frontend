@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import { Avatar, Checkbox, Typography } from '@mui/material';
 
@@ -17,6 +17,7 @@ import TabRow from '../TabRow/TabRow';
 import HeartButton from '../HeartButton/HeartButton';
 import { Link } from 'react-router-dom';
 import ITech from 'types/ICandidate';
+import { useAddToFavoriteMutation, useGetCandidatesQuery, useRemoveFromFavoriteMutation } from '../../../redux/slices/API';
 
 export interface BlockCandidateProps {
   candidate: ICandidate;
@@ -25,12 +26,36 @@ export interface BlockCandidateProps {
   tech: ITech[];
 }
 
-const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, onFavorite, tech }) => {
+const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, tech }) => {
   const { first_name, last_name } = candidate;
   const name = getFullName(first_name, last_name);
   const profession = candidate.profession?.name;
   const grade = candidate?.grade;
   const town = candidate.town?.city;
+
+  const [heartState, setHeartState] = useState(candidate.is_favorited)
+
+  const [addToFavorite] = useAddToFavoriteMutation();
+  const [removeFromFavorite] = useRemoveFromFavoriteMutation();
+  const { refetch } = useGetCandidatesQuery();
+
+  const handleHeartClick = async () => {
+    try {
+      if (candidate.id && !candidate.is_favorited) {
+        await addToFavorite(candidate.id?.toString());
+        void refetch();
+        setHeartState(!heartState)
+      }
+      if (candidate.id && candidate.is_favorited) {
+        await removeFromFavorite(candidate.id?.toString());
+        void refetch();
+        setHeartState(!heartState)
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 
   return (
     <div className={styles.block}>
@@ -53,7 +78,7 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, onFavori
             <Typography className={styles.name} variant="h3" component="h2">
               {name}
             </Typography>
-            <HeartButton isFavorite={candidate.is_favorited} onClick={onFavorite} />
+            <HeartButton isFavorite={heartState} onClick={handleHeartClick} />
           </header>
           <Typography className={styles.profession} variant="body1" component="p">
             {profession}
@@ -65,12 +90,12 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, onFavori
             <IconTag icon={star} text={`Опыт от ${candidate.experience}`} alt="Иконка опыта" />
           </List>
           <List className={{ list: styles.skills }}>
-          <List className={{ list: styles.skills }}>
-        {tech?.map((skill) => (
-          <TabRow className={styles.tab} isSelected size="small" key={skill.ids} text={skill.name} />
-        ))}
-      </List>
-</List>
+            <List className={{ list: styles.skills }}>
+              {tech?.map((skill) => (
+                <TabRow className={styles.tab} isSelected size="small" key={skill.ids} text={skill.name} />
+              ))}
+            </List>
+          </List>
         </div>
         <div className={styles.navigation}>
           <Link to="/user">

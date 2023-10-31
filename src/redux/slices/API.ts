@@ -105,10 +105,22 @@ export const API = createApi({
         getCandidates: builder.query<ResultResponse, void>({
             query: () => ({ url: 'candidates/' }),
         }),
+        addToFavorite: builder.mutation<ICandidate, string>({
+            query: (id) => ({
+                url: `candidates/${id}/favorite/`,
+                method: 'POST',
+            }),
+        }),
+        removeFromFavorite: builder.mutation<ICandidate, string>({
+            query: (id) => ({
+                url: `candidates/${id}/favorite/`,
+                method: 'DELETE',
+            }),
+        }),
     }),
 })
 
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useLoginMutation, useGetUserQuery, useGetVacancyQuery, useGetCandidatesQuery } = API
+export const { useLoginMutation, useGetUserQuery, useGetVacancyQuery, useGetCandidatesQuery, useAddToFavoriteMutation, useRemoveFromFavoriteMutation } = API
