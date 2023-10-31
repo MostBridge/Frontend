@@ -16,6 +16,7 @@ import styles from './Sidebar.module.css';
 import Header from './Header/Header';
 import Tab from './Tab/Tab';
 import { useGetUserQuery } from '../../../redux/slices/API';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar: FC = () => {
 
@@ -23,16 +24,23 @@ const Sidebar: FC = () => {
   const email = data?.email || "";
   const first_name = data?.first_name || "";
   const last_name = data?.last_name || "";
-  
+
   const user: IUser = { avatar, email, first_name, last_name };
 
+  const navigate = useNavigate()
+
+  const handleSignOut = () => {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    navigate('/sign-in')
+  }
 
   return (
     <aside className={styles.sidebar}>
       <div className={styles.container}>
         <Header user={user} />
         <List>
-          <Tab icon={house} text="Мои вакансии" to="/"/>
+          <Tab icon={house} text="Мои вакансии" to="/" />
           <Tab icon={persons} text="Поиск кандидатов" to="/candidates" />
           <Tab icon={heart} text="Избранные кандидаты" to="/favorite" />
           <Tab icon={circleCheck} text="Отклики" />
@@ -43,7 +51,7 @@ const Sidebar: FC = () => {
         <Tab icon={bell} text="Уведомления" />
         <Tab icon={gear} text="Настройки" />
         <Tab icon={circleInfo} text="Помощь" />
-        <Tab icon={signOut} text="Выход" />
+        <Tab icon={signOut} text="Выход" onClick={handleSignOut} />
       </List>
     </aside>
   );
