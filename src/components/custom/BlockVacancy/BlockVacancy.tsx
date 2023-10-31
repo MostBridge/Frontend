@@ -49,7 +49,7 @@ const BlockVacancy: FC<VacancyProps> = ({ data }) => {
       <div className={styles.block__first}>
         <div className={styles.infoBlock}>
           <Typography variant="body1" color="text.primary">
-            {data.title}
+            {data.profession?.name}
           </Typography>
           <Typography className={styles.state} variant="body2" color="text.primary">
             Опубликовано {formattedDate}
