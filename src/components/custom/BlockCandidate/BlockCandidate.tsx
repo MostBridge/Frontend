@@ -32,7 +32,6 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, tech }) 
   const name = getFullName(first_name, last_name);
 
   const profession = candidate.profession?.name;
-  const grade = candidate?.grade;
   const town = candidate.town?.city;
   const photo = candidate?.photo;
 
@@ -87,7 +86,7 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, tech }) 
             {profession}
           </Typography>
           <List className={{ list: styles.info }}>
-            <IconTag icon={chartColumn} text={Grade[grade as any]} alt="Иконка квалификации" />
+            <IconTag icon={chartColumn} text={Grade[candidate?.grade as any]} alt="Иконка квалификации" />
             <IconTag icon={map} text={town} alt="Иконка города" />
             <IconTag icon={money} text="100 000 ₽" alt="Иконка зарплаты" />
             <IconTag icon={star} text={Experience[candidate?.experience as any]} alt="Иконка опыта" />

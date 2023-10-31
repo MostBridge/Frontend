@@ -14,6 +14,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import email_icon from './../../assets/images/envelope-open.svg';
 import telegram_icon from './../../assets/images/logo-telegram.svg';
 import { useGetCandidatesQuery } from '../../redux/slices/API';
+import { Experience, Grade } from 'types/IVacancy';
 
 const User: FC = () => {
   const { id } = useParams();
@@ -22,12 +23,6 @@ const numericId = Number(id);
 const { data: candidates } = useGetCandidatesQuery();
 
 const selectedCandidate = candidates?.results.find(candidate => candidate.id === numericId);
-
-if (selectedCandidate) {
-  console.log("Найденный кандидат:", selectedCandidate);
-} else {
-  console.log("Кандидат с таким ID не найден");
-}
 
   const [tabsValues, setTabsValues] = useState({ first: 0, second: 0, third: 0 });
 
@@ -39,19 +34,41 @@ if (selectedCandidate) {
   const goBack = () => {
     navigate(-1);
   };
-
-  // const candidateInfo = {
-  //   first_name: 'Константин',
-  //   last_name: 'Константинов',
-  //   contacts: {
-  //     Телефон: '88005553535',
-  //     Telegram: '@konstantin',
-  //     email: 'konstantin@getMaxListeners.com',
-  //   },
-  //   profession: {
-  //     name: 'Графический дизайнер',
-  //   },
-  // };
+  function renderSkills(profession?: string) {
+    let skills: string[] = [];
+  
+    if (profession === "Backend-разработчик") {
+      skills = [
+        "Работа с серверными языками (например, Java, Python, Node.js)",
+        "Знание баз данных (например, MySQL, MongoDB, PostgreSQL)",
+        "Понимание RESTful API и SOAP",
+      ];
+    } else if (profession === "Frontend-разработчик") {
+      skills = [
+        "HTML/CSS",
+        "JavaScript и фреймворки (например, React, Angular)",
+        "Адаптивная и кроссбраузерная верстка",
+        "TypeScript",
+        "Работа с RESTful и GraphQL API",
+        "Управление состоянием приложения (Redux, MobX)",
+      ];
+    } else if (profession === "Дизайнер") {
+      skills = [
+        "Разработка полиграфических материалов",
+        "Векторная графика",
+        "Дизайн иконок",
+        "Растровая графика", 
+        "Разработка фирменного стиля",
+        "Создание иллюстраций",
+        "Создание скетчей",
+      ];
+    }
+    return skills.map((skill, index) => (
+      <Typography key={index} variant="body1" component="p" className={styles.list}>
+        • {skill}
+      </Typography>
+    ));
+  }
 
   return (
     <main className={styles.main}>
@@ -118,7 +135,7 @@ if (selectedCandidate) {
               </Typography>
               <div className={styles.contacts_element}>
                 <Typography variant="body1" component="p">
-                Выпускник курса {selectedCandidate?.profession?.name}, 2023 г.
+                Выпускник курса "{selectedCandidate?.profession?.name}", 2023 г.
                 </Typography>
               </div>
             </div>
@@ -137,7 +154,7 @@ if (selectedCandidate) {
             <div className={styles.infoBlock}>
               <img src={graph} alt="Иконка графика" />
               <Typography color="text.secondary" variant="body2">
-              {selectedCandidate?.grade}
+               {Grade[selectedCandidate?.grade as any]}
               </Typography>
             </div>
 
@@ -158,7 +175,7 @@ if (selectedCandidate) {
             <div className={styles.infoBlock}>
               <img src={star} alt="Иконка звезды" />
               <Typography color="text.secondary" variant="body2">
-                Опыт до 1 года
+                {Experience[selectedCandidate?.experience as any]}
               </Typography>
             </div>
             <img className={styles.like} src={like} alt="Иконка сердца" />
@@ -166,29 +183,9 @@ if (selectedCandidate) {
           <Typography className={styles.title} variant="subtitle1" component="h3">
             Навыки
           </Typography>
-          <div className={styles.skills}>
-            <Typography variant="body1" component="p" className={styles.list}>
-              • Разработка полиграфический материалов{' '}
-            </Typography>
-            <Typography variant="body1" component="p" className={styles.list}>
-              • Векторная графика
-            </Typography>
-            <Typography variant="body1" component="p" className={styles.list}>
-              • Дизайн иконок
-            </Typography>
-            <Typography variant="body1" component="p" className={styles.list}>
-              • Растровая графика
-            </Typography>
-            <Typography variant="body1" component="p" className={styles.list}>
-              • Разработка фирменного стиля
-            </Typography>
-            <Typography variant="body1" component="p" className={styles.list}>
-              • Создание иллюстраций
-            </Typography>
-            <Typography variant="body1" component="p" className={styles.list}>
-              • Создание скетчей
-            </Typography>
-          </div>
+              <div className={styles.skills}>
+              {renderSkills(selectedCandidate?.profession?.name)}
+            </div>
           <Tabs
             value={tabsValues.first}
             onChange={(_, value: number) => handleChange('first', value)}
@@ -224,7 +221,7 @@ if (selectedCandidate) {
           </Typography>
           <div className={styles.profession}>
             <Typography variant="body1" component="p" className={styles.list}>
-              Дизайнер
+           {selectedCandidate?.profession?.name}
             </Typography>
             <Typography variant="body1" component="p" className={styles.list}>
               • Июль 2022 — По настоящее время (1 год и 4 месяца)

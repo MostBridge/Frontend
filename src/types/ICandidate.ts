@@ -11,7 +11,6 @@ export default interface ICandidate {
   id?: number;
   first_name?: string;
   last_name?: string;
-  experience?: Experience;
   employment?: IEmployment[];
   project?: number;
   portfolio?: string;
@@ -20,25 +19,14 @@ export default interface ICandidate {
   contacts?: IContact;
   town?: ITown;
   profession?: IProfession;
-  grade?: Grade;
   photo?: string;
   is_favorited?: boolean;
   is_viewed?: boolean,
+  grade?: Grade;
+  experience?: Experience;
+  technology?: [];
 }
 
-export enum Status {
-  active = 'Активная',
-  not_active = 'Не активная',
-  archived = 'Архивная',
-  hidden = 'Скрытая',
-}
-
-export enum Education {
-  high = 'Высшее',
-  high_profile = 'Высшее профильное',
-  no_matter = 'Не важно',
-  secondary_professional = 'Средне-техническое',
-}
 
 export enum Grade {
   junior = 'Junior',
