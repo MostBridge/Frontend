@@ -3,13 +3,16 @@ import { FC, useState } from 'react';
 import styles from './CustomFilterButton.module.css';
 
 interface CustomFilterButtonProps {
-  el: string;
+  value?: number | string;
+  el?: string;
+  onClick?: (id?: number | string) => void;
 }
 
-const CustomFilterButton: FC<CustomFilterButtonProps> = ({ el }) => {
+const CustomFilterButton: FC<CustomFilterButtonProps> = ({ value, el, onClick }) => {
   const [active, setActive] = useState(false);
 
   function handleClick() {
+    if (onClick) onClick(value);
     setActive(!active);
   }
 
@@ -20,7 +23,6 @@ const CustomFilterButton: FC<CustomFilterButtonProps> = ({ el }) => {
       size="medium"
       onClick={handleClick}
     >
-      {' '}
       {el}
     </FilterButton>
   );

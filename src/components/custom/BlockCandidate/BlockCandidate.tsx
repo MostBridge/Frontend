@@ -59,18 +59,18 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, onFavori
             {profession}
           </Typography>
           <List className={{ list: styles.info }}>
-            <IconTag icon={chartColumn} text={grade} alt="Иконка квалификации" />
+            <IconTag icon={chartColumn} text={grade?.toString()} alt="Иконка квалификации" />
             <IconTag icon={map} text={town} alt="Иконка города" />
             <IconTag icon={money} text="100 000 ₽" alt="Иконка зарплаты" />
-            <IconTag icon={star} text={`Опыт от ${candidate.experience}`} alt="Иконка опыта" />
+            <IconTag icon={star} text={`Опыт от ${candidate?.experience?.toString()}`} alt="Иконка опыта" />
           </List>
           <List className={{ list: styles.skills }}>
-          <List className={{ list: styles.skills }}>
-        {tech?.map((skill) => (
-          <TabRow className={styles.tab} isSelected size="small" key={skill.ids} text={skill.name} />
-        ))}
-      </List>
-</List>
+            <List className={{ list: styles.skills }}>
+              {tech?.map((skill) => (
+                <TabRow className={styles.tab} isSelected size="small" key={skill.ids} text={skill.name} />
+              ))}
+            </List>
+          </List>
         </div>
         <div className={styles.navigation}>
           <Link to="/user">

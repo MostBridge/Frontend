@@ -12,27 +12,28 @@ export enum Status {
 }
 
 export enum Education {
-  high = 'Высшее',
-  high_profile = 'Высшее профильное',
-  no_matter = 'Не важно',
-  secondary_professional = 'Средне-техническое',
+  high = 'Высшее' as any,
+  high_profile = 'Высшее профильное' as any,
+  no_matter = 'Не важно' as any,
+  secondary_professional = 'Средне-техническое' as any,
 }
 
 export enum Grade {
-  junior = 'Junior',
-  middle = 'Middle',
+  junior = 'Junior' as any,
+  middle = 'Middle' as any,
 }
 
 export enum Experience {
-  no = 'Нет опыта',
-  one = 'Опыт 1 - 3 года',
-  three = 'Опыт 3 - 6 лет',
+  no = 'Нет опыта' as any,
+  one = 'Опыт 1 - 3 года' as any,
+  three = 'Опыт 3 - 6 лет' as any,
 }
 
 export default interface IVacancy {
   id?: number;
   title?: string;
   company?: string;
+  country?: string;
   education?: Education;
   status?: Status;
   author?: IUser;

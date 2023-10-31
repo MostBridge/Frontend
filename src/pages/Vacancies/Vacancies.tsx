@@ -10,11 +10,13 @@ import BlockVacancy from 'components/custom/BlockVacancy/BlockVacancy';
 import { Link } from 'react-router-dom';
 import Filters from 'components/custom/Filters/Filters';
 import IconButton from 'components/mui/IconButton/IconButton';
-import { useGetVacancyQuery } from '../../redux/slices/API';
+import { useGetVacanciesQuery, useGetVacancyQuery } from '../../redux/slices/API';
 
 const Vacancies: FC = () => {
+  const { data: res } = useGetVacanciesQuery();
   const [tabsValues, setTabsValues] = useState({ first: 0, second: 0 });
   const [isPopupFilterOpen, setIsPopupFilterOpen] = useState(false);
+  console.log(res);
 
   const handleChange = (key: 'first' | 'second', newValue: number) => {
     setTabsValues((prevValues) => ({ ...prevValues, [key]: newValue }));
@@ -28,7 +30,7 @@ const Vacancies: FC = () => {
     setIsPopupFilterOpen(false);
   };
 
-  const getVacancyQuery = useGetVacancyQuery()
+  const getVacancyQuery = useGetVacancyQuery();
 
   return (
     <main className={styles.main}>
@@ -83,9 +85,8 @@ const Vacancies: FC = () => {
         </div>
         <AI />
         <div className={styles.cardsContainer}>
-          {getVacancyQuery.isSuccess && getVacancyQuery.data.results.map((vacancy, index) => (
-            <BlockVacancy key={index} data={vacancy} />
-          ))}
+          {getVacancyQuery.isSuccess &&
+            getVacancyQuery.data.results.map((vacancy, index) => <BlockVacancy key={index} data={vacancy} />)}
         </div>
       </div>
       {isPopupFilterOpen && <Filters onClose={handleClosePopup} isPopupFilterOpen={isPopupFilterOpen} />}

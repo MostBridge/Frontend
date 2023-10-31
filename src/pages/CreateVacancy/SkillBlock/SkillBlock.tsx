@@ -7,14 +7,15 @@ import { v4 as uuidv4 } from 'uuid';
 import Icon from 'components/mui/Icon/Icon';
 
 interface SkillBlockProps {
-  array: string[];
+  value?: string | null;
+  array?: string[];
+  set: Set<string>;
+  setSet: any;
+  onChange?: (_event: unknown, newValue: string | null) => void;
 }
 
-const SkillBlock: FC<SkillBlockProps> = ({ array }) => {
-  const [value, setValue] = useState<string | null>('');
+const SkillBlock: FC<SkillBlockProps> = ({ array, value, set, setSet, onChange }) => {
   const [inputValue, setInputValue] = useState('');
-
-  const [set, setSet] = useState(new Set<string>());
 
   const theme = useTheme();
 
@@ -33,19 +34,12 @@ const SkillBlock: FC<SkillBlockProps> = ({ array }) => {
           Выберите от 3 до 7 навыков
         </Typography>
         <Autocomplete
-          options={array}
+          options={array || []}
           sx={{ maxWidth: 320 }}
           renderInput={(params) => <TextField {...params} />}
           value={value}
           popupIcon={<Icon src={arrowDown} />}
-          onChange={(_event: unknown, newValue: string | null) => {
-            setValue(newValue);
-            if (newValue !== null) {
-              setSet((el) => {
-                return el.add(newValue);
-              });
-            }
-          }}
+          onChange={onChange}
           inputValue={inputValue}
           onInputChange={(_event, newInputValue) => {
             setInputValue(newInputValue);
