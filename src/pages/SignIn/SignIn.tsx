@@ -10,11 +10,8 @@ import telegramIcon from 'assets/images/telegramIcon.svg';
 
 import styles from './SignIn.module.css';
 import { LoginParams, useLoginMutation } from '../../redux/slices/API';
-import { useDispatch } from 'react-redux';
-import { setEmail } from '../../redux/slices/Profile';
 
 const SignIn: FC = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm<LoginParams>()
@@ -30,7 +27,6 @@ const SignIn: FC = () => {
         // Save tokens in localStorage
         localStorage.setItem('accessToken', result.data.access);
         localStorage.setItem('refreshToken', result.data.refresh);
-        dispatch(setEmail(data.email));
         navigate('/')
       } else {
         console.log(result.error)

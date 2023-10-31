@@ -13,26 +13,24 @@ import gear from 'assets/images/gear.svg';
 import circleInfo from 'assets/images/circleInfo.svg';
 import signOut from 'assets/images/signOut.svg';
 import styles from './Sidebar.module.css';
-import { useAppSelector } from '../../../hooks/useAppSelector';
-import { RootState } from 'src/redux/store/store';
 import Header from './Header/Header';
 import Tab from './Tab/Tab';
+import { useGetUserQuery } from '../../../redux/slices/API';
 
 const Sidebar: FC = () => {
 
-   interface email {
-    email: string;
-  }
-  const selectEmail = (state: RootState) => state.Profile.email;
-  const email = useAppSelector(selectEmail);
+  const { data } = useGetUserQuery();
+  const email = data?.email || "";
+  const first_name = data?.first_name || "";
+  const last_name = data?.last_name || "";
+  
+  const user: IUser = { avatar, email, first_name, last_name };
 
-
-  const user: IUser = { first_name: 'Надежда', last_name: 'Сидорова', avatar };
 
   return (
     <aside className={styles.sidebar}>
       <div className={styles.container}>
-        <Header user={user} email={email} />
+        <Header user={user} />
         <List>
           <Tab icon={house} text="Мои вакансии" to="/"/>
           <Tab icon={persons} text="Поиск кандидатов" to="/candidates" />
