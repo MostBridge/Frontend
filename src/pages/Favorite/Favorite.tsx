@@ -6,8 +6,12 @@ import IFilters from 'types/IFilters';
 import FiltersForm from 'components/custom/FiltersForm/FiltersForm';
 import styles from './Favorite.module.css';
 import Action from './Action/Action';
+import { useGetCandidatesQuery } from '../../redux/slices/API';
+import Results from 'components/custom/Results/Results';
 
 const Favorite: FC = () => {
+  const getCandidatesQuery = useGetCandidatesQuery();
+  const candidates = getCandidatesQuery.data?.results?.filter((candidate) => candidate.is_favorited);
   const [filters, setFilters] = useState<IFilters>({ vacancyId: 0, search: '' });
 
   const handleVacancyChange = (event: SelectChangeEvent<number>) => {
@@ -34,13 +38,13 @@ const Favorite: FC = () => {
           onChange={handleVacancyChange}
           onInput={handleSearchInput}
         />
-        {/* <Results
+        <Results
           componentName="Favorites"
           allocation="Сортировка"
           addText="Выбрать всех"
-          candidates={CANDIDATES_LIST}
+          candidates={candidates}
           onSelect={() => {}}
-        /> */}
+        />
       </main>
       <Action />
     </div>

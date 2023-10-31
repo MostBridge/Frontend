@@ -138,7 +138,7 @@ export const API = createApi({
       query: () => ({ url: 'users/me/' }),
     }),
     getVacancy: builder.query<GetVacancyResponse, void>({
-      query: () => ({ url: 'vacancy' }),
+      query: () => ({ url: 'vacancy/' }),
     }),
     getCandidates: builder.query<ResultResponse, void>({
       query: () => ({ url: 'candidates/' }),
@@ -159,7 +159,7 @@ export const API = createApi({
     getTechnologies: builder.query<GetTechnologiesResponse, void>({
       query: () => ({ url: 'technology/' }),
     }),
-    getVacancies: builder.query<IVacancy, void>({
+    getVacancies: builder.query<IVacancy[], void>({
       query: () => ({ url: 'vacancy/' }),
     }),
   }),

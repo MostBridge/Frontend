@@ -17,6 +17,7 @@ import TabRow from '../TabRow/TabRow';
 import HeartButton from '../HeartButton/HeartButton';
 import { Link } from 'react-router-dom';
 import ITech from 'types/ICandidate';
+import { Experience, Grade } from 'types/IVacancy';
 
 export interface BlockCandidateProps {
   candidate: ICandidate;
@@ -55,16 +56,16 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, onFavori
             <Typography className={styles.name} variant="h3" component="h2">
               {name}
             </Typography>
-            <HeartButton isFavorite={candidate.is_favorited} onClick={onFavorite} />
+            <HeartButton className={styles.heart} isFavorite={candidate.is_favorited} onClick={onFavorite} />
           </header>
           <Typography className={styles.profession} variant="body1" component="p">
             {profession}
           </Typography>
           <List className={{ list: styles.info }}>
-            <IconTag icon={chartColumn} text={grade?.toString()} alt="Иконка квалификации" />
+            <IconTag icon={chartColumn} text={Grade[grade as any]} alt="Иконка квалификации" />
             <IconTag icon={map} text={town} alt="Иконка города" />
             <IconTag icon={money} text="100 000 ₽" alt="Иконка зарплаты" />
-            <IconTag icon={star} text={`Опыт от ${candidate?.experience?.toString()}`} alt="Иконка опыта" />
+            <IconTag icon={star} text={Experience[candidate?.experience as any]} alt="Иконка опыта" />
           </List>
           <List className={{ list: styles.skills }}>
             <List className={{ list: styles.skills }}>

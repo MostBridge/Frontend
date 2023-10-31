@@ -8,9 +8,6 @@
   background-size: contain;
   background-color: transparent;
   transition: filter linear 0.2s;
-  position: absolute;
-  top: 24px;
-  right: 24px;
 }
 
 .button.medium {
