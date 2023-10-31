@@ -1,5 +1,4 @@
 .block {
-  position: relative;
   display: flex;
   align-items: center;
   gap: 24px;
@@ -10,7 +9,6 @@
   background-color: #fff;
   box-sizing: border-box;
   padding: 24px;
-  position: relative;
 }
 
 .block:hover {

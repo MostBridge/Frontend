@@ -31,3 +31,7 @@
 .candidate + .candidate {
   margin-top: 12px;
 }
+
+.candidate {
+  position: relative;
+}

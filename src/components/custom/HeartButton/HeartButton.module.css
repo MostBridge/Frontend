@@ -1,4 +1,8 @@
 .button {
+  top: 30px;
+  right: 30px;
+  position: absolute;
+  content: '';
   border: none;
   outline: none;
   padding: 0;
