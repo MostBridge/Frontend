@@ -5,15 +5,22 @@
 
 .main {
    padding: 40px;
+   padding-bottom: 0;
+   box-sizing: border-box;
 }
 
 .cardsContainer {
     display: flex;
-    overflow-x: auto;
     white-space: nowrap;
     flex-direction: column;
-    max-height: 870px;
+    max-height: calc(100vh - 262px);
+    overflow: scroll;
+    box-sizing: border-box;
 }
+
+.cardsContainer::-webkit-scrollbar {
+    display: none;
+  }
 
 .main__block {
     display: grid;

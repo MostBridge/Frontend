@@ -13,7 +13,7 @@ import VacancyPlaceholder from 'components/custom/VacancyPlaceholder/VacancyPlac
 import styles from './FiltersForm.module.css';
 
 export interface FiltersFormProps {
-  textTitle: string,
+  textTitle: string;
   className?: string;
   filters: IFilters;
   vacancies?: IVacancy[];
@@ -32,7 +32,7 @@ const FiltersForm: FC<FiltersFormProps> = ({ filters, vacancies = [], className,
   return (
     <section className={className}>
       <form className={styles.form}>
-        <Label label={textTitle}>
+        <Label label={textTitle} fullWidth={false}>
           <Select className={styles.select} renderValue={renderValue} value={vacancyId} onChange={onChange}>
             <MenuItem value={0}>По всей базе кандидатов</MenuItem>
             {vacancies.map((vacancy) => (

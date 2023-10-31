@@ -10,6 +10,7 @@ import Vacancies from './pages/Vacancies/Vacancies';
 import Candidates from 'pages/Candidates/Candidates';
 import User from './pages/User/User';
 import Favorite from 'pages/Favorite/Favorite';
+import ProtectedRoute from 'components/custom/ProtectedRoute/ProtectedRoute';
 
 const theme = createTheme({
   shadows: Array(25).fill('none') as Shadows,
@@ -87,12 +88,12 @@ function App() {
           <Provider store={store}>
             <Routes>
               <Route path="/sign-in" element={<SignIn />} />
-              <Route element={<Layout />}>
-                <Route path="/" element={<Vacancies />} />
-                <Route path="/candidates" element={<Candidates />} />
-                <Route path="/favorite" element={<Favorite />} />
-                <Route path="/create-vacancy" element={<CreateVacancy />} />
-                <Route path="/user" element={<User />} />
+              <Route element={<ProtectedRoute component={<Layout />} />}>
+                <Route path="/" element={<ProtectedRoute component={<Vacancies />} />} />
+                <Route path="/candidates" element={<ProtectedRoute component={<Candidates />} />} />
+                <Route path="/favorite" element={<ProtectedRoute component={<Favorite />} />} />
+                <Route path="/create-vacancy" element={<ProtectedRoute component={<CreateVacancy />} />} />
+                <Route path="/user" element={<ProtectedRoute component={<User />} />} />
               </Route>
             </Routes>
           </Provider>

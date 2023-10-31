@@ -4,6 +4,9 @@ import type {
     FetchArgs,
     FetchBaseQueryError,
 } from '@reduxjs/toolkit/query'
+import User from 'types/IUser';
+import IVacancy from 'types/IVacancy';
+import ICandidate from 'types/ICandidate';
 
 
 interface LoginResponse {
@@ -16,8 +19,22 @@ export interface LoginParams {
     password: string,
 }
 
+interface GetVacancyResponse {
+    count: number,
+    next: string,
+    previous: string,
+    results: IVacancy[],
+}
 
-const baseQueryWithoutReauth = fetchBaseQuery({ baseUrl: 'http://bridge.sytes.net/' })
+interface ResultResponse {
+    count: number,
+    next: string,
+    previous: null,
+    results: ICandidate[],
+}
+
+
+const baseQueryWithoutReauth = fetchBaseQuery({ baseUrl: 'http://bridge.sytes.net/api/v1/' })
 
 const baseQueryWithReauth: BaseQueryFn<
     string | FetchArgs,
@@ -33,14 +50,23 @@ const baseQueryWithReauth: BaseQueryFn<
     }
     let result = await baseQueryWithoutReauth(args, api, extraOptions)
     if (result.error && result.error.status === 401) {
+        // get refresh token from localStorage
+        const refreshToken = localStorage.getItem('refreshToken');
         // try to get a new token
-        const refreshResult = await baseQueryWithoutReauth('/refreshToken', api, extraOptions)
+        const refreshResult = await baseQueryWithoutReauth({
+            url: 'auth/jwt/refresh/',
+            method: 'POST',
+            body: {
+                refresh: refreshToken,
+            },
+        }, api, extraOptions)
         if (refreshResult.data) {
             // store the new tokens
             localStorage.setItem('accessToken', (refreshResult.data as LoginResponse).access);
-            localStorage.setItem('refreshToken', (refreshResult.data as LoginResponse).refresh);
             // retry the initial query
-            result = await baseQueryWithoutReauth(args, api, extraOptions)
+            if (typeof args !== 'string') {
+                result = await baseQueryWithoutReauth({ ...args, headers: { ...args.headers, 'Authorization': `Bearer ${(refreshResult.data as LoginResponse).access}` } }, api, extraOptions)
+            }
         } else {
             // The refresh token has expired, user must log in again
             localStorage.removeItem('accessToken');
@@ -56,7 +82,7 @@ export const API = createApi({
     reducerPath: 'API',
     baseQuery: (args, api, extraOptions) => {
         // Проверяем, содержит ли URL строку 'auth/jwt/create/'
-        if (typeof args === 'string' && args.includes('auth/jwt/create/')) {
+        if (args.url && args.url === 'auth/jwt/create/') {
             return baseQueryWithoutReauth(args, api, extraOptions);
         } else {
             return baseQueryWithReauth(args as string | FetchArgs, api, extraOptions);
@@ -70,10 +96,19 @@ export const API = createApi({
                 body: params
             }),
         }),
+        getUser: builder.query<User, void>({
+            query: () => ({ url: 'users/me/' }),
+        }),
+        getVacancy: builder.query<GetVacancyResponse, void>({
+            query: () => ({ url: 'vacancy' }),
+        }),
+        getCandidates: builder.query<ResultResponse, void>({
+            query: () => ({ url: 'candidates/' }),
+        }),
     }),
 })
 
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useLoginMutation } = API
+export const { useLoginMutation, useGetUserQuery, useGetVacancyQuery, useGetCandidatesQuery } = API

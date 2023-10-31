@@ -15,6 +15,8 @@ const SignIn: FC = () => {
   const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm<LoginParams>()
+  const { ref: emailRef, ...emailProps } = register("email");
+  const { ref: passwordRef, ...passwordProps } = register("password");
 
   const [login] = useLoginMutation();
 
@@ -25,6 +27,7 @@ const SignIn: FC = () => {
         // Save tokens in localStorage
         localStorage.setItem('accessToken', result.data.access);
         localStorage.setItem('refreshToken', result.data.refresh);
+        navigate('/')
       } else {
         console.log(result.error)
       }
@@ -48,8 +51,8 @@ const SignIn: FC = () => {
             Войти в аккаунт
           </Typography>
           <fieldset className={styles.fieldset}>
-            <Input {...register('email')} size="medium" type="email" variant="outlined" placeholder="Почта" fullWidth helperText=" " />
-            <Input {...register('password')} size="medium" type="password" variant="outlined" placeholder="Пароль" fullWidth helperText=" " />
+            <Input inputRef={emailRef} {...emailProps} size="medium" type="email" variant="outlined" placeholder="Почта" fullWidth helperText=" " />
+            <Input inputRef={passwordRef} {...passwordProps} size="medium" type="password" variant="outlined" placeholder="Пароль" fullWidth helperText=" " />
           </fieldset>
           <MuiLink
             className={styles.button}
