@@ -27,10 +27,6 @@ const Candidates: FC = () => {
     setFilters({ ...filters, search: value });
   };
 
-  // const getCandidatesQuery = useGetCandidatesQuery()
-  // const candidatesList = getCandidatesQuery.data?.results || []
-  // const count = getCandidatesQuery.data?.count || 0
-
   getCandidatesQuery.data?.results
 
   return (
