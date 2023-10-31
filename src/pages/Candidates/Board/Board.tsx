@@ -16,7 +16,6 @@ export interface BoardProps {
 }
 
 const Board: FC<BoardProps> = ({ candidates }) => {
-  console.log(candidates)
   const candidatesNumber = `Добавлено ${candidates.length} ${getCandidatesDeclension(candidates.length)}`;
   const expandedIcon = <Icon src={arrowDown} alt="Иконка раскрытия доски" />;
 
