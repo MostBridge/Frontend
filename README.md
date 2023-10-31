@@ -12,7 +12,7 @@
 
  - [Мария Лафуткина](https://github.com/marylaf)
  - [Артем Шамсиев](https://github.com/shamsievartyom)
- - [Анна Воронова](https://github.com/PeachMood))
+ - [Анна Воронова](https://github.com/PeachMood)
 
 ## Ссылка на Github Pages или иной хостинг
 
