@@ -30,3 +30,13 @@ export const generateCandidates = (template: ICandidate, n: number): ICandidate[
     return previousValue;
   }, []);
 };
+
+export const getKey = (object: any, value: string): string => {
+  return Object.keys(object)[Object.values(object).indexOf(value)];
+};
+
+export const getEnumKeys = <T extends string, TEnumValue extends string | number>(enumVariable: {
+  [key in T]: TEnumValue;
+}) => {
+  return Object.keys(enumVariable) as Array<T>;
+};

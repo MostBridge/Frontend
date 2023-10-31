@@ -10,12 +10,25 @@ import down from '../../assets/images/arrow_down.svg';
 import Participation from 'components/custom/Participation/Participation';
 import Button from 'components/mui/Button/Button';
 import BackButton from 'components/custom/BackButton/BackButton';
-import { useNavigate } from 'react-router-dom';
-import user_image from './../../assets/images/img.png';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import email_icon from './../../assets/images/envelope-open.svg';
 import telegram_icon from './../../assets/images/logo-telegram.svg';
+import { useGetCandidatesQuery } from '../../redux/slices/API';
 
 const User: FC = () => {
+  const { id } = useParams();
+const numericId = Number(id);
+
+const { data: candidates } = useGetCandidatesQuery();
+
+const selectedCandidate = candidates?.results.find(candidate => candidate.id === numericId);
+
+if (selectedCandidate) {
+  console.log("Найденный кандидат:", selectedCandidate);
+} else {
+  console.log("Кандидат с таким ID не найден");
+}
+
   const [tabsValues, setTabsValues] = useState({ first: 0, second: 0, third: 0 });
 
   const handleChange = (key: 'first' | 'second' | 'third', newValue: number) => {
@@ -27,31 +40,31 @@ const User: FC = () => {
     navigate(-1);
   };
 
-  const candidateInfo = {
-    first_name: 'Константин',
-    last_name: 'Константинов',
-    contacts: {
-      Телефон: '88005553535',
-      Telegram: '@konstantin',
-      email: 'konstantin@getMaxListeners.com',
-    },
-    profession: {
-      name: 'Графический дизайнер',
-    },
-  };
+  // const candidateInfo = {
+  //   first_name: 'Константин',
+  //   last_name: 'Константинов',
+  //   contacts: {
+  //     Телефон: '88005553535',
+  //     Telegram: '@konstantin',
+  //     email: 'konstantin@getMaxListeners.com',
+  //   },
+  //   profession: {
+  //     name: 'Графический дизайнер',
+  //   },
+  // };
 
   return (
     <main className={styles.main}>
       <BackButton onBack={goBack} />
       <div className={styles.flex_row}>
         <section className={styles.sidebar}>
-          <img className={styles.image} src={user_image} alt="Фотография кандидата" />
+          <img className={styles.image} src={selectedCandidate?.photo} alt="Фотография кандидата" />
           <div className={styles.name_container}>
             <Typography className={styles.name} variant="h3" component="h1">
-              {`${candidateInfo.first_name} ${candidateInfo.last_name}`}
+              {`${selectedCandidate?.first_name} ${selectedCandidate?.last_name}`}
             </Typography>
             <Typography className={styles.name} variant="body1" component="h2">
-              {candidateInfo.profession.name}
+              {selectedCandidate?.profession?.name}
             </Typography>
           </div>
           <div className={styles.buttons}>
@@ -71,13 +84,13 @@ const User: FC = () => {
                 <div className={styles.contacts_row}>
                   <img src={email_icon} alt="Иконка email" />
                   <Typography variant="body1" component="p">
-                    {candidateInfo.contacts.email}
+                    {selectedCandidate?.contacts?.email}
                   </Typography>
                 </div>
                 <div className={styles.contacts_row}>
                   <img src={telegram_icon} alt="Иконка телеграм" />
                   <Typography variant="body1" component="p">
-                    {candidateInfo.contacts.Telegram}
+                    {selectedCandidate?.contacts?.telegram}
                   </Typography>
                 </div>
               </div>
@@ -87,12 +100,16 @@ const User: FC = () => {
                 Дополнительные ссылки
               </Typography>
               <div className={styles.contacts_element}>
-                <Button size="small" variant="text" disableRipple>
+                <Link to={{ pathname: selectedCandidate?.portfolio }} target="_blank" rel="noopener noreferrer">
+                  <Button size="small" variant="text" disableRipple>
                   Портфолио на Behance
-                </Button>
-                <Button size="small" variant="text" disableRipple>
-                  Блог на VC
-                </Button>
+                  </Button>
+                </Link>
+                <Link to={{ pathname: selectedCandidate?.reviews }} target="_blank" rel="noopener noreferrer">
+                  <Button size="small" variant="text" disableRipple>
+                    Блог на VC
+                  </Button>
+                </Link>
               </div>
             </div>
             <div className={styles.contacts}>
@@ -101,7 +118,7 @@ const User: FC = () => {
               </Typography>
               <div className={styles.contacts_element}>
                 <Typography variant="body1" component="p">
-                  Выпускник курса «Графический дизайн», 2023 г.
+                Выпускник курса {selectedCandidate?.profession?.name}, 2023 г.
                 </Typography>
               </div>
             </div>
@@ -120,14 +137,14 @@ const User: FC = () => {
             <div className={styles.infoBlock}>
               <img src={graph} alt="Иконка графика" />
               <Typography color="text.secondary" variant="body2">
-                Middle
+              {selectedCandidate?.grade}
               </Typography>
             </div>
 
             <div className={styles.infoBlock}>
               <img src={map} alt="Иконка города" />
               <Typography color="text.secondary" variant="body2">
-                Москва
+              {selectedCandidate?.town?.city}
               </Typography>
             </div>
 

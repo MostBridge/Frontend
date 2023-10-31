@@ -12,7 +12,7 @@ import star from 'assets/images/star.svg';
 import arrow from 'assets/images/arrow_right.svg';
 import DropDown from 'components/custom/DropDown/DropDown';
 import Button from 'components/mui/Button/Button';
-import IVacancy from 'types/IVacancy';
+import IVacancy, { Experience, Grade } from 'types/IVacancy';
 
 interface VacancyProps {
   data: IVacancy;
@@ -29,7 +29,7 @@ const BlockVacancy: FC<VacancyProps> = ({ data }) => {
     setAnchorEl(null);
   };
 
-  let formattedDate
+  let formattedDate;
 
   let date = data.created_date;
 
@@ -41,7 +41,7 @@ const BlockVacancy: FC<VacancyProps> = ({ data }) => {
     formattedDate = date.toLocaleDateString('ru-RU', {
       day: '2-digit', // двухзначный день
       month: '2-digit', // двухзначный месяц
-      year: 'numeric' // год в формате "yyyy"
+      year: 'numeric', // год в формате "yyyy"
     });
   }
   return (
@@ -88,7 +88,7 @@ const BlockVacancy: FC<VacancyProps> = ({ data }) => {
         <div className={styles.infoBlock}>
           <img src={graph} alt="Иконка графика" />
           <Typography color="text.secondary" variant="body2">
-            {data.grade}
+            {Grade[data.grade as any]}
           </Typography>
         </div>
 
@@ -106,7 +106,9 @@ const BlockVacancy: FC<VacancyProps> = ({ data }) => {
 
         <div className={styles.infoBlock}>
           <img src={star} alt="Иконка звезды" />
-          <Typography color="text.secondary" variant="body2">{`Опыт ${data.experience}`}</Typography>
+          <Typography color="text.secondary" variant="body2">
+            {Experience[data.experience as any]}
+          </Typography>
         </div>
       </div>
       <div>

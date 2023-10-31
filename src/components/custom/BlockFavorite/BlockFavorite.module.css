@@ -1,4 +1,5 @@
 .block {
+  position: relative;
   display: flex;
   justify-content: space-between;
   gap: 13px;
@@ -22,4 +23,10 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+.heart {
+  position: absolute;
+  top: 12px;
+  right: 16px;
 }

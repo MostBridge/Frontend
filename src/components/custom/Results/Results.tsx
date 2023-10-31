@@ -25,11 +25,10 @@ export interface ResultsProps {
 
 const Results: FC<ResultsProps> = ({ addText, allocation, componentName, candidates, onSelect, count }) => {
 
-  // const { data: candidates } = useGetCandidatesQuery();
-
   const candidatesCount = count;
-
+    
   const candidatesNumber = `Всего найдено ${candidatesCount} ${getCandidatesDeclension(candidatesCount)}`;
+
   const [isPopupFilterOpen, setIsPopupFilterOpen] = useState<boolean>(false);
 
   let endIcon;

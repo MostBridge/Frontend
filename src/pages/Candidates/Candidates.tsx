@@ -1,16 +1,20 @@
 import { ChangeEvent, FC, useState } from 'react';
 import { SelectChangeEvent, Typography } from '@mui/material';
 
-import { VACANCIES_LIST } from '../../utils/constants';
 import IFilters from 'types/IFilters';
 
 import FiltersForm from '../../components/custom/FiltersForm/FiltersForm';
 import styles from './Candidates.module.css';
 import Results from '../../components/custom/Results/Results';
-import { useGetCandidatesQuery } from '../../redux/slices/API';
-// import Board from './Board/Board';
+import Board from './Board/Board';
+import { useGetCandidatesQuery, useGetVacancyQuery } from '../../redux/slices/API';
 
 const Candidates: FC = () => {
+  const getCandidatesQuery = useGetCandidatesQuery();
+  const getVacanciesQuery = useGetVacancyQuery();
+  const candidates = getCandidatesQuery.data?.results;
+  const vacancies = getVacanciesQuery.data?.results;
+  const favorite = candidates?.filter((candidate) => candidate.is_favorited);
   const [filters, setFilters] = useState<IFilters>({ vacancyId: 0, search: '' });
 
   const handleVacancyChange = (event: SelectChangeEvent<number>) => {
@@ -36,16 +40,16 @@ const Candidates: FC = () => {
           Поиск кандидатов
         </Typography>
         <FiltersForm
-          textTitle='Подборка'
+          textTitle="Подборка"
           className={styles.navigation}
-          vacancies={VACANCIES_LIST}
+          vacancies={vacancies}
           filters={filters}
           onChange={handleVacancyChange}
           onInput={handleSearchInput}
         />
         <Results componentName='Candidates' candidates={candidatesList} count={count} allocation='Фильтры' addText='Добавить всех в избранные' />
       </main>
-      {/* <Board candidates={FAVORITE_LIST} /> */}
+      <Board candidates={favorite} />
     </div>
   );
 };

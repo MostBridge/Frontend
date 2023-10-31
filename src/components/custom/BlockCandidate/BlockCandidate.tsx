@@ -18,6 +18,7 @@ import HeartButton from '../HeartButton/HeartButton';
 import { Link } from 'react-router-dom';
 import ITech from 'types/ICandidate';
 import { useAddToFavoriteMutation, useGetCandidatesQuery, useRemoveFromFavoriteMutation } from '../../../redux/slices/API';
+import { Experience, Grade } from 'types/IVacancy';
 
 export interface BlockCandidateProps {
   candidate: ICandidate;
@@ -29,9 +30,11 @@ export interface BlockCandidateProps {
 const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, tech }) => {
   const { first_name, last_name } = candidate;
   const name = getFullName(first_name, last_name);
+
   const profession = candidate.profession?.name;
   const grade = candidate?.grade;
   const town = candidate.town?.city;
+  const photo = candidate?.photo;
 
   const [heartState, setHeartState] = useState(candidate.is_favorited)
 
@@ -62,7 +65,7 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, tech }) 
       <div className={styles.container}>
         {onSelect && <Checkbox className={styles.checkbox} disableRipple onClick={onSelect} />}
         <div className={styles.view}>
-          <Avatar className={styles.avatar} src={candidate.photo} />
+          <Avatar className={styles.avatar} src={photo} />
           <div className={styles.status}>
             <TabRow className={styles.tab} size="small" color="secondary" text="Совпадение 90%" />
             <TabRow className={styles.tab} size="small" color="light" text="Ищу работу" />
@@ -84,10 +87,10 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, tech }) 
             {profession}
           </Typography>
           <List className={{ list: styles.info }}>
-            <IconTag icon={chartColumn} text={grade} alt="Иконка квалификации" />
+            <IconTag icon={chartColumn} text={Grade[grade as any]} alt="Иконка квалификации" />
             <IconTag icon={map} text={town} alt="Иконка города" />
             <IconTag icon={money} text="100 000 ₽" alt="Иконка зарплаты" />
-            <IconTag icon={star} text={`Опыт от ${candidate.experience}`} alt="Иконка опыта" />
+            <IconTag icon={star} text={Experience[candidate?.experience as any]} alt="Иконка опыта" />
           </List>
           <List className={{ list: styles.skills }}>
             <List className={{ list: styles.skills }}>
@@ -98,7 +101,7 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, tech }) 
           </List>
         </div>
         <div className={styles.navigation}>
-          <Link to="/user">
+          <Link to={`/user/${candidate.id}`}>
             <Button className={styles.button} variant="contained" size="small">
               Подробнее
             </Button>

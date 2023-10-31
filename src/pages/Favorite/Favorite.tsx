@@ -6,10 +6,12 @@ import IFilters from 'types/IFilters';
 import FiltersForm from 'components/custom/FiltersForm/FiltersForm';
 import styles from './Favorite.module.css';
 import Action from './Action/Action';
-import { useGetCandidatesQuery } from './../../redux/slices/API';
+import { useGetCandidatesQuery } from '../../redux/slices/API';
 import Results from 'components/custom/Results/Results';
 
 const Favorite: FC = () => {
+  const getCandidatesQuery = useGetCandidatesQuery();
+  const candidates = getCandidatesQuery.data?.results?.filter((candidate) => candidate.is_favorited);
   const [filters, setFilters] = useState<IFilters>({ vacancyId: 0, search: '' });
 
   const handleVacancyChange = (event: SelectChangeEvent<number>) => {

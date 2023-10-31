@@ -6,6 +6,7 @@ import ICandidate from 'types/ICandidate';
 import { getFullName } from 'utils/utils';
 
 import styles from './BlockFavorite.module.css';
+import { Experience } from 'types/IVacancy';
 
 export interface BlockFavoriteProps {
   candidate: ICandidate;
@@ -16,7 +17,7 @@ const BlockFavorite: FC<BlockFavoriteProps> = ({ candidate, onToggle }) => {
   const { first_name, last_name } = candidate;
   const name = getFullName(first_name, last_name);
   const profession = candidate.profession?.name;
-  const experience = candidate?.experience;
+  const experience = Experience[candidate?.experience as any];
 
   return (
     <article className={styles.block}>
@@ -34,7 +35,7 @@ const BlockFavorite: FC<BlockFavoriteProps> = ({ candidate, onToggle }) => {
           </Typography>
         </div>
       </div>
-      <HeartButton size="small" isFavorite={candidate.is_favorited} onClick={onToggle} />
+      <HeartButton className={styles.heart} size="small" isFavorite={candidate.is_favorited} onClick={onToggle} />
     </article>
   );
 };

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import IVacancy from 'types/IVacancy';
+import IVacancy, { Grade } from 'types/IVacancy';
 
 import styles from './VacancyPlaceholder.module.css';
 
@@ -13,7 +13,7 @@ const VacancyPlaceholder: FC<VacancyPlaceholderProps> = ({ vacancy }) => {
     <div className={styles.vacancy}>
       Вакансия
       <span className={styles.accent}>{vacancy.profession?.name}</span>
-      <span className={styles.accent}>{vacancy?.grade}</span>
+      <span className={styles.accent}>{Grade[vacancy?.grade as any]}</span>
     </div>
   );
 };

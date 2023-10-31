@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-// import MainPage from '../slices/MainPage'
+import Profile from '../slices/Profile'
 import { API } from '../slices/API'
 
 export const store = configureStore({
     reducer: {
-        // MainPage: MainPage,
+        Profile: Profile,
         [API.reducerPath]: API.reducer,
     },
     middleware: (getDefaultMiddleware) =>
