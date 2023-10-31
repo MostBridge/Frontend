@@ -1,45 +1,123 @@
 import BackButton from 'components/custom/BackButton/BackButton';
 // import React from 'react'
 import styles from './CreateVacancy.module.css';
-import { MenuItem, Typography } from '@mui/material';
+import { MenuItem, SelectChangeEvent, Typography } from '@mui/material';
 import Button from 'components/mui/Button/Button';
 import Input from 'components/mui/Input/Input';
-import Filters from './Filters/Filters';
+import Filters, { Filter } from './Filters/Filters';
 import TextAreaBlock from './TextAreaBlock/TextAreaBlock';
 import SkillBlock from './SkillBlock/SkillBlock';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import DonePopup from 'components/custom/DonePopup/DonePopup';
 import Label from 'components/mui/Label/Label';
 import Select from 'components/mui/Select/Select';
+import {
+  CreateVacancyParams,
+  useCreateVacancyMutation,
+  useGetEmploymentsQuery,
+  useGetTechnologiesQuery,
+  useGetTownsQuery,
+} from '../../redux/slices/API';
+import { CURRENCIES as currencies } from 'utils/constants';
+import { Education, Experience, Grade } from 'types/IVacancy';
 
 const CreateVacancy = () => {
+  const [vacancy, setVacancy] = useState<CreateVacancyParams>({ country: 'Россия', employment: [] });
+  const [set, setSet] = useState(new Set<string>());
+  const [value, setValue] = useState<string | null>(null);
   const [isPopupDoneOpen, setIsPopupDoneOpen] = useState(false);
 
-  const handleOpenPopup = () => {
-    setIsPopupDoneOpen(true);
+  const getTownsQuery = useGetTownsQuery();
+  const getEmploymentsQuery = useGetEmploymentsQuery();
+  const getTechnologiesQuery = useGetTechnologiesQuery();
+  const [createVacancy] = useCreateVacancyMutation();
+
+  const towns = getTownsQuery.data?.results;
+  const employments = getEmploymentsQuery.data?.results.map(({ id, name }) => ({ id, value: name } as Filter));
+  const grades = Object.keys(Grade).map((key) => ({ id: key, value: Grade[key as any] } as Filter));
+  const expiriencies = Object.keys(Experience).map((key) => ({ id: key, value: Experience[key as any] } as Filter));
+  const technologies = getTechnologiesQuery.data?.results?.map((technology) => technology.name);
+
+  const renderEducation = (value: string) => {
+    return <>{Education[value as any]}</>;
   };
 
-  const handleClosePopup = () => {
-    setIsPopupDoneOpen(false);
+  const renderTown = (value: number) => {
+    const town = towns?.find((town) => town.id === value);
+    return <>{town?.city}</>;
   };
 
-  // const cityes = ["Москва", "Санкт-Петербург", "Новосибирск", "Екатаринбург", "Казань", "Нижний Новгород", "Красноярск", "Челябинск", "Самара", "Уфа"]
-  const currencies = ['₽ Рубль', '$ Доллар', '€ Евро'];
-  const filters1 = ['Полная занятость', 'Частичная занятость', 'Фриланс'];
-  const filters2 = ['Офис', 'Гибрид', 'Удалённо', 'Релокейт'];
-  const filters3 = ['Intern', 'Junior', 'Middle', 'Senior'];
-  const filters4 = ['Без опыта', 'До 1 года', 'От 1 года', 'От 2 лет', 'От 3 лет'];
-  const education = ['Среднее', 'Высшее'];
-  const skills = [
-    'UX дизайн',
-    'UI дизайн',
-    'Прототипирование',
-    'Android/IOS гайдлайны',
-    'Дизайн мобильных рилодений',
-    'Дизайн веб-приложений',
-    'Английский B1',
-  ];
+  const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setVacancy({ ...vacancy, [name]: value });
+  };
+
+  const handleSelect = (event: SelectChangeEvent<string | number>) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setVacancy({ ...vacancy, [name]: value });
+  };
+
+  const handleEmploymentClick = (id?: number | string) => {
+    let employment = [...vacancy.employment!];
+    if (employment.some((other) => other === id)) {
+      employment = employment.filter((other) => other !== id);
+    } else {
+      employment.push((id as number) || 0);
+    }
+    setVacancy({ ...vacancy, employment });
+  };
+
+  const handleGradeClick = (id?: number | string) => {
+    setVacancy({ ...vacancy, grade: id as string });
+  };
+
+  const handleExpirienceClick = (id?: number | string) => {
+    setVacancy({ ...vacancy, experience: id as string });
+  };
+
+  const handleSkillblock = (_event: unknown, newValue: string | null) => {
+    setValue(newValue);
+    if (newValue !== null) {
+      setSet((el) => {
+        const updatedSet = el.add(newValue);
+        const array = Array.from(updatedSet.values());
+        const result = getTechnologiesQuery.data?.results
+          ?.filter((technology) => array.some((obj) => obj === technology.name))
+          .map((obj) => obj.id) as number[] | undefined;
+        setVacancy({ ...vacancy, technology: result });
+        return updatedSet;
+      });
+    }
+  };
+
+  const handlePublicSubmit = async () => {
+    const params: CreateVacancyParams = JSON.parse(JSON.stringify(vacancy));
+    params.status = 'active';
+    params.profession = 2;
+    try {
+      await createVacancy(params);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsPopupDoneOpen(true);
+    }
+  };
+
+  const handleHiddenSubmit = async () => {
+    const params: CreateVacancyParams = JSON.parse(JSON.stringify(vacancy));
+    params.status = 'hidden';
+    params.profession = 2;
+    try {
+      await createVacancy(params);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsPopupDoneOpen(true);
+    }
+  };
 
   const navigate = useNavigate();
 
@@ -57,12 +135,12 @@ const CreateVacancy = () => {
           </Typography>
           <ul className={styles.list_of_buttons}>
             <li>
-              <Button variant="outlined" size="small" className={styles.button}>
+              <Button variant="outlined" size="small" className={styles.button} onClick={handleHiddenSubmit}>
                 Создать скрытую вакансию
               </Button>
             </li>
             <li>
-              <Button onClick={handleOpenPopup} variant="contained" size="small" className={styles.button}>
+              <Button variant="contained" size="small" className={styles.button} onClick={handlePublicSubmit}>
                 Опубликовать вакансию
               </Button>
             </li>
@@ -76,18 +154,30 @@ const CreateVacancy = () => {
           </Typography>
           <ul className={styles.list_of_inputs}>
             <Label label="Название должности/cпециальность">
-              <Input size="small" fullWidth />
+              <Input size="small" value={vacancy?.title || ''} onChange={handleInput} name="title" fullWidth />
             </Label>
             <Label label="Компания">
-              <Input size="small" fullWidth />
+              <Input size="small" value={vacancy?.company || ''} onChange={handleInput} name="company" fullWidth />
             </Label>
           </ul>
           <ul className={styles.list_of_inputs}>
             <Label label="Страна">
-              <Input defaultValue="Россия" size="small" fullWidth />
+              <Input size="small" value={vacancy?.country || ''} onChange={handleInput} name="country" fullWidth />
             </Label>
-            <Label label="Город">
-              <Input size="small" fullWidth />
+            <Label label="Город" fullWidth>
+              <Select
+                fullWidth
+                name="town"
+                value={vacancy?.town || ''}
+                onChange={handleSelect}
+                renderValue={renderTown}
+              >
+                {towns?.map((town) => (
+                  <MenuItem key={town.id} value={town.id}>
+                    {town.city}
+                  </MenuItem>
+                ))}
+              </Select>
             </Label>
           </ul>
           <ul className={styles.list_of_inputs}>
@@ -106,29 +196,35 @@ const CreateVacancy = () => {
             </Label>
           </ul>
           <Label label="Образование">
-            <Select className={styles.education} placeholder="Выберите из списка">
-              {education.map((el, id) => (
-                <MenuItem key={id} value={el}>
-                  {el}
+            <Select
+              className={styles.education}
+              placeholder="Выберите из списка"
+              defaultValue=""
+              name="education"
+              renderValue={renderEducation}
+              onChange={handleSelect}
+            >
+              {Object.keys(Education).map((key) => (
+                <MenuItem key={key} value={key}>
+                  {Education[key as any]}
                 </MenuItem>
               ))}
             </Select>
           </Label>
-          <Filters filters={filters1} title="Тип занятости"></Filters>
-          <Filters filters={filters2} title="Условия"></Filters>
-          <Filters filters={filters3} title="Квалификация"></Filters>
-          <Filters filters={filters4} title="Опыт в специальности"></Filters>
+          <Filters filters={employments} title="Условия" onClick={handleEmploymentClick} />
+          <Filters filters={grades} title="Квалификация" onClick={handleGradeClick} />
+          <Filters filters={expiriencies} title="Опыт в специальности" onClick={handleExpirienceClick} />
         </article>
         <article className={styles.article}>
           <Typography className={styles.text} variant="h3" component="h2">
             Детали
           </Typography>
-          <TextAreaBlock label="Описание вакансии" />
+          <TextAreaBlock label="Описание вакансии" name="description" onChange={handleInput} />
           <TextAreaBlock label="Ожидания от кандидата" />
-          <SkillBlock array={skills} />
+          <SkillBlock array={technologies} value={value} onChange={handleSkillblock} set={set} setSet={setSet} />
         </article>
       </section>
-      {isPopupDoneOpen && <DonePopup onClose={handleClosePopup} isPopupDoneOpen={isPopupDoneOpen} />}
+      {isPopupDoneOpen && <DonePopup onClose={() => setIsPopupDoneOpen(false)} isPopupDoneOpen={isPopupDoneOpen} />}
     </main>
   );
 };

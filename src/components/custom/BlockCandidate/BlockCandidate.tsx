@@ -58,10 +58,10 @@ const BlockCandidate: FC<BlockCandidateProps> = ({ candidate, onSelect, onFavori
             {profession}
           </Typography>
           <List className={{ list: styles.info }}>
-            <IconTag icon={chartColumn} text={grade} alt="Иконка квалификации" />
+            <IconTag icon={chartColumn} text={grade?.toString()} alt="Иконка квалификации" />
             <IconTag icon={map} text={town} alt="Иконка города" />
             <IconTag icon={money} text="100 000 ₽" alt="Иконка зарплаты" />
-            <IconTag icon={star} text={experience} alt="Иконка опыта" />
+            <IconTag icon={star} text={experience?.toString()} alt="Иконка опыта" />
           </List>
           <List className={{ list: styles.skills }}>
             {candidate.technology?.map((skill) => (

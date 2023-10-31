@@ -13,11 +13,6 @@ const StyledSelect = styled(MuiSelect)(({ theme }) => ({
   cursor: 'pointer',
   ...theme.typography.body2,
 
-  '.MuiOutlinedInput-notchedOutline': {
-    paddginLeft: '12px',
-    paddingRight: '12px',
-  },
-
   '& .MuiSelect-outlined': {
     transform: 'rotate(0deg)',
   },
@@ -46,6 +41,20 @@ const StyledMenu: Partial<MenuProps> = {
       '& .MuiList-root': {
         padding: 0,
         border: 'none',
+      },
+      '&::-webkit-scrollbar': {
+        width: '4px',
+        backgroundColor: '#DDE0E4',
+        borderRadius: '4px',
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: '#5A9BFF',
+        borderRadius: '4px',
+      },
+
+      '.MuiOutlinedInput-notchedOutline': {
+        paddginLeft: '12px',
+        paddingRight: '12px',
       },
     },
   },

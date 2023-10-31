@@ -44,11 +44,7 @@ export const currencies = [
   { value: '€', text: '€' },
 ];
 
-export const education = [
-  { value: 'Не указано', text: 'Не указано' },
-  { value: 'Среднее профессиональное', text: 'Среднее профессиональное' },
-  { value: 'Высшее', text: 'Высшее' },
-];
+export const CURRENCIES = ['₽ Рубль', '$ Доллар', '€ Евро'];
 
 export const qualification = [
   { value: 'Intern', text: 'Intern' },
@@ -56,6 +52,12 @@ export const qualification = [
   { value: 'Middle', text: 'Middle' },
   { value: 'Senior', text: 'Senior' },
   { value: 'Lead', text: 'Lead' },
+];
+
+export const education = [
+  { value: 'Не указано', text: 'Не указано' },
+  { value: 'Среднее профессиональное', text: 'Среднее профессиональное' },
+  { value: 'Высшее', text: 'Высшее' },
 ];
 
 export const experience = [

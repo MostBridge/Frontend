@@ -11,10 +11,13 @@ import { Link } from 'react-router-dom';
 import Filters from 'components/custom/Filters/Filters';
 import { vacancies } from 'utils/constants';
 import IconButton from 'components/mui/IconButton/IconButton';
+import { useGetVacanciesQuery } from '../../redux/slices/API';
 
 const Vacancies: FC = () => {
+  const { data: res } = useGetVacanciesQuery();
   const [tabsValues, setTabsValues] = useState({ first: 0, second: 0 });
   const [isPopupFilterOpen, setIsPopupFilterOpen] = useState(false);
+  console.log(res);
 
   const handleChange = (key: 'first' | 'second', newValue: number) => {
     setTabsValues((prevValues) => ({ ...prevValues, [key]: newValue }));

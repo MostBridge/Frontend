@@ -1,13 +1,15 @@
-import { FC, useId } from 'react';
+import { ChangeEvent, FC, useId } from 'react';
 import styles from './TextAreaBlock.module.css';
 import { TextField, useTheme, InputLabel } from '@mui/material';
 import Button from 'components/mui/Button/Button';
 
 interface TextAreaBlockProps {
   label?: string;
+  name?: string;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const TextAreaBlock: FC<TextAreaBlockProps> = ({ label }) => {
+const TextAreaBlock: FC<TextAreaBlockProps> = ({ label, name, onChange }) => {
   const id = useId();
 
   const theme = useTheme();
@@ -35,6 +37,8 @@ const TextAreaBlock: FC<TextAreaBlockProps> = ({ label }) => {
             height: '126px',
             overflow: 'auto',
           },
+          name: name,
+          onChange: onChange,
         }}
       />
       <Button variant="contained" size="small" className={styles.button}>
