@@ -38,7 +38,7 @@ const SignIn: FC = () => {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <Link to="/">
+        <Link to="/sign-in">
           <img src={logo} alt="логотип" />
         </Link>
       </header>

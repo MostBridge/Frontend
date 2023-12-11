@@ -14,7 +14,7 @@ const Candidates: FC = () => {
   const getVacanciesQuery = useGetVacancyQuery();
   const candidates = getCandidatesQuery.data?.results || [];
   const vacancies = getVacanciesQuery.data?.results;
-  const favorite = candidates?.filter((candidate) => candidate.is_favorited) || [];
+  // const favorite = candidates?.filter((candidate) => candidate.is_favorited) || [];
   const [filters, setFilters] = useState<IFilters>({ vacancyId: 0, search: '' });
 
   const handleVacancyChange = (event: SelectChangeEvent<number>) => {
@@ -27,7 +27,13 @@ const Candidates: FC = () => {
     setFilters({ ...filters, search: value });
   };
 
-  getCandidatesQuery.data?.results
+  getCandidatesQuery.data?.results;
+
+  const { search } = filters;
+
+  const searchedCandidates = search
+    ? candidates.filter((candidate) => candidate?.first_name?.toLowerCase().includes(search.toLowerCase()))
+    : candidates;
 
   return (
     <div className={styles.page}>
@@ -43,9 +49,15 @@ const Candidates: FC = () => {
           onChange={handleVacancyChange}
           onInput={handleSearchInput}
         />
-        <Results componentName='Candidates' candidates={candidates} count={candidates.length} allocation='Фильтры' addText='Добавить всех в избранные' />
+        <Results
+          componentName="Candidates"
+          candidates={candidates}
+          count={candidates.length}
+          allocation="Фильтры"
+          addText="Добавить всех в избранные"
+        />
       </main>
-      <Board candidates={favorite} />
+      <Board candidates={searchedCandidates} />
     </div>
   );
 };

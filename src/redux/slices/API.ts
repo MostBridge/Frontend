@@ -61,7 +61,7 @@ export interface CreateVacancyParams {
   technology?: number[];
 }
 
-const baseQueryWithoutReauth = fetchBaseQuery({ baseUrl: 'http://bridge.sytes.net/api/v1/' });
+const baseQueryWithoutReauth = fetchBaseQuery({ baseUrl: 'http://212.109.192.63/api/v1/' });
 
 const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> = async (
   args,

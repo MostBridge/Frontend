@@ -70,6 +70,7 @@ const selectedCandidate = candidates?.results.find(candidate => candidate.id ===
     ));
   }
 
+
   return (
     <main className={styles.main}>
       <BackButton onBack={goBack} />
